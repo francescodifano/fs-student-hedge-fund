@@ -1,6 +1,7 @@
 import { asset as A } from '../lib/asset'
 import Button from '../components/Button'
 import { usePageTitle } from '../lib/usePageTitle'
+import { PAPERS } from '../lib/papers'
 
 // The report PDF is hosted on this site itself (public/papers), served under the
 // GitHub Pages base path — no external redirect.
@@ -66,6 +67,49 @@ export default function Research() {
             </div>
           </div>
         </article>
+      </section>
+
+      {/* Published research: the papers grid. Cards link straight to the PDFs,
+          which are hosted on this site (public/papers), same as the Seagate report. */}
+      <section className="container-page pb-20 md:pb-28">
+        <h2 className="font-display text-h1 font-bold text-navy">Published Research</h2>
+        <p className="mt-6 max-w-3xl text-lead text-navy/80">
+          Papers and literature reviews from our departments, reviewed by the department heads and typeset in the
+          house style of the fund.
+        </p>
+
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+          {PAPERS.map((paper) => (
+            <a
+              key={paper.pdf}
+              href={`${import.meta.env.BASE_URL}papers/${paper.pdf}`}
+              target="_blank"
+              rel="noopener"
+              className="group flex flex-col border border-navy/15 bg-white transition-colors hover:border-navy/40"
+            >
+              <div className="overflow-hidden border-b border-navy/10 bg-mist">
+                <img
+                  src={A(paper.cover)}
+                  alt={paper.coverAlt}
+                  className="aspect-[4/3] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6 md:p-7">
+                <p className="font-sans text-sm font-bold tracking-wide text-navy/55">{paper.tag}</p>
+                <h3 className="mt-3 font-display text-h3 font-bold text-navy">{paper.title}</h3>
+                <p className="mt-1.5 text-sm text-navy/60">
+                  {paper.authors} · {paper.date}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-navy/75">{paper.blurb}</p>
+                <p className="mt-auto pt-6 text-sm font-bold text-navy">
+                  Read the paper
+                  <span aria-hidden className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
       </section>
     </>
   )

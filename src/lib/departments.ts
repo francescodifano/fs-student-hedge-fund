@@ -14,7 +14,8 @@ export const DEPARTMENTS_DATA: Record<string, Dept> = {
     mission: 'Independent research and institutional-grade financial analysis.',
     leads: ['Francesco di Fano', 'Julius Jagland'],
     body: [
-      'The Hedge Fund combines discretionary and systematic approaches across multiple strategies and asset classes. Members develop macro theses, construct diversified portfolios, and implement hedging strategies to generate risk-adjusted returns across varying market environments. Detailed content for this department will be provided shortly.',
+      'The Hedge Fund combines discretionary and systematic approaches across multiple strategies and asset classes. Members develop macro theses, construct diversified portfolios, and implement hedging strategies to generate risk-adjusted returns across varying market environments.',
+      'The department also reviews and publishes the written research of the investment teams: portfolio papers for the commodities, equities and fixed income sleeves, together with literature reviews on the foundations of our strategies. All published papers are available on the Research page.',
     ],
   },
   derivatives: {

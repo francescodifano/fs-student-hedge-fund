@@ -1,0 +1,277 @@
+%% ===================================================================
+%% fshf-emh.tex -- Efficient Market Hypothesis: A Literature Review
+%% FS Student Hedge Fund house style (fshf-style.sty), pdfLaTeX x2
+%% Source: originals/Efficient_Market_Hypothesis_commented_2.pdf
+%% Review fixes implemented (5):
+%%   1. Added missing Lo & MacKinlay (1988) reference entry
+%%   2. Martingale precision wording in Section 4 (comment 2)
+%%   3. Sharpe (1964) moved to alphabetical position, en-dash 425--442
+%%   4. Hoelscher & Meek page range corrected to 330--355
+%%   5. Barberis & Thaler (2003) handbook naming completed (Vol. 1B)
+%% ===================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage{fshf-style}
+\usepackage{xurl}% allow long reference URLs to break cleanly (loads after hyperref)
+\SetFshfShortTitle{Efficient Market Hypothesis}
+
+\begin{document}
+
+\makefshftitle{Efficient Market Hypothesis: A Literature Review}%
+{Literature Review}%
+{Takudzwa Mutetwa, Sebastian Maurer \& Sean Pascal}%
+{July 2026}%
+{Prepared for the FS Student Hedge Fund}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+
+The Efficient Market Hypothesis (EMH) is one of the central ideas in financial economics. At its core, it holds that market prices reflect available information (Fama, 1970). If this is correct, investors should not be able to consistently earn abnormal returns by acting on information already known to the market. The practical consequence is direct: if prices already incorporate available information, then active security selection, market timing, and technical trading rules should struggle to outperform a properly chosen benchmark after costs and risk adjustment.
+
+This review examines EMH as both a theoretical claim and a practical investment problem. The objective is not to make an investment recommendation. Rather, the purpose is to build a conceptual and empirical foundation that can help a fund think more clearly about active versus passive investing, market anomalies, factor investing, and the conditions under which markets may be more or less beatable.
+
+A useful reading of EMH is that markets are difficult to beat because prices adjust quickly to information, competition among investors erodes easy profit opportunities, and apparent anomalies often weaken after accounting for costs, risk, data mining, model error, and implementation constraints (Malkiel, 2003; Fama, 1998). At the same time, the literature does not support the view that markets are perfectly efficient in every setting. Grossman and Stiglitz (1980) show that perfect informational efficiency is theoretically impossible when information is costly, because informed investors must receive some compensation for collecting and trading on information.
+
+The fund-relevant question is therefore not simply whether markets are efficient or inefficient. The better question is where markets are efficient enough that active management is unlikely to add value, and where information costs, liquidity constraints, behavioural biases, institutional frictions, or limits to arbitrage create conditions in which active strategies may plausibly generate persistent risk-adjusted returns.
+
+\section{Definition of EMH and its Classical Forms}
+
+Fama (1970) provides the classical definition of an efficient capital market as one in which prices fully reflect available information. His contribution was not only to define EMH, but also to classify market efficiency according to the information set being reflected in prices.
+
+The first category is weak-form efficiency. Under weak-form efficiency, current prices reflect historical price and volume information. If weak-form efficiency holds, investors should not be able to consistently earn abnormal returns by using technical analysis, chart patterns, past prices, or trading rules based only on historical market data (Fama, 1970).
+
+The second category is semi-strong-form efficiency. Under semi-strong efficiency, prices reflect all publicly available information. This includes past prices, company announcements, financial statements, macroeconomic information, news, and other public disclosures. If semi-strong efficiency holds, neither technical analysis nor fundamental analysis should consistently produce superior risk-adjusted returns after costs (Fama, 1970). Early event-study evidence, beginning with Fama, Fisher, Jensen and Roll (1969) on stock splits, was broadly consistent with this form.
+
+The third category is strong-form efficiency. Under strong-form efficiency, prices reflect all information, including public and private information. This is the strongest and least realistic version of EMH. In practice, insider-trading profits, private-information advantages, and the existence of costly research make strong-form efficiency difficult to defend empirically (Fama, 1970; Grossman \& Stiglitz, 1980).
+
+Fama's framework remains useful because it links each form of efficiency to a testable information set. Weak-form tests examine whether past prices predict future returns. Semi-strong tests examine how prices respond to public information. Strong-form tests examine whether investors with private or monopolistic access to information can earn abnormal returns.
+
+However, Fama (1970) also makes clear that market efficiency cannot be tested in isolation. Tests of EMH require a model of normal returns. If a study finds abnormal returns, that result may indicate market inefficiency, but it may also indicate that the benchmark model used to estimate expected returns is incomplete. This is the joint hypothesis problem, and it remains one of the most important methodological issues in the EMH literature (Fama, 1970; Fama, 1991).
+
+\section{Theoretical Foundations: Samuelson and Fama}
+
+Samuelson (1965) provides the earliest rigorous theoretical foundation for EMH. His central insight is that, in a competitive market where participants form expectations using available information, properly anticipated prices should fluctuate randomly. More precisely, they should follow a martingale (Samuelson, 1965). If market participants use available information to form expectations, and if that information is already reflected in prices, then only new information should cause price changes. Since new information is unpredictable by definition, price changes should also be difficult to forecast.
+
+Samuelson (1973) later extended this result, showing that properly discounted present values of assets also vibrate randomly when future dividends follow a known stochastic process.
+
+This does not mean that prices are meaningless or irrational. Rather, randomness in price changes can be a sign of informational efficiency. If price changes were easy to forecast, investors would trade on that forecast, and their trading would quickly eliminate the profit opportunity. In this sense, randomness is not evidence against market intelligence. It is the outcome of competitive information processing (Samuelson, 1965).
+
+Fama (1965) approached the same problem from an empirical direction, studying the statistical behaviour of stock prices and the debate between technical and fundamental analysis. Fama (1970) then formalised the EMH by organising tests around information sets and reviewing the available empirical evidence.
+
+Lo (2008) surveys this history and shows how Samuelson and Fama reached similar ideas from different routes. Samuelson's was theoretical and mathematical, Fama's empirical and statistical. Together they created the foundation for modern market-efficiency research (Lo, 2008).
+
+\section{Random Walks, Martingales, and Forecastability}
+
+EMH is closely related to, but not identical to, the random walk hypothesis. A random walk implies that successive price changes are independent and unpredictable. Early empirical work often treated random-walk behaviour as evidence in favour of market efficiency. Strictly, though, efficiency implies a martingale rather than a pure random walk: in risk-adjusted or properly discounted prices, the expected future price equals today's price given available information, which is a weaker condition than full independence of increments; in raw price levels the corresponding condition is Fama's submartingale, with a positive expected return rather than zero drift (Samuelson, 1965; LeRoy, 1973).
+
+Later work shows that the relationship between EMH and random walks is more complex. A market can reject a simple random walk and still be efficient if return predictability reflects changing risk premia, time-varying expected returns, or rational compensation for bearing risk. Conversely, a market may appear statistically random but still contain inefficiencies that are difficult to detect with simple tests.
+
+Lo and MacKinlay (1988) are important here because their variance-ratio tests reject the random walk for weekly US stock-index returns over 1962 to 1985, with rejections driven largely by small-cap portfolios. Their result does not automatically destroy EMH. Instead, it shows that the strict random-walk model may be too simple. This distinction matters for a fund because return predictability is not the same thing as exploitable alpha.
+
+Timmermann and Granger (2004) sharpen this point by connecting EMH with forecasting. They argue that market-efficiency tests are related to forecast-optimality tests, but financial markets have a special feature: once investors discover and trade on a forecastable pattern, their trading changes prices and may eliminate the pattern. Profitable forecasting rules may therefore be unstable over time. A signal can be real historically but weak going forward once it becomes known, crowded, or costly to implement (Timmermann \& Granger, 2004).
+
+For practical investment work, this creates a high bar. A fund should not ask only whether a signal predicted returns in the past. It should ask whether the signal was known before the trade, whether it survives transaction costs, whether it can be implemented at scale, whether it is robust across samples, and whether it still works after publication and crowding.
+
+\section{Grossman and Stiglitz: The Impossibility of Perfect Efficiency}
+
+Grossman and Stiglitz (1980) provide one of the most important theoretical critiques of EMH. Their argument is that perfectly informationally efficient markets cannot exist when information is costly.
+
+If prices fully reflected all information, then no investor would have an incentive to spend resources collecting information, because the information would already be embedded in prices and no private return could be earned from it. But if nobody collected information, prices could not reflect it. The assumptions of perfect efficiency and costly information are therefore inconsistent (Grossman \& Stiglitz, 1980).
+
+Their resolution is the idea of an equilibrium degree of disequilibrium: prices reflect the information of informed investors, but only partially. This partial reflection allows informed investors to earn enough compensation to justify the cost of acquiring information, while their trading makes prices more informative for uninformed investors (Grossman \& Stiglitz, 1980).
+
+This argument is crucial for a fund. It shows that EMH should not be read as a claim that active management is theoretically impossible. Instead, the reward to active research depends on the cost of information, the number of informed investors, the liquidity of the market, and the degree to which prices already reveal private information.
+
+The framework also helps explain why efficiency may vary across asset classes. Large, liquid public-equity markets with intense analyst coverage may be highly efficient. Smaller securities, distressed credit, private markets, opaque assets, and markets with high information costs may be less efficient. The key issue is whether the potential return to information exceeds the cost of collecting and acting on it (Grossman \& Stiglitz, 1980).
+
+\section{Behavioural Finance and Long-Horizon Anomalies}
+
+Behavioural finance challenges EMH by arguing that investors are not fully rational. Psychological biases such as overconfidence, representativeness, loss aversion, and herding, together with shifts in sentiment, may cause prices to deviate from fundamental value (Kahneman \& Tversky, 1979; Shiller, 2003). These deviations may create patterns such as overreaction, underreaction, momentum, reversals, bubbles, and crashes. De Bondt and Thaler (1985) provided one of the early empirical pillars of this literature, documenting long-horizon reversals consistent with market overreaction.
+
+Fama (1998) provides one of the most important defences of EMH against this literature. Reviewing studies of long-horizon stock-return anomalies, he argues that the evidence does not justify rejecting market efficiency. His defence rests on two main claims.
+
+First, apparent overreaction is about as common as apparent underreaction (Fama, 1998). If the market were systematically inefficient in one direction, one would expect a clearer pattern. Instead the literature shows both continuation and reversal, consistent with the efficient-market view that abnormal returns should average to zero, while chance produces anomalies in both directions.
+
+Second, many long-horizon anomalies are sensitive to methodology. They often weaken or disappear when researchers use different models of normal returns or different statistical methods (Fama, 1998). This matters because long-horizon return studies are highly exposed to the bad-model problem: small errors in expected-return models compound over long horizons and can create misleading abnormal-return estimates.
+
+Fama's argument does not prove that markets are perfectly efficient. It raises the standard for rejecting EMH. It is not enough to document an anomaly; the anomaly must be robust, economically meaningful, persistent, investable after costs, and better explained by a specific alternative model than by chance or model error (Fama, 1998).
+
+Malkiel (2003) offers a similar practical defence. He accepts that markets can make valuation mistakes, that bubbles can occur, and that investor psychology can affect prices. But he argues that the key test is whether investors can reliably exploit these imperfections to earn superior risk-adjusted returns, concluding that markets are more efficient and less predictable than critics claim. His position can be summarised as follows: markets can be wrong without being easy to beat (Malkiel, 2003).
+
+\section{Anomalies, Factor Investing, and the Active versus Passive Debate}
+
+The EMH debate became more complicated as researchers documented return patterns that appeared inconsistent with simple market efficiency. These include the size effect, value effect, momentum, low volatility, post-earnings-announcement drift, accruals, profitability, investment, and quality-related effects.
+
+The value and size literature is especially important. Fama and French (1992) show that size and book-to-market equity explain the cross-section of average stock returns better than market beta alone, a result formalised into the three-factor model of Fama and French (1993). This weakened the Capital Asset Pricing Model (Sharpe, 1964) as a complete explanation of returns but did not necessarily reject efficiency. One interpretation is that value and size are risk factors. Another is that they reflect behavioural mispricing (Lakonishok, Shleifer \& Vishny, 1994). The debate remains open.
+
+Momentum is one of the most serious challenges to simple EMH. Jegadeesh and Titman (1993) show that buying past winners and selling past losers over intermediate horizons generated significant returns. Momentum is difficult to explain with traditional risk-based models. Fama and French (1996) themselves describe it as the main anomaly their three-factor model cannot capture, yet it has appeared across markets and asset classes in later research (Carhart, 1997; Asness et al., 2013).
+
+The low-volatility anomaly is a further challenge. Low-risk stocks have historically delivered higher risk-adjusted returns than high-risk stocks, across long samples and many markets (M. Baker et al., 2011; N. L. Baker \& Haugen, 2012).
+
+Factor investing sits between passive and active management. It is active because it deliberately tilts away from the market portfolio, but it is systematic and rules-based, so it can often be implemented more cheaply than discretionary active management. Its rise shows that the active versus passive debate is not binary. This matters because factor investing reframes part of traditional active management: some returns previously described as manager skill may instead reflect systematic exposure to rewarded characteristics such as value, momentum, quality, size, carry, or low volatility (Ang, 2014).
+
+For a fund, the implication is sharp. When evaluating an active manager, the question is not only whether the manager outperformed, but whether the outperformance survives controls for factor exposure, fees, leverage, liquidity, transaction costs, and capacity. Apparent alpha may simply be disguised beta or factor loading (Carhart, 1997).
+
+Empirical studies of active fund performance also complicate the case for active management. Jensen (1968) examined mutual fund performance from 1945 to 1964 and found little evidence that funds delivered positive risk-adjusted abnormal returns after accounting for market risk. Carhart (1997) later showed that persistence in mutual fund performance is largely explained by common factors, especially momentum, expenses, and transaction costs rather than persistent manager skill. This evidence supports the EMH-inspired view that active management faces a high evidentiary burden: outperformance must be separated from factor exposure, fees, and luck.
+
+\section{Limits to Arbitrage}
+
+Even if mispricing exists, it does not automatically disappear. Shleifer and Vishny (1997) provide the essential framework here. In theory, rational arbitrageurs should correct mispricing by buying undervalued assets and selling overvalued ones. In practice, arbitrage is risky, costly, and institutionally constrained.
+
+Arbitrageurs face funding risk, redemption risk, short-selling constraints, transaction costs, liquidity risk, benchmark risk, career risk, and model uncertainty (Shleifer \& Vishny, 1997; De Long et al., 1990). A manager may correctly identify mispricing but still lose money before it corrects. If investors withdraw capital during this period, the arbitrageur may be forced to close the trade at a loss.
+
+This helps explain why anomalies may persist. Mispricing can survive when it is difficult, expensive, risky, or career-threatening to exploit, especially in illiquid markets, distressed assets, small-cap securities, private markets, and crowded trades (Shleifer \& Vishny, 1997).
+
+Limits to arbitrage also reconcile behavioural finance with EMH. Investor psychology may create mispricing, while arbitrage constraints prevent rational investors from fully correcting it. The result is neither perfect efficiency nor complete irrationality. It is a market where inefficiencies may exist, but only some are exploitable (Shleifer \& Vishny, 1997; Barberis \& Thaler, 2003).
+
+\section{Efficiency Across Asset Classes}
+
+Market efficiency is not uniform across asset classes. It depends on liquidity, information availability, participant objectives, benchmark investability, transaction costs, arbitrage constraints, and valuation transparency.
+
+In fixed income markets, the efficiency question differs from public equity markets because bond indices are harder to replicate, securities trade less continuously, and investors often trade for reasons unrelated to return maximisation. PIMCO argues that fixed income benchmarks are useful reference points but are not always directly investable portfolios, because bond indices contain thousands of securities, assume costless rebalancing, and often include instruments that trade infrequently. This makes the active versus passive comparison more complex than in equities, because measured underperformance against a theoretical index may reflect the cost of investability rather than pure manager skill (Karoui, 2026). This supports the broader EMH point that market efficiency must be evaluated against implementable portfolios, not only against theoretical price series.
+
+Repo markets also matter for fixed income efficiency because they affect both funding liquidity and market liquidity. The ECB finds that repo market liquidity is an important determinant of bond market liquidity and arbitrage opportunities in swap markets. When repo liquidity falls, bond bid-ask spreads rise and swap market arbitrage becomes more constrained (European Central Bank, 2020). This provides direct support for the limits to arbitrage view: even where a pricing inconsistency exists, the ability to exploit it depends on funding markets, transaction costs, and balance sheet capacity.
+
+Practitioner evidence also suggests that fixed income inefficiencies may arise from structural flows rather than only informational mistakes. Ardea argues that many fixed income participants, including banks, governments, insurers, central banks, passive investors, and hedgers, often trade for balance sheet, liability matching, regulatory, or policy reasons rather than pure return maximisation. Such non-economic flows can create pricing pressure and temporary deviations from fair value. This does not prove that fixed income markets are broadly inefficient, but it gives a plausible mechanism for why inefficiencies may persist in some bond and derivatives markets (Ardea Investment Management, 2019).
+
+Private markets require an even more careful interpretation of EMH. Unlike listed equities, private assets are not continuously traded, prices are often model-based, and information is less transparent. Mauboussin and Callahan argue that market efficiency exists on a continuum and depends on factors such as analyst coverage, information complexity, investor diversity, forced buying or selling, short-selling constraints, financing costs, trading costs, and arbitrage capital. This framework shifts the question from whether markets are efficient in the abstract to where, when, and why a particular market may be less efficient (Mauboussin \& Callahan, 2026).
+
+Recent evidence on listed private equity also supports an adaptive view of efficiency. Hoelscher and Meek study listed private equity ETFs using Ljung-Box, variance ratio, non-parametric runs, and generalised spectral tests under both EMH and Adaptive Markets Hypothesis frameworks, covering daily return data from July 2007 to June 2023. Listed private equity combines private equity exposure with public market liquidity, creating a setting where valuation opacity and market trading can interact (Hoelscher \& Meek, 2026).
+
+The foreign exchange market is often viewed as relatively efficient because it is liquid, continuous, and dominated by sophisticated participants. However, the evidence is mixed. Lee, Choi, and Pae examine foreign exchange market overreaction using 23 currencies over roughly 30 years and find that reversal is significant for longer formation and testing periods, while there is no evidence of persistent momentum or reversal across the full sample. Their results suggest that FX efficiency is time-horizon and sample-period dependent, which fits the adaptive view that market efficiency changes over time (Lee et al., 2021).
+
+Commodity futures markets also show heterogeneous efficiency. Kristoufek and Vosvrda examine 25 commodity futures and find that efficiency differs by commodity group, with energy commodities among the most efficient and livestock futures among the least efficient. Their results suggest that commodity futures may show short-term local predictability while reverting toward fundamentals over longer horizons (Kristoufek \& Vosvrda, 2014). Kaminsky and Kumar find that commodity futures efficiency cannot be generalised across all markets or horizons. For the full sample, unconditional excess returns were not significantly different from zero, but weak-form and semi-strong-form tests rejected efficiency for some commodities and longer horizons (Kaminsky \& Kumar, 1990).
+
+Taken together, the asset class evidence supports a nuanced conclusion. Public equity markets, especially large and liquid developed markets, are likely to be relatively efficient. Fixed income, private credit, listed private equity, FX, and commodity markets may contain more conditional or structural inefficiencies, but these must still be evaluated after transaction costs, financing costs, liquidity risk, benchmark construction problems, and implementation constraints. For a fund, the relevant question is therefore not whether an asset class is efficient or inefficient in general, but whether a specific strategy can exploit a specific inefficiency after all real-world frictions.
+
+\section{Practitioner Perspectives}
+
+Practitioners do not treat EMH as a purely academic debate. It shapes asset allocation, fee budgets, manager selection, product design, and benchmark choice.
+
+The case for passive investing rests on the arithmetic that, in aggregate and before costs, active investors collectively hold the market and therefore collectively earn the market return. After costs, the average active dollar must underperform the average passive dollar (Sharpe, 1991). The empirical counterpart is the S\&P SPIVA scorecard, which has consistently found that a majority of actively managed funds underperform their benchmarks over long horizons (S\&P Dow Jones Indices, 2026). Index funds and ETFs offer broad diversification, low expenses, and market exposure without the need to identify skilled managers.
+
+Practitioner behaviour also shows that EMH is not accepted in its strongest form. Hedge funds, active managers, private-equity firms, credit funds, and quantitative firms exist because they believe certain markets contain exploitable inefficiencies. Their edge may come from superior information, faster processing, better models, structural advantages, patient capital, operational control, or access to less crowded opportunities. The Grossman and Stiglitz (1980) logic gives this a theoretical basis: in a world of costly information, some return to active research must exist in equilibrium.
+
+The active versus passive debate should therefore be framed carefully. Passive investing is a powerful default because it is cheap, diversified, and difficult to beat (Sharpe, 1991; Malkiel, 2003). Active investing must justify itself. It needs a clear source of edge, evidence of persistence, reasonable capacity, cost discipline, and proof that returns are not merely exposure to common factors.
+
+Factor investing has reshaped this landscape, offering a systematic way to harvest return patterns such as value, momentum, quality, carry, and low volatility. Carry in particular has been documented as a systematic return driver across global equities, bonds, commodities, and currencies (Koijen et al., 2018). This has compressed the space for traditional active managers, because factor exposures once sold as skill can now be accessed cheaply. It also creates its own risks, including crowding, decay after publication, regime dependence, and implementation costs.
+
+A useful integrating perspective is Lo's (2004) Adaptive Markets Hypothesis, which treats efficiency as time-varying rather than absolute. On this view, market efficiency evolves as participants compete, learn, and adapt to changing conditions, and the degree of efficiency depends on the number and diversity of market participants relative to the available profit opportunities (Lo, 2004). This frames the practical question for a fund not as whether markets are efficient, but as how efficient a given market is, for a given strategy, at a given time.
+
+\section{Conclusion}
+
+The literature broadly agrees on several points.
+
+First, prices in competitive financial markets incorporate information quickly, especially in large, liquid, transparent public markets, making simple technical rules and naive stock-picking difficult to justify (Fama, 1970; Malkiel, 2003).
+
+Second, EMH does not require perfect pricing. Markets can experience bubbles, crashes, noise trading, and temporary mispricing while still being difficult to beat after costs and risk adjustment (Malkiel, 2003).
+
+Third, tests of market efficiency are methodologically difficult. Evidence of abnormal returns is always tied to the model used to define normal returns. This joint-hypothesis problem means apparent anomalies may reflect inefficiency, missing risk factors, model error, data mining, or measurement problems (Fama, 1970; Fama, 1998).
+
+Fourth, perfect efficiency is theoretically impossible when information is costly. Grossman and Stiglitz (1980) show that informed investors must be compensated for collecting information, creating a realistic middle ground: markets are often highly efficient, but not perfectly so.
+
+Fifth, anomalies matter but must be treated with discipline. The existence of value, momentum, size, and low-volatility effects does not prove markets are easily beatable. A useful anomaly must survive risk adjustment, transaction costs, publication, crowding, short constraints, capacity limits, and live implementation (Fama, 1998; McLean \& Pontiff, 2016).
+
+What remains contested is the interpretation of anomalies. EMH defenders argue that many are chance results, compensation for risk, or methodological artifacts (Fama, 1998). Behavioural scholars argue that investor biases create systematic mispricing (Shiller, 2003; Barberis \& Thaler, 2003). Adaptive-market theorists argue that efficiency changes over time as investors learn, compete, and adapt (Lo, 2004).
+
+For a fund, the most relevant conclusion is pragmatic. Passive exposure should be treated as the benchmark. Active strategies should be funded only when there is a clear and testable reason to believe a manager has an edge, and that edge must come from a specific inefficiency, not a vague belief that markets are wrong. The most plausible opportunities appear where information is costly, assets are illiquid, investors are constrained, markets are segmented, or behavioural and institutional frictions prevent arbitrage from working smoothly (Grossman \& Stiglitz, 1980; Shleifer \& Vishny, 1997).
+
+The best interpretation of EMH is therefore not that markets are unbeatable everywhere. It is that markets are difficult to beat, and the burden of proof sits with active management.
+
+\clearpage
+\begin{fshfreferences}
+\addcontentsline{toc}{section}{References}
+
+\item Ang, A. (2014). \textit{Asset Management: A Systematic Approach to Factor Investing}. Oxford University Press.
+
+\item Ardea Investment Management. (2019, October 30). \textit{Market inefficiency is a growing opportunity in fixed income}. Ardea Investment Management. \url{https://www.ardea.com.au/eu/market-inefficiency-is-a-growing-opportunity-in-fixed-income/}
+
+\item Asness, C. S., Moskowitz, T. J., \& Pedersen, L. H. (2013). Value and momentum everywhere. \textit{The Journal of Finance, 68}(3), 929--985. \url{https://doi.org/10.1111/jofi.12021}
+
+\item Baker, M., Bradley, B., \& Wurgler, J. (2011). Benchmarks as limits to arbitrage: Understanding the low-volatility anomaly. \textit{Financial Analysts Journal, 67}(1), 40--54. \url{https://doi.org/10.2469/faj.v67.n1.4}
+
+\item Baker, N. L., \& Haugen, R. A. (2012). \textit{Low risk stocks outperform within all observable markets of the world} (SSRN Scholarly Paper No. 2055431). Social Science Research Network. \url{https://doi.org/10.2139/ssrn.2055431}
+
+\item Barberis, N., \& Thaler, R. (2003). Chapter 18 A survey of behavioural finance. In G. M. Constantinides, M. Harris, \& R. M. Stulz (Eds.), \textit{Handbook of the Economics of Finance: Vol. 1B. Financial Markets and Asset Pricing} (pp. 1053--1128). Elsevier. \url{https://doi.org/10.1016/S1574-0102(03)01027-6}
+
+\item Carhart, M. M. (1997). On persistence in mutual fund performance. \textit{The Journal of Finance, 52}(1), 57--82. \url{https://doi.org/10.1111/j.1540-6261.1997.tb03808.x}
+
+\item De Bondt, W. F. M., \& Thaler, R. (1985). Does the stock market overreact? \textit{The Journal of Finance, 40}(3), 793--805. \url{https://doi.org/10.1111/j.1540-6261.1985.tb05004.x}
+
+\item De Long, J. B., Shleifer, A., Summers, L. H., \& Waldmann, R. J. (1990). Noise trader risk in financial markets. \textit{Journal of Political Economy, 98}(4), 703--738. \url{https://doi.org/10.1086/261703}
+
+\item European Central Bank. (2020, February 6). Bond market liquidity and swap market efficiency: What role does the repo market play? \textit{ECB Economic Bulletin}. \url{https://www.ecb.europa.eu/press/economic-bulletin/focus/2020/html/ecb.ebbox202001_05~37e169eb0f.en.html}
+
+\item Fama, E. F. (1965). The behavior of stock-market prices. \textit{The Journal of Business, 38}(1), 34--105.
+
+\item Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. \textit{The Journal of Finance, 25}(2), 383--417. \url{https://doi.org/10.1111/j.1540-6261.1970.tb00518.x}
+
+\item Fama, E. F. (1991). Efficient capital markets: II. \textit{The Journal of Finance, 46}(5), 1575--1617. \url{https://doi.org/10.1111/j.1540-6261.1991.tb04636.x}
+
+\item Fama, E. F. (1998). Market efficiency, long-term returns, and behavioral finance. \textit{Journal of Financial Economics, 49}(3), 283--306. \url{https://doi.org/10.1016/S0304-405X(98)00026-9}
+
+\item Fama, E. F., Fisher, L., Jensen, M. C., \& Roll, R. (1969). The adjustment of stock prices to new information. \textit{International Economic Review, 10}(1), 1--21.
+
+\item Fama, E. F., \& French, K. R. (1992). The cross-section of expected stock returns. \textit{The Journal of Finance, 47}(2), 427--465. \url{https://doi.org/10.1111/j.1540-6261.1992.tb04398.x}
+
+\item Fama, E. F., \& French, K. R. (1993). Common risk factors in the returns on stocks and bonds. \textit{Journal of Financial Economics, 33}(1), 3--56. \url{https://doi.org/10.1016/0304-405X(93)90023-5}
+
+\item Fama, E. F., \& French, K. R. (1996). Multifactor explanations of asset pricing anomalies. \textit{The Journal of Finance, 51}(1), 55--84. \url{https://doi.org/10.1111/j.1540-6261.1996.tb05202.x}
+
+\item Grossman, S. J., \& Stiglitz, J. E. (1980). On the impossibility of informationally efficient markets. \textit{The American Economic Review, 70}(3), 393--408.
+
+\item Hoelscher, S. A., \& Meek, A. C. (2026). Market efficiency: Do listed private equity ETFs adapt? \textit{Managerial Finance, 52}(2), 330--355. \url{https://doi.org/10.1108/MF-07-2024-0542}
+
+\item Jegadeesh, N., \& Titman, S. (1993). Returns to buying winners and selling losers: Implications for stock market efficiency. \textit{The Journal of Finance, 48}(1), 65--91. \url{https://doi.org/10.1111/j.1540-6261.1993.tb04702.x}
+
+\item Jensen, M. C. (1968). The performance of mutual funds in the period 1945--1964. \textit{The Journal of Finance, 23}(2), 389--416. \url{https://doi.org/10.1111/j.1540-6261.1968.tb00815.x}
+
+\item Kahneman, D., \& Tversky, A. (1979). Prospect theory: An analysis of decision under risk. \textit{Econometrica, 47}(2), 263--291. \url{https://doi.org/10.2307/1914185}
+
+\item Kaminsky, G. L., \& Kumar, M. S. (1990). Efficiency in commodity futures markets. \textit{IMF Staff Papers, 37}(3), 670--699. \url{https://doi.org/10.5089/9781451973068.024.A009}
+
+\item Karoui, L. (2026, May 26). \textit{Measuring what matters in public and private fixed income}. PIMCO. \url{https://www.pimco.com/eu/en/insights/measuring-what-matters-in-public-and-private-fixed-income}
+
+\item Koijen, R. S. J., Moskowitz, T. J., Pedersen, L. H., \& Vrugt, E. B. (2018). Carry. \textit{Journal of Financial Economics, 127}(2), 197--225. \url{https://doi.org/10.1016/j.jfineco.2017.11.002}
+
+\item Kristoufek, L., \& Vosvrda, M. (2014). Commodity futures and market efficiency. \textit{Energy Economics, 42}, 50--57. \url{https://doi.org/10.1016/j.eneco.2013.12.001}
+
+\item Lakonishok, J., Shleifer, A., \& Vishny, R. W. (1994). Contrarian investment, extrapolation, and risk. \textit{The Journal of Finance, 49}(5), 1541--1578. \url{https://doi.org/10.1111/j.1540-6261.1994.tb04772.x}
+
+\item Lee, N., Choi, W., \& Pae, Y. (2021). Market efficiency in foreign exchange market. \textit{Economics Letters, 205}, 109931. \url{https://doi.org/10.1016/j.econlet.2021.109931}
+
+\item LeRoy, S. F. (1973). Risk aversion and the martingale property of stock prices. \textit{International Economic Review, 14}(2), 436--446. \url{https://doi.org/10.2307/2525932}
+
+\item Lo, A. W. (2004). The adaptive markets hypothesis. \textit{The Journal of Portfolio Management, 30}(5), 15--29. \url{https://doi.org/10.3905/jpm.2004.442611}
+
+\item Lo, A. W. (2008). Efficient markets hypothesis. In S. N. Durlauf \& L. E. Blume (Eds.), \textit{The New Palgrave Dictionary of Economics} (2nd ed.). Palgrave Macmillan.
+
+\item Lo, A. W., \& MacKinlay, A. C. (1988). Stock market prices do not follow random walks: Evidence from a simple specification test. \textit{The Review of Financial Studies, 1}(1), 41--66. \url{https://doi.org/10.1093/rfs/1.1.41}
+
+\item Malkiel, B. G. (2003). The efficient market hypothesis and its critics. \textit{Journal of Economic Perspectives, 17}(1), 59--82. \url{https://doi.org/10.1257/089533003321164958}
+
+\item Mauboussin, M. J., \& Callahan, D. (2026, January 21). \textit{Who is on the other side? A framework for understanding market inefficiency}. Morgan Stanley Investment Management. \url{https://www.morganstanley.com/im/publication/insights/articles/article_whoisontheotherside.pdf}
+
+\item McLean, R. D., \& Pontiff, J. (2016). Does academic research destroy stock return predictability? \textit{The Journal of Finance, 71}(1), 5--32. \url{https://doi.org/10.1111/jofi.12365}
+
+\item Samuelson, P. A. (1965). Proof that properly anticipated prices fluctuate randomly. \textit{Industrial Management Review, 6}(2), 41--49.
+
+\item Samuelson, P. A. (1973). Proof that properly discounted present values of assets vibrate randomly. \textit{The Bell Journal of Economics and Management Science, 4}(2), 369--374. \url{https://doi.org/10.2307/3003046}
+
+\item Sharpe, W. F. (1964). Capital asset prices: A theory of market equilibrium under conditions of risk. \textit{The Journal of Finance, 19}(3), 425--442. \url{https://doi.org/10.1111/j.1540-6261.1964.tb02865.x}
+
+\item Sharpe, W. F. (1991). The arithmetic of active management. \textit{Financial Analysts Journal, 47}(1), 7--9. \url{https://doi.org/10.2469/faj.v47.n1.7}
+
+\item Shiller, R. J. (2003). From efficient markets theory to behavioral finance. \textit{Journal of Economic Perspectives, 17}(1), 83--104. \url{https://doi.org/10.1257/089533003321164967}
+
+\item Shleifer, A., \& Vishny, R. W. (1997). The limits of arbitrage. \textit{The Journal of Finance, 52}(1), 35--55. \url{https://doi.org/10.1111/j.1540-6261.1997.tb03807.x}
+
+\item S\&P Dow Jones Indices. (2026, March 3). \textit{SPIVA U.S. Year-End 2025}. S\&P Global. \url{https://www.spglobal.com/spdji/en/spiva/article/spiva-us/}
+
+\item Timmermann, A., \& Granger, C. W. J. (2004). Efficient market hypothesis and forecasting. \textit{International Journal of Forecasting, 20}(1), 15--27. \url{https://doi.org/10.1016/S0169-2070(03)00012-8}
+
+\end{fshfreferences}
+
+\end{document}

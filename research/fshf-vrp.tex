@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fshf-style}
+\SetFshfShortTitle{The Volatility Risk Premium}
+
+%% Allow long reference URLs to break at letters, digits and hyphens so
+%% they wrap cleanly inside the hanging-indent reference list.
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M%
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+  \do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\-\do\_}
+
+\begin{document}
+
+\makefshftitle{The Volatility Risk Premium: A Literature Review}%
+{Literature Review}%
+{Leon Hendrischk, Friedrich Morris \& Linda Zillmer}%
+{June 2026}%
+{Prepared for the FS Student Hedge Fund}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+
+\section{Definition of the Volatility Risk Premium}
+
+The Volatility Risk Premium, or VRP, is the difference between the volatility that is priced in option markets and the volatility that investors expect to be realized in the future. In simple terms, it measures how much investors pay for protection against future volatility. In equity markets this protection is usually bought through options. These options often become more valuable when the market falls and uncertainty rises.
+
+In academic work, the concept is usually defined in terms of variance rather than volatility. Variance is volatility squared. This is important because variance is easier to connect to option prices. It is also directly linked to variance swaps. For this reason, many papers use the term variance risk premium even when practitioners speak about the volatility risk premium (Demeterfi et al., 1999; Carr and Wu, 2009).
+
+The basic idea is that option prices contain a risk-neutral expectation of future variance. This expectation is not just a forecast of what investors think will happen. It also contains the compensation that investors require for bearing volatility risk. The expected realized variance under real-world probabilities is different. The VRP compares these two values (Bollerslev et al., 2009; Lombardi and Schrimpf, 2014).
+\begin{equation*}
+\mathrm{VRP}_{t} \;=\; E_{t}^{\mathbb{Q}}\!\left[RV_{t,t+h}\right] \;-\; E_{t}^{\mathbb{P}}\!\left[RV_{t,t+h}\right]
+\end{equation*}
+This review uses the formula above. Here, \(E_{t}^{\mathbb{Q}}\) is the risk-neutral expectation at time \(t\). \(E_{t}^{\mathbb{P}}\) is the physical or real-world expectation at time \(t\). \(RV_{t,t+h}\) is realized variance over the future period from \(t\) to \(t+h\). Under this convention, a positive VRP means that option-implied variance is higher than expected realized variance. Some papers use the opposite sign. Then the same economic premium appears as a negative variance risk premium. This is only a notation issue and does not change the interpretation (Carr and Wu, 2009; Bakshi and Kapadia, 2003).
+
+The VRP is usually positive in equity index markets under the convention used in this review. This means that option-implied variance tends to be higher than the variance that is later realized on average. One reason is that many investors want protection against market stress. They are willing to pay for this protection. The investors who sell volatility take the other side. They receive the premium as compensation for accepting losses when volatility rises sharply (AQR Capital Management, 2018).
+
+The difference between risk-neutral and physical expectations is important. The risk-neutral expectation comes from option prices. It reflects both expected future variance and the market price of volatility risk. The physical expectation is closer to a real-world forecast. It can be estimated using historical data, realized volatility, or statistical models. The VRP is therefore not simply a forecast error. It is the price of protection against uncertain and often bad market outcomes (Bollerslev et al., 2009; Londono, 2011).
+
+Variance is used because it has a clean link to option markets. A variance swap pays based on future realized variance. Under standard assumptions, the fair variance swap rate can be replicated or approximated using a portfolio of options across strike prices. This makes implied variance easier to measure than expected volatility itself. This is why the academic literature often studies the variance risk premium even though practitioners normally say volatility risk premium (Demeterfi et al., 1999; Carr and Wu, 2009).
+
+Overall, the VRP captures the gap between the market price of future variance and the real-world expectation of future variance. In equity markets, this gap is usually interpreted as an insurance premium. Buyers of options pay for protection against bad states of the world. Sellers of volatility earn compensation for providing that protection. The premium is therefore not a free return. It is compensation for risks that tend to be most severe when markets are under stress.
+
+\section{Theoretical Justification for the Existence of the Volatility Risk Premium}
+
+After defining the VRP, the main question is why it exists. In a simple market without risk aversion or frictions, one might expect option-implied variance and expected realized variance to be close to each other. In reality, this is often not the case. The literature explains the premium mainly through four ideas. These are the insurance value of volatility protection, stochastic volatility risk, crash risk, and demand pressure in option markets.
+
+The first explanation is the insurance view. Volatility tends to rise during recessions, crises, and sharp market sell offs. Schwert (1989) shows that stock market volatility increases in recessions and after major financial crises. This matters because volatility protection is most useful when investors need it most. A put option or a long volatility position can reduce losses when equity markets fall. Because this protection pays off in bad states, investors are willing to pay for it. From the seller's perspective, this premium is compensation for bearing bad state risk. A volatility seller may earn steady returns in calm markets. However, the same position can lose a lot when volatility rises suddenly. This is why the VRP should not be seen as a free return. It is closer to an insurance premium. Buyers pay for protection. Sellers receive the premium because they accept the risk of large losses in stressful periods (AQR Capital Management, 2018).
+
+A second explanation comes from stochastic volatility. Simple option pricing models with constant volatility cannot fully explain real option prices. Heston (1993) provides an important framework in which volatility follows its own random process. This means that options are exposed not only to movements in the underlying asset but also to changes in volatility itself. If volatility is risky and cannot be hedged perfectly, investors require compensation for bearing it. Bakshi and Kapadia (2003) connect this idea to actual option returns. They study delta hedged option portfolios. This method removes much of the direct exposure to stock price movements. What remains is more closely related to volatility risk. Their evidence supports the view that volatility risk is priced in option markets. This means that the VRP is not only about expected future volatility. It also reflects compensation for exposure to changes in volatility.
+
+A third explanation links the VRP to crash risk and tail risk. Financial markets are exposed to rare but very severe events. These events do not happen often, but they matter a lot when they occur. Barro (2006) shows that rare disasters can help explain why investors require high compensation for holding risky assets. The same logic applies to volatility protection. Investors may be willing to pay a high price for protection against extreme market moves even if those moves are unlikely. Bollerslev and Todorov (2011) connect this idea directly to variance risk premia. They show that compensation for rare events accounts for a large part of average equity and variance risk premia. This means that the VRP is not only compensation for normal changes in volatility. A large part of it can reflect the price of protection against jumps and extreme downside events. This is important for understanding short volatility strategies. Such strategies can look attractive in calm markets but can suffer large losses during crises.
+
+A fourth explanation focuses on demand pressure in option markets. Many investors buy index options, put options, or volatility products to protect their portfolios. If this demand is strong, option prices can be pushed above the levels that would exist in a perfectly frictionless market. Garleanu, Pedersen, and Poteshman (2009) show that demand pressure can affect option prices when market makers cannot hedge options perfectly. This gives a market friction explanation for the VRP. This demand pressure view is useful because it links the VRP to real market conditions. The premium can rise when many investors want downside protection. It can also rise when dealers and market makers have less ability to absorb risk. In this case, sellers of volatility require a higher premium. This means that the VRP is not only a theoretical risk premium. It can also reflect the balance between buyers and sellers of protection in option markets.
+
+These explanations are not mutually exclusive. The VRP can be an insurance premium, a compensation for stochastic volatility risk, a compensation for crash risk, and a result of demand pressure at the same time. The common idea is that volatility risk is most costly in bad market states. Investors pay for protection against those states. Sellers earn a premium because they take the other side of that protection.
+
+\section{Measuring the Volatility Risk Premium}
+
+After defining the volatility risk premium, the next step is to explain how researchers measure it in practice. The basic idea is simple. Researchers compare the variance that is implied by option prices with the variance that investors expect to be realized over the same period. In this paper, a positive VRP means that implied variance is higher than expected realized variance.
+
+This measurement issue is important because the VRP is not directly observable. Option prices show the market price of future variance under the risk-neutral measure. The expected realized variance under the real-world measure is harder to observe. It has to be estimated. This is why different papers can use the same idea but still report different estimates of the premium.
+
+The most direct method uses variance swaps. A variance swap is a contract whose payoff depends on the difference between realized variance and a fixed variance swap rate. At the start of the contract, this fixed rate reflects the market price of future variance. Demeterfi, Derman, Kamal, and Zou (1999) show that the theory of variance swaps is closely linked to portfolios of options with different strike prices. This makes variance swaps useful for measuring the option-implied side of the VRP.
+
+Carr and Wu (2009) use this idea in a direct way. They explain that the variance swap rate is closely related to the risk-neutral expected value of future realized variance. They then compare this option-implied variance with realized variance. Their paper is useful for a literature review because it gives a clear empirical framework for measuring variance risk premiums across assets.
+
+A second method uses option-implied variance without relying only on traded variance swaps. Researchers can use option prices across different strike prices to infer expected future variance. This is often described as a model-free approach because it does not depend on one single option pricing model. In practice, the result still depends on the quality of option prices, the range of strike prices, and the maturity of the options used.
+
+The VIX is the best-known practical example of option-implied volatility. Cboe describes the VIX as a measure of 30-day expected volatility of the S\&P 500 Index. It is calculated from prices of S\&P 500 index options. However, the VIX is not the VRP by itself. It only gives the implied volatility side of the calculation. To estimate the VRP, the implied variance from the VIX or from options has to be compared with expected realized variance over the same horizon.
+
+The other side of the calculation is realized variance. Realized variance is based on actual price movements over a specific period. Many empirical studies compare implied variance today with realized variance observed later. This gives an ex post estimate of the premium. For example, if one-month implied variance is high today and realized variance over the next month is lower, the VRP is positive under the sign convention used in this paper.
+
+There is one main difficulty. The true expected realized variance under the real-world probability measure cannot be observed directly. Some studies use future realized variance as a proxy. Other studies use forecasts based on historical volatility, high-frequency realized variance, GARCH models, or other volatility forecasting models. Bollerslev, Tauchen, and Zhou (2009) are important here because they study the difference between implied and realized variation and link it to expected stock returns.
+
+The time horizon also matters. A 30-day implied volatility measure should be compared with 30-day expected realized variance. A three-month implied variance measure should be compared with three-month expected realized variance. If the horizons do not match, the measured premium can be misleading. This is why academic papers are careful about maturities, data frequency, and the exact definition of realized variance.
+
+Overall, the measurement of the VRP is simple in theory but more difficult in practice. The concept is the difference between option-implied variance and expected realized variance. The challenge is that the implied side can be inferred from option prices, while the expected realized side has to be estimated. This also explains why the size of the VRP can differ across studies, even when the broad conclusion is similar.
+
+\section{Practitioner Perspectives}
+
+Practitioner treatments of the VRP run parallel to academic literature. The most cited sell-side thesis on volatility as a tradeable asset is Demeterfi, Derman, Kamal, and Zou (1999a, 1999b), first circulated as a Goldman Sachs Quantitative Strategies Research Note and expanded in a companion Journal of Derivatives article. In effect of this, its contribution to the field is more practical than theoretical. By spelling out the static replication of a variance swap by a continuum of out-of-the-money options; puts below the forward and calls above, each weighted by \(1/K^{2}\), giving the discretization that practitioners actually use, and deriving the convexity bias separating variance swaps from volatility swaps, this majorly advances the foundations of VRP. This architecture was later adopted by CBOE when it revamped the VIX in 2003 replacing the original ATM Black-Scholes implementation with a model-free S\&P 500 strip price.
+
+On the buy-side, AQR Capital Management has the deepest publicly available VRP research footprint. Ang et al. (2018) outlines them interpreting the VRP as compensation for unwanted volatility exposure and showing that a systematic delta-hedged S\&P 500 option-selling strategy has earned a historical positive return, discussing sizing and drawdown considerations in their white paper. Israelov (2019) is the buy-side counterpart to Bondarenko's (2014) ``puts are expensive'' finding: systematic protective-put overlays underperform a naive de-leveraging of the equity position once horizon, timing, and the cost of the VRP are taken into account, so the typical retail tail-hedging client pays the VRP as a cost. Israelov and Nielsen (2015b) find that put protection remains costly even in relatively calm markets, with VRP rather than implied volatility driving these costs. In a companion paper, Israelov and Nielsen (2015a) decompose covered-call strategies into equity beta, short volatility, and an unintended equity-reversal exposure, showing that the short-volatility leg achieves a historically strong Sharpe ratio while contributing only a modest share of strategy risk. Ilmanen (2011) provides the broader style-premia treatment, with volatility-selling sitting alongside value, carry, and momentum as a harvestable systematic exposure.
+
+In deployment, five main strategy archetypes dominate practitioners perspective. First, variance and volatility swaps offer close to direct exposure to the delta between implied and realized variance and are the most-directly studied contract that VRP papers study. Their replication theory is in Demeterfi et al. (1999a, 1999b) and their empirical evidence in Carr and Wu (2009). Second, VIX futures and exchange-traded products provide a listed expression of the same exposure. On these specifically, there is a multitude of research: Whaley (2013) documents that long VIX-futures ETPs systemically lose money via roll-down throughout the typical contango of the VIX curve, with long-VIX-ETP users structurally subsidizing flow into the VRP. This is supplemented by Eraker and Wu (2017) with an equilibrium model in which the negative average return on volatility claims is generated endogenously by the equity-volatility correlation structure, providing a structural rationalization for the roll-down losses Whaley describes. Third, systematic put-writing, short-strangle, and iron-condor programs benchmarked against the CBOE PUT and WPUT indices represent the listed-equity-option implementation of the same trade, with academic backing in Bondarenko (2016, 2019). Fourth, dispersion trading, i.e.\ long single name variance, short index variance, is justified academically. According to Driessen et al. (2009), the index single-name VRP gap is priced exposure to correlation risk, and a short-correlation portfolio harvests that gap. Fifth, covered-call and collar overlays on equity portfolios harvest a portion of the VRP while retaining most of the underlying equity exposure (Israelov \& Nielsen, 2015a; Israelov \& Klein, 2016).
+
+The last missing piece of this mosaic are flow and demand-pressure narratives. G\^arleanu et al. (2009) supply the intermediary-pricing underlying theory. Net end-user demand for index options is positive and explains both the level of index-option expensiveness and the negative skew of the volatility surface. Chen et al. (2019) refine the empirical content with an intermediary-constraint measure built from deep-out-of-the-money put trading: tighter constraints predict higher option-implied risk premia and dealer deleveraging across multiple asset classes. Brunnermeier and Pedersen (2009) supply the funding-liquidity mechanism-of-action that turns intermediary idiosyncratic stress into systemic balance-sheet contraction. These three papers are the academic backbone of practitioner statements that dealer balance sheets price the VIX.
+
+\section{Debates and Open Questions}
+
+\subsection{Persistence of the Premium Post-2010}
+
+Perhaps the most consequential live debate concerns whether the VRP remains a reliably harvestable premium in the contemporary era. Dew-Becker and Giglio (2025) present evidence that VRP alphas have been statistically indistinguishable from zero over roughly the past fifteen years, and earlier work by Dew-Becker et al. (2017) found that variance-news pricing was essentially flat from 1996 to 2014. If these findings hold up to scrutiny, they imply that a substantial portion of the historically documented premium has been arbitraged away or structurally compressed. The counter-position, advanced by Bollerslev et al. (2015) and Bardgett et al. (2019), is more nuanced: the diffusive component of the premium may have compressed, but the tail and vol-of-vol pieces remain compensated. The debate is not merely academic but rather it bears directly on whether historical Sharpe ratios from pre-2010 samples are reliable guides to future returns.
+
+\subsection{Risk-Based versus Behavioral Explanations}
+
+A second unresolved question concerns the fundamental source of the premium. The dominant risk-based family of explanations that span long-run risks with recursive utility, disaster and jump-tail risk, and intermediary frictions, treat the VRP as genuine compensation for bearing variance risk that covaries adversely with the stochastic discount factor. Behavioral alternatives emphasize ambiguity aversion (Drechsler, 2013), sentiment-driven overpricing of tail protection (Han, 2008), and Bondarenko's (2014b) model-free finding that S\&P 500 put returns are simply inconsistent with any canonical preference-based model. These explanations are not mutually exclusive. The true VRP likely reflects both rational risk pricing and frictional or behavioral components, but the mix matters enormously for whether the premium is stable or susceptible to erosion as markets become more sophisticated and capital more abundant.
+
+\subsection{Regime Conditioning and the Volatility of the Premium}
+
+A subtler but important debate concerns how the premium behaves across regimes. Cheng (2019) documents a counterintuitive result: the ex-ante premium embedded in VIX futures actually falls, rather than rises, when ex-ante risk is elevated. This directly contradicts the naive practitioner heuristic of ``sell harder when VIX is high.'' Separately, Bekaert et al. (2013) show that monetary policy easing compresses both the risk-aversion and uncertainty components of the VRP, suggesting that the premium is partly a function of the monetary regime. This is a finding with obvious relevance given the sharp rate cycle of the early 2020s.
+
+\subsection{Tail versus Diffusive Decomposition}
+
+Across multiple methodologies and data periods, the empirical literature has converged on a striking asymmetry: the downside and jump-tail component of the VRP carries the lion's share of the equity return predictability and risk compensation, while the diffusive center contributes relatively little. This result, documented by Bollerslev and Todorov (2011), Bollerslev et al. (2015), Andersen, Fusari, and Todorov (2015, 2017), Feunou et al. (2018), and Kilic and Shaliastovich (2019), has profound implications for strategy design. A short-vol position is not principally a bet against diffusive variance; it is, at its core, a short position on disaster risk. The debate here is less about whether the asymmetry exists and more about its interpretation --- whether the tail piece reflects a genuine disaster premium in the spirit of Barro (2006) and Gabaix (2012), or whether it is better understood as a robust-control or ambiguity premium.
+
+\subsection{The Funding-Liquidity and Intermediary Channel}
+
+The intermediary asset-pricing literature (Brunnermeier and Pedersen, 2009; Garleanu et al., 2009; Chen et al., 2019) argues that the VRP is not simply a compensation for end-investor preferences but is also shaped, and at times dominated, by the balance-sheet constraints of financial intermediaries who warehouse variance risk. This view sits in tension with narratives that treat the VRP as a stable carry harvest, since it implies the premium is inherently state-dependent: wide when dealer capacity is constrained, compressed when it is abundant. The February 2018 and March 2020 episodes are frequently cited as supporting evidence, and Dew-Becker and Giglio's (2025) post-2010 findings may partly reflect a long era of abundant intermediary capacity following post-crisis regulatory normalization.
+
+\section{Synthesis}
+
+\subsection{What Is Broadly Agreed}
+
+The existence of a positive equity index VRP is not seriously contested: the premium is real, economically large on average, and robust across major developed markets and asset classes. The conceptual framework is likewise settled, the VRP reflects a layered combination of compensation for diffusive variance risk, jump-tail and disaster risk, and a state-dependent intermediary premium, with no single mechanism sufficient on its own. At the empirical level, there is strong consensus that short-horizon equity return predictability is concentrated in the tail and downside component of the VRP rather than in its diffusive core.
+
+\subsection{What Remains Contested}
+
+The live disputes concern persistence, particularly whether the unconditional premium has structurally compressed in the post-2010 period and the relative weights of risk-based, behavioral, and intermediary explanations. Regime-dependence (Cheng, 2019) complicates any simple characterization of the premium as a stable carry, and the question of whether the tail piece is better understood as a disaster premium or a robust-control fear premium remains open. These are not idle theoretical questions: the answers determine whether historical performance is extrapolable and how much of the premium survives realistic implementation costs and crowding.
+
+\subsection{Implications for a Student Hedge Fund Context}
+
+Several practical conclusions follow from this synthesis. First, any systematic volatility-selling strategy is implicitly short a disaster claim, not a generic variance claim. Position sizing must be calibrated to the fat tail, not to the historical mean return. Second, historical Sharpe ratios derived from pre-2010 samples should be discounted substantially; regime conditioning is a primary risk-management input, not a secondary refinement. Third, the cleanest expressions of the surviving premium appear to be dispersion and correlation-risk strategies (Driessen et al., 2009) and short-tail rather than short-diffusive positions. Fourth, acting as the structural counterparty to retail tail-hedging flow is a defensible business only for entities with the balance-sheet depth and operational capacity to absorb the disaster payoff when it materializes (Israelov, 2019; Eraker and Wu, 2017). Finally, and most fundamentally, the VRP should be understood as a state-dependent compensation. One whose magnitude varies with dealer capacity, the monetary regime, and the level of end-user insurance demand, rather than as a passive, unconditional carry that can be harvested mechanically over time.
+
+\clearpage
+
+\begin{fshfreferences}
+\item Andersen, T. G., Fusari, N., \& Todorov, V. (2015). The risk premia embedded in index options. Journal of Financial Economics, 117(3), 558--584. \url{https://doi.org/10.1016/j.jfineco.2015.06.005}
+\item Andersen, T. G., Fusari, N., \& Todorov, V. (2017). Short-term market risks implied by weekly options. The Journal of Finance, 72(3), 1335--1386. \url{https://doi.org/10.1111/jofi.12486}
+\item Andersen, T. G., Fusari, N., \& Todorov, V. (2015). Parametric inference and dynamic state recovery from option panels. Econometrica, 83(3), 1081--1145. \url{https://www.nber.org/papers/w18046}
+\item Ang, I.-C., Israelov, R., Sullivan, R., \& Tummala, H. (2018). Understanding the volatility risk premium. AQR Capital Management white paper. \url{https://www.aqr.com/-/media/AQR/Documents/Whitepapers/Understanding-the-Volatility-Risk-Premium.pdf}
+\item Bakshi, G., \& Kapadia, N. (2003). Delta-hedged gains and the negative market volatility risk premium. The Review of Financial Studies, 16(2), 527--566. \url{https://people.umass.edu/nkapadia/Research/rfsfinw.pdf}
+\item Bardgett, C., Gourier, E., \& Leippold, M. (2019). Inferring volatility dynamics and risk premia from the S\&P 500 and VIX markets. Journal of Financial Economics, 131(3), 593--618. \url{https://www.sciencedirect.com/science/article/abs/pii/S0304405X18302769}
+\item Barro, R. J. (2006). Rare disasters and asset markets in the twentieth century. The Quarterly Journal of Economics, 121(3), 823--866. \url{https://dash.harvard.edu/server/api/core/bitstreams/7312037c-67b1-6bd4-e053-0100007fdf3b/content}
+\item Bekaert, G., Hoerova, M., \& Lo Duca, M. (2013). Risk, uncertainty and monetary policy. Journal of Monetary Economics, 60(7), 771--788. \url{https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1565.pdf}
+\item Bollerslev, T., Tauchen, G., \& Zhou, H. (2009). Expected stock returns and variance risk premia. The Review of Financial Studies, 22(11), 4463--4492. \url{https://public.econ.duke.edu/~boller/Published_Papers/rfs_09.pdf}
+\item Bollerslev, T., \& Todorov, V. (2011). Tails, fears, and risk premia. The Journal of Finance, 66(6), 2165--2211. \url{https://www.tse-fr.eu/sites/default/files/medias/doc/conf/finet/annee_2011/bollerslev.pdf}
+\item Bollerslev, T., Todorov, V., \& Xu, L. (2015). Tail risk premia and return predictability. Journal of Financial Economics, 118(1), 113--134. \url{https://public.econ.duke.edu/~boller/Published_Papers/jfe_15.pdf}
+\item Bondarenko, O. (2014). Why are put options so expensive? Quarterly Journal of Finance, 4(3), 1450015. \url{https://doi.org/10.1142/S2010139214500153}
+\item Bondarenko, O. (2016). An analysis of index option writing with monthly and weekly rollover. CBOE. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2750188}
+\item Bondarenko, O. (2019). Historical performance of put-writing strategies. CBOE. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3393940}
+\item Brunnermeier, M. K., \& Pedersen, L. H. (2009). Market liquidity and funding liquidity. Review of Financial Studies, 22(6), 2201--2238. \url{https://doi.org/10.1093/rfs/hhn098}
+\item Carr, P., \& Wu, L. (2009). Variance risk premiums. The Review of Financial Studies, 22(3), 1311--1341. \url{https://doi.org/10.1093/rfs/hhn038}
+\item Cboe Global Markets. (2026). Cboe Volatility Index methodology. \url{https://cdn.cboe.com/resources/indices/Volatility_Index_Methodology_Cboe_Volatility_Index.pdf}
+\item Chen, H., Joslin, S., \& Ni, S. X. (2019). Demand for crash insurance, intermediary constraints, and risk premia in financial markets. Review of Financial Studies, 32(1), 228--265. \url{https://doi.org/10.1093/rfs/hhy004}
+\item Cheng, I.-H. (2019). The VIX premium. The Review of Financial Studies, 32(1), 180--227. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2495414}
+\item Demeterfi, K., Derman, E., Kamal, M., \& Zou, J. (1999a). A guide to volatility and variance swaps. The Journal of Derivatives, 6(4), 9--32. \url{https://doi.org/10.3905/jod.1999.319129}
+\item Demeterfi, K., Derman, E., Kamal, M., \& Zou, J. (1999b). More than you ever wanted to know about volatility swaps. Goldman Sachs Quantitative Strategies Research Notes. \url{https://emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf}
+\item Dew-Becker, I., \& Giglio, S. (2025). The decline of the variance risk premium: Evidence from traded and synthetic options. Chicago Fed Working Paper 2025-17. \url{https://www.chicagofed.org/publications/working-papers/2025/2025-17}
+\item Dew-Becker, I., Giglio, S., Le, A., \& Rodriguez, M. (2017). The price of variance risk. Journal of Financial Economics, 123(2), 225--250. \url{https://www.dew-becker.org/documents/price_of_variance_risk.pdf}
+\item Drechsler, I. (2013). Uncertainty, time-varying fear, and asset prices. Journal of Finance, 68(5), 1843--1889. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1364902}
+\item Driessen, J., Maenhout, P. J., \& Vilkov, G. (2009). The price of correlation risk: Evidence from equity options. Journal of Finance, 64(3), 1377--1406. \url{https://doi.org/10.1111/j.1540-6261.2009.01467.x}
+\item Eraker, B., \& Wu, Y. (2017). Explaining the negative returns to volatility claims: An equilibrium approach. Journal of Financial Economics, 125(1), 72--98. \url{https://doi.org/10.1016/j.jfineco.2017.06.006}
+\item Feunou, B., Jahan-Parvar, M. R., \& Okou, C. (2018). Downside variance risk premium. Journal of Financial Econometrics, 16(3), 341--383. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2561008}
+\item Gabaix, X. (2012). Variable rare disasters: An exactly solved framework for ten puzzles in macro-finance. Quarterly Journal of Economics, 127(2), 645--700. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1106298}
+\item G\^arleanu, N., Pedersen, L. H., \& Poteshman, A. M. (2009). Demand-based option pricing. Review of Financial Studies, 22(10), 4259--4299. \url{https://doi.org/10.1093/rfs/hhp005}
+\item Han, B. (2008). Investor sentiment and option prices. Review of Financial Studies, 21(1), 387--414. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=687537}
+\item Heston, S. L. (1993). A closed-form solution for options with stochastic volatility with applications to bond and currency options. The Review of Financial Studies, 6(2), 327--343. \url{https://finance.martinsewell.com/stylized-facts/volatility/Heston1993.pdf}
+\item Ilmanen, A. (2011). Expected returns: An investor's guide to harvesting market rewards. Wiley.
+\item Israelov, R., \& Klein, M. (2016). Risk and return of equity index collar strategies. The Journal of Alternative Investments, 19(1), 41--54. \url{https://doi.org/10.3905/jai.2016.19.1.041}
+\item Israelov, R. (2019). Pathetic protection: The elusive benefits of protective puts. Journal of Alternative Investments, 21(3), 6--33. \url{https://doi.org/10.3905/jai.2018.1.066}
+\item Israelov, R., \& Nielsen, L. N. (2015a). Covered calls uncovered. Financial Analysts Journal, 71(6), 44--57. \url{https://doi.org/10.2469/faj.v71.n6.1}
+\item Israelov, R., \& Nielsen, L. N. (2015b). Still not cheap: Portfolio protection in calm markets. The Journal of Portfolio Management, 41(4), 108--120. \url{https://doi.org/10.3905/jpm.2015.41.4.108}
+\item Kilic, M., \& Shaliastovich, I. (2019). Good and bad variance premia and expected returns. Management Science, 65(6), 2522--2544. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3024086}
+\item Lombardi, M. J., \& Schrimpf, A. (2014). Volatility concepts and the risk premium. Bank for International Settlements. \url{https://www.bis.org/publ/qtrpdf/r_qt1409v.htm}
+\item Londono, J. M. (2011). The variance risk premium around the world (International Finance Discussion Papers No. 1035). Board of Governors of the Federal Reserve System. \url{https://www.federalreserve.gov/pubs/ifdp/2011/1035/ifdp1035.pdf}
+\item Schwert, G. W. (1989). Business cycles, financial crises, and stock volatility. Carnegie-Rochester Conference Series on Public Policy, 31, 83--125. \url{https://www.billschwert.com/crc89.pdf}
+\item Whaley, R. E. (2013). Trading volatility: At what cost? Journal of Portfolio Management, 40(1), 95--108. \url{https://doi.org/10.3905/jpm.2013.40.1.095}
+\end{fshfreferences}
+
+\end{document}
