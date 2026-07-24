@@ -1,50 +1,67 @@
-# FS Student Hedge Fund — Website
+# FSHF LaTeX Package — README
 
-Website for the **FS Student Hedge Fund**, a student initiative of Frankfurt School of Finance & Management.
+Publication-ready LaTeX for the three FS Student Hedge Fund research papers, sharing one house style. Content is the Phase-1 revised text (Francesco's comments implemented); layout is uniform across all three.
 
-- **Live site:** https://fs-student-hedgefund.com (canonical: `fsassociates.de`)
-- **Current stack:** Lovable build — Vite + React + TypeScript + Tailwind + shadcn/ui
-- **Status:** Redesign / improvement in progress
+## Contents
 
-## Repo structure
+| File | What it is |
+|---|---|
+| `fshf-style.sty` | The shared house style. All layout lives here. |
+| `fshf-commodities.tex` | Commodities Research Paper (32 pp compiled) |
+| `fshf-equity.tex` | Equities Portfolio Research (18 pp compiled) |
+| `fshf-fixed-income.tex` | Fixed Income Portfolio (17 pp compiled) |
+| `FIGURES-MANIFEST.md` | Exact filenames for the chart exports (Equity 10, Fixed Income 5, Commodities none) |
+| `fshf-*.pdf` | Preview PDFs compiled without figures/logo — placeholders show where images will land |
 
-| Path | Purpose |
-|------|---------|
-| `reference/` | Reference templates to draw from (drop files here). See `reference/README.md`. |
-| `src/` | App source (to be added — current site or a rebuild). |
+## How to compile
 
-## Design tokens (current live site)
+Engine: **pdfLaTeX**, run **twice** (second pass resolves the table of contents and cross-references):
 
-Pulled from the live CSS bundle, for continuity:
+```
+pdflatex fshf-commodities.tex
+pdflatex fshf-commodities.tex
+```
 
-- Navy: `hsl(222 47% 11%)` · Navy-light: `hsl(222 30% 20%)`
-- Accent (royal blue): `hsl(225 73% 57%)` — *candidate for desaturation*
-- Background: white · Border: `hsl(220 13% 91%)` · Radius: `0.25rem`
-- Breakpoint: `md = 768px` · Section rhythm: `py-24`
+Same for the other two. On Overleaf: upload the `.sty`, the three `.tex`, and a `figures/` folder, set the compiler to pdfLaTeX, and compile — no other configuration. All packages used are standard TeX Live (booktabs, longtable, tabularx, titlesec, fancyhdr, caption, enumitem, xcolor, hyperref, geometry, graphicx).
 
-## Improvement checklist (from review, prioritized)
+## The Times New Roman decision
 
-### P1 — Proportions & whitespace (biggest issue)
-- [ ] Fix half-empty rows: hero headline, About, and Research leave ~40% of the row empty. Either fill the second column (stat block / chart / logo lockup / photo) or switch to a centered single column (`max-w ~720px`).
-- [ ] Remove empty grid cells and tighten vertical rhythm to one scale (e.g. `py-20` desktop / `py-12` mobile). Target page height ~5,500px (currently 8,833px).
-- [ ] Close the number↔title gap in the Investment Approach steps.
+The papers are set in Times. Under pdfLaTeX this is provided by **newtx** (the current, complete Times implementation shipped with full TeX Live / Overleaf). The style file falls back automatically to **mathptmx** (the classic Times package, available on even minimal installations) so the documents compile everywhere. The literal Times New Roman `.ttf` from Windows is only loadable under XeLaTeX/LuaLaTeX; the brief specifies pdfLaTeX, so the newtx route is the correct, visually equivalent implementation — this is the one deliberate interpretation of the font requirement, documented here as required.
 
-### P2 — Consistency
-- [ ] Unify section alignment: every section left-aligned with a blue eyebrow label. (Research is currently center-aligned with no eyebrow — fix.)
-- [ ] Normalize team headshots: one background, one crop ratio, one zoom. (Top row uses an FS-branded banner backdrop; others are plain studio — mismatched.)
-- [ ] Resolve "three departments" copy vs four cards (Index Construction, Trading & Derivatives, Hedge Fund, Quantitative Team).
+## Figures
 
-### P3 — Brand & type
-- [ ] Desaturate/darken the royal-blue accent toward an institutional steel-blue.
-- [ ] Replace the stock Tailwind type scale with a custom headline/body scale.
+Every figure slot is a guarded `\fshffig{...}` call: if `figures/<name>.png` exists it is embedded at uniform width; if not, the document still compiles and prints a labelled placeholder box. Export the charts from the source documents unchanged, name them per `FIGURES-MANIFEST.md`, drop them into `figures/`, recompile — done. One exception flagged in the manifest: **Fixed Income Figure 2 must be re-exported/relabelled as core-PCE y/y** to match the corrected prose (review comment, flag 2). Optionally add `figures/fshf-logo.png` for the title pages (also guarded).
 
-### P4 — Content & credibility
-- [ ] Add a legal disclaimer to the footer (e.g. "Educational student initiative. Not investment advice; no solicitation or offer of securities.").
-- [ ] Confirm Solactive and UniCredit have approved being named as partners.
+## Typesetting a fourth paper in the house style
 
-### P5 — Mobile
-- [ ] Reduce mobile page length (currently ~14,499px) once whitespace is fixed.
-- [ ] Fix the minor hero/header overlap artifact at the top of the mobile view.
+```latex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fshf-style}
+\SetFshfShortTitle{Short Title for the Running Header}
 
-## Notes
-Private repo. To make it public later: `gh repo edit francescodifano/fs-student-hedge-fund --visibility public --accept-visibility-change-consequences`
+\begin{document}
+\makefshftitle{Full Paper Title}%
+{Asset class / subtitle line}%
+{Author One, Author Two \& Author Three}%
+{1 January 2027}%
+{Optional small note line, or \relax for none}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+
+\section{First Section}
+Body text...
+\end{document}
+```
+
+House patterns to reuse:
+
+- **Tables** — booktabs only (`\toprule`/`\midrule`/`\bottomrule`, no vertical rules), caption **above** via `\caption{...}` as the first thing in the `table` environment (renders as "Table N: ..."), headers wrapped in `\tabh{...}`, column types `P{width}` (left, wrapped), `Q{width}` (right), `L`/`R` (auto-width via `tabularx`). Source line after the table body: `\fshfsource{Sources: ...}`.
+- **Page-spanning tables** — use `longtable` with the same rules (see the allocation table in `fshf-commodities.tex` for the pattern, including repeated headers via `\endhead`).
+- **Figures** — `\fshffig{filename.png}{Caption}{Source line or \relax}`.
+- **Reference lists** — `\begin{fshfreferences} \item ... \end{fshfreferences}` (hanging indent, titled "References"), or `\begin{fshfreferences*}{Custom Title} ... \end{fshfreferences*}`. No biblatex.
+- **Headings** — `\section`/`\subsection`/`\subsubsection`; a fourth level (`\paragraph`) is styled as a numbered display heading for x.y.z.w structures.
+- **Special characters** — escape `% & $ # _` in body text; use `\(\sim\)` for ~, `$\times$`, `$\rightarrow$`, `\checkmark`.
+
+The accent color is `fshfaccent` (deep navy) — used for section titles, the header rule, links, and title-page rules. Change it once in the `.sty` to restyle everything.
