@@ -1,0 +1,880 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fshf-style}
+\SetFshfShortTitle{Commodities Research}
+
+\begin{document}
+
+\makefshftitle{Commodities Research Paper}%
+{Commodities --- Investment Research on a Commodities Portfolio}%
+{Jakob Hautkappe \& Jonathan Nadar}%
+{25 June 2026}%
+{All figures as of June 24th, 2026 (if not stated otherwise)}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+
+\section{Executive Summary}
+
+As of June 2026 the team holds a constructive view on commodities driven by three distinct forces rather than one shared theme, which is the basis for treating the sleeve as a genuine diversifier rather than three versions of one bet. The macro backdrop is a Federal Reserve turned hawkish against energy-driven inflation, a firm dollar, an active Strait of Hormuz supply shock, and a two-speed China, a configuration that pulls the three active commodities in different directions.
+
+The approach is a core-satellite construction. An active core expresses conviction in gold and copper, a conditional engagement covers oil, and a passive agriculture layer provides coverage, risk dampening, and a candidate pool for future active theses. Every thesis was tested against twenty years of data and carries a written falsification rule, and the construction retains the stable covariance from that data while overriding the historical returns with the team's forward conviction.
+
+Gold is a structural long held at moderate-to-high conviction. The dominant driver is a price-insensitive central-bank bid that broke gold's link to real yields after 2022 and now shows up as a significant six-percent-per-quarter drift, while the cyclical backdrop of a hawkish Fed and a firm dollar is adverse, so the physical core is built now and the leveraged sleeve is staged against confirmation. Copper is a moderate long on Chinese physical demand read through an elevated Yangshan premium, sized at half the risk budget because the strongest signal is not yet confirmed by the LME curve, by the mining equities, or by an independent significance test. Oil is held at zero strategic weight, since on twenty years of data it is the weakest asset in the set, but a conditional engagement framework stands ready to activate on the 2026 Hormuz repricing when its valuation, premium-intact, and catalyst gates align, which they do not yet.
+
+The recommended allocation is 50 percent gold, 30 percent copper, 20 percent passive agriculture, and zero oil. It is not the mathematical optimum, which would be a concentrated gold position, but the more robust and mandate-compliant portfolio, carrying an expected return near 8.0 percent, a volatility of 15.3 percent, a Sharpe ratio near 0.36, and an effective number of bets of 2.63. Capital is deployed mostly upfront and lightly staged across two to three trades. The principal risk is correlated reversal, in which a durable Hormuz de-escalation together with a sharp dollar rally would pressure all three commodities at once, and the portfolio is sized and constructed with that single shared risk in mind.
+
+\section{Investment Approach and Methodology}
+
+The team was assigned to construct a commodities sleeve on its own merits, with the fund-level weight to commodities set separately by the Head of Fund. The work was held to one standard, that every figure, date, and claim must survive an audit against its primary source rather than against any model output. That standard shaped both the analysis and this paper. Where a number could not be traced to a primary source it was verified independently or marked for verification, and where an early hypothesis did not survive the data it was revised on the record rather than quietly dropped. Three of those revisions are central to the paper and are surfaced rather than hidden, because a thesis that survived a genuine counter-argument is stronger than one that never faced one.
+
+Each commodity was worked through the same thesis discipline. A complete thesis names a single dominant driver for the chosen horizon, the supply and demand mechanism behind it, the price structure and positioning, the catalysts that confirm or deny it, an explicit bull, base, and bear case, and, above all, a written falsification rule with a stop. The requirement to commit to one primary driver is deliberate. A thesis that lists every plausible driver with equal weight cannot be falsified, because no single observation can disprove it. Committing to a primary driver is what makes a position testable and what tells the team when it is wrong.
+
+The horizon is six months, running from entry on approval of this paper in late June 2026 to the primary evaluation at the end of December 2026. The horizon determines which class of driver dominates. Positioning and event risk dominate over days and weeks, monetary and macro-cycle variables over six to twelve months, and structural supply shifts over multiple years. A six-month position therefore sits in the monetary and macro-cycle band, which placed the real ten-year yield in the foreground for gold, the trajectory of Chinese physical demand for copper, and, for oil, the resolution path of an active physical supply disruption that overrode the normal hierarchy for as long as it persisted.
+
+A second discipline runs through every thesis, the recognition that two opposite errors are always available. The first is to treat a historical pattern as a law after the structure that produced it has changed. The second is to assume that this time is different without a mechanism for why the old pattern will not reassert. The correct response when a normally dominant driver stops explaining the price is neither to declare the market wrong nor to discard all history, but to ask which driver has taken over and to re-anchor on the new regime while keeping a falsification rule that would catch a reversion. This single test produced the three most important findings in the paper, the post-2022 decoupling of gold from real yields, the death of the China-PMI-to-copper link, and the structural repricing of oil's Strait of Hormuz risk.
+
+No thesis was accepted on narrative alone. A Bloomberg data library was built for each commodity, daily from January 2005 to June 2026, aligned to a common trading-day calendar and forward-filled to a continuous daily frequency. Price series were transformed to logarithmic returns, rate and yield series to first differences, and conditioning signals to rolling 252-day z-scores, with annualisation throughout on a 252-day basis. Each thesis was then tested against this library with regime-split correlations, multifactor regressions using Newey-West standard errors that correct for heteroskedasticity and serial correlation, conditional forward-return analysis that splits each signal into quartiles and measures the realised forward return within each, and, where the question demanded it, formal cointegration tests and Monte-Carlo simulation. The twenty-year window was chosen on purpose, because it spans the 2008 crisis, the commodity super-cycle, the COVID shock, and the 2021 to 2023 inflation cycle, which is the condition under which a covariance structure can be estimated without being dominated by a single regime.
+
+The portfolio is a core-satellite construction, a standard institutional design rather than an invention. The active core carries conviction positions in the commodities the team can plausibly analyse, gold and copper, alongside a conditional engagement in oil, and the three were chosen for driver diversification rather than for conviction strength, since they are powered by genuinely different forces: monetary and reserve demand, structural metal scarcity, and an energy supply shock. A passive layer sits beside the core to guarantee segment coverage, to supply diversification the active core cannot provide, and to act as a candidate pool from which a holding is promoted to active analysis as the team scales. That promotion mechanic is explicit, and it is applied one level up to oil, which is held as a fully specified, pre-authorised position activated only when its entry conditions are met.
+
+The construction layer rests on one methodological judgement the data forced. A naive mean-variance optimisation over twenty years of realised returns recommends a concentrated gold portfolio, because gold rose for two decades, not because it is the best forward trade. The covariance structure estimated from that history is stable and usable. The realised mean returns are not a forecast. The team therefore retained the empirically estimated covariance as a stable input and declined to treat the twenty-year mean returns as a forward forecast, expressing forward conviction through the allocation itself rather than through optimiser inputs. The approach is conceptually aligned with the Black-Litterman intuition rather than a formal implementation of it, since no prior, no view matrix, and no posterior return vector are run. It is what converts a naive gold-heavy optimum into the balanced, conviction-driven allocation presented in Section 5.
+
+The risk metrics used throughout are defined once here. The Sharpe ratio is excess return per unit of total volatility, the Calmar ratio is return per unit of maximum drawdown, and the maximum drawdown is the largest peak-to-trough loss in the series. At portfolio level the effective number of bets, or ENB, is a first-order diversification measure computed as the inverse Herfindahl of the portfolio weights, and it indicates how concentrated the portfolio is across its holdings. A portfolio whose weights are spread evenly across n positions scores close to n, while a portfolio dominated by one position scores close to one. As a weight-based measure, the ENB does not incorporate the cross-correlations between the holdings, which run at approximately 0.33 to 0.34 across the gold, copper, and agriculture pairs, so the true risk-based diversification sits somewhat below the weight-based figure.
+
+Risk-free rate: 2.5\% p.a.\ throughout. Annualisation factor: 252 trading days.
+
+\begin{table}[htbp]
+\caption{Risk metric definitions}
+\small
+\begin{tabularx}{\linewidth}{P{3.6cm} P{4.2cm} L}
+\toprule
+\tabh{Metric} & \tabh{Formula} & \tabh{Notes} \\
+\midrule
+Sharpe ratio & \((R_p - R_f)\,/\,\sigma_p\) & \(\sigma_p\) = annualised total volatility; \(R_f\) = 2.5\% \\
+Calmar ratio & \(R_p\,/\,\mathrm{MaxDD}\) & MaxDD = Maximum Draw Down \\
+Maximum drawdown & \(\max(\text{peak} - \text{trough})\,/\,\text{peak}\) & Largest peak-to-trough loss over the full sample \\
+Effective number of bets (ENB) & \(1\,/\,\sum w_i^2\) & \(w_i\) = portfolio weight of asset \(i\); inverse Herfindahl of weights, a first-order concentration measure \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Annualised return: geometric mean of daily log returns \(\times\) 252. Annualised volatility: standard deviation of daily log returns \(\times\ \sqrt{252}\). Sample period: 2 January 2005 to June 2026.}
+\end{table}
+
+The 2.5 percent risk-free rate is a deliberate choice rather than the US Treasury reference. The fund is denominated in euros and the unlevered cash alternative to holding the commodities sleeve is a euro-denominated short-dated instrument rather than a US Treasury bill, and the euro-area short-rate environment in mid-2026 sits materially below the US, so a rate in the region of 2 to 2.5 percent is a reasonable representation of the euro cash alternative the fund actually faces. The team is aware that current US government bond yields are higher and is not asserting a view on US sovereign credit, but treating those yields as wholly risk-free embeds compensation for factors that go beyond pure time preference, which is an assumption the team is uncomfortable making in the current environment. The 2.5 percent figure should be read as a euro-area cash anchor rather than as a claim that 2.5 percent is the correct risk-free rate in absolute terms, and it may be revised as the rate environment evolves.
+
+\section{Macro Context, Mid-2026}
+
+The portfolio enters an unusual macro environment in which the dominant forces pull the three active commodities in different directions, which is the empirical basis for treating them as genuine diversifiers rather than three expressions of one view. Four features define the regime: a Federal Reserve that has turned hawkish against energy-driven inflation, a firm dollar, an active Middle East supply shock centred on the Strait of Hormuz, and a two-speed China.
+
+Monetary policy is the first feature and the principal cyclical headwind for the precious-metal leg. After the cuts delivered through late 2025, the Federal Reserve held its policy rate and then shifted its guidance materially on 17 June 2026, when the dot plot moved from a projected cut to a projected hike and the 2026 median rate projection rose from 3.4 to 3.8 percent. The driver of that shift is supply-side, because the energy price impulse from the Middle East conflict has kept inflation sticky and pushed the timing of any further easing later into the year. The consequence is that real yields are elevated rather than falling. The real ten-year Treasury yield sits near 2.18 percent, a stretched reading against its own history, which on the textbook framework is an unambiguous headwind for gold. The single decisive forward event inside the horizon is the 29 July 2026 Federal Open Market Committee meeting, which either relieves or entrenches this headwind.
+
+The dollar is the second feature and reinforces the same cyclical pressure. The dollar index trades near 100 at a stretched positive reading, and the analysis later shows the dollar to be the single most stable correlate of gold across every regime tested. A strong dollar is a headwind for all three dollar-priced commodities at the margin and is the common channel through which a risk-off event would pressure them together, which is the correlation-convergence risk the portfolio section addresses directly.
+
+The third feature is the energy supply shock, which is the defining event of the period and the reason the oil complex sits in its own regime. An active conflict between the United States and Iran effectively closed the Strait of Hormuz from late February 2026, removing access to a corridor that normally carries roughly a fifth of global seaborne oil. This was an actual loss of physical supply rather than a sentiment premium, and a disruption of that magnitude overrides the normal driver hierarchy for as long as it persists. Two structural changes accompanied it. A leadership discontinuity in Iran, the death of the Supreme Leader on 28 February 2026, is the category of event that has historically produced large and durable oil repricings, and the exit of the United Arab Emirates from OPEC+ on 1 May 2026 thinned the cartel's spare-capacity buffer from about 3.8 to 2.5 million barrels per day, removing its principal tool for calming a future shock. By late June the picture had shifted again toward de-escalation, with a United States and Iran peace roadmap and a temporary license for Iranian oil sales, and Brent had fallen to roughly 77 to 78 dollars, its lowest in about three months. That relief move is the precise setup the oil section examines, a market pricing a best-case reopening while the structural drivers of a higher baseline risk premium remain only partly resolved.
+
+The fourth feature is a two-speed China, which sets the demand backdrop for the industrial leg. Chinese manufacturing activity sits around the expansion threshold, with the official manufacturing PMI near 50, but the composition matters more than the headline. Property-sector weakness is being offset by grid build-out, electrification, and data-centre demand, which is why aggregate Chinese activity no longer maps cleanly to industrial-metal prices the way it did before 2022. This split is the macro foundation of the copper thesis and the reason the team reads Chinese copper demand through physical indicators rather than through the aggregate PMI.
+
+These forces resolve into distinct, and partly opposing, commodity-level implications that the three theses then develop. Gold faces a uniformly bearish cyclical backdrop of rising real yields, a firm dollar, and a hawkish Fed, set against a supportive structural bid from official-sector and investment demand, so the question for gold is which of the two dominates. Copper faces a constructive but unconfirmed demand picture, in which Chinese physical tightness is real but the price curve and the mining equities are not yet corroborating it. Oil faces a repriced but unsettled geopolitical regime, in which the security premium has been demonstrated as real yet is being stripped out of the price in a relief rally. The central portfolio risk that sits above all three is a correlated reversal, in which a durable Hormuz de-escalation combined with a sharp dollar rally would pressure gold, copper, and oil at once, and the portfolio is sized and constructed with that single shared risk in mind.
+
+\begin{table}[htbp]
+\caption{Macro regime dashboard, mid-2026}
+\small
+\begin{tabularx}{\linewidth}{P{3.0cm} P{3.0cm} P{1.8cm} L}
+\toprule
+\tabh{Variable} & \tabh{Level} & \tabh{Direction} & \tabh{Note} \\
+\midrule
+Fed funds rate & 3.5--3.75\% & Hold & Dot plot shifted 17 Jun 2026: median 2026 projection from 3.4\% to 3.8\% (cut \(\rightarrow\) hike) \\
+2026 Fed dot-plot median & 3.8\% & Up & Revised from 3.4\% on 17 June 2026 \\
+Real 10Y TIPS yield & \(\sim\)2.19--2.20\% & Rising & z-score +2.77 on 9 Jun (2.1814\%); refreshed 18--19 Jun to \(\sim\)2.19--2.20\% \\
+Nominal 10Y Treasury & 4.5383\% & Elevated & z-score +2.10 (9 Jun) \\
+Nominal 2Y Treasury & 4.1306\% & Elevated & z-score +2.39 (9 Jun) \\
+10Y breakeven inflation & 2.3496\% & Mid-range & z-score +0.07; channel to gold now weak (insignificant post-2022) \\
+US Dollar Index (DXY) & \(\sim\)100--101 & Strong & z-score +1.66 (9 Jun); refreshed 18--19 Jun to \(\sim\)100.7--100.9 \\
+Brent crude & \(\sim\)\$77--78/bbl & Falling & Lowest since early March; down from war peak on peace roadmap (as of \(\sim\)22--23 Jun) \\
+Hormuz flow & \(\sim\)12 mb/d & Recovering & Normal \(\sim\)15--15.5 mb/d (\(\sim\)20\% of global seaborne oil); still well below norm \\
+OPEC+ spare capacity & \(\sim\)2.5 mb/d by 2027 & Thinned & UAE left OPEC+ 1 May 2026; down from \(\sim\)3.8 mb/d \\
+OECD crude cover & Heading to \(\sim\)50 days by end-2026 & Drawing & \(\sim\)900 mb cumulative 2026 deficit; fewest since \(\sim\)2003 \\
+China NBS manufacturing PMI & 50.0 & Neutral & z-score +0.78 (8 Jun); composition matters more than headline \\
+LME 3M copper & \$13,615.5/t & Firm & YoY +39.0\% (8 Jun) \\
+Gold spot & \(\sim\)\$4,160--4,190/oz & Correcting & \(\sim\)25\% below late-Jan 2026 record near \$5,590 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\clearpage
+\section{Commodity Theses}
+
+\subsection{Gold}
+
+The gold position is a structurally long position carried at moderate-to-high conviction with a tactically cautious entry. The conviction is split deliberately, because the analytical case is strong while the cyclical timing is adverse. These two assessments are kept separate rather than blended into a single comfortable number.
+
+The textbook driver of gold is the real ten-year yield, through the opportunity-cost mechanism, because gold pays no coupon and its competitor as a safe store of value is the inflation-protected bond. That relationship governed gold from 2005 to 2021 and then broke. The team did not assert the break, it tested it. A cointegration test shows that log gold prices and the real yield shared a stable long-run equilibrium before 2022, with the economically correct negative coefficient and a stationary residual. After 2022, that equilibrium breaks down: the fitted sign flips positive, meaning gold rose alongside rising real yields. A quarterly regression with Newey-West errors confirms it from the other side. The real-yield beta falls from significant to insignificant, the share of gold's quarterly variation that the macro factors explain drops from about 47 percent to about 13 percent, and the unexplained drift rises from about 1.8 to about 6.2 percent per quarter and stays significant on the reported errors, although the post-2022 regression rests on only 18 quarterly observations, where Newey-West standard errors are asymptotic and fragile, so the strength of that significance should not be overstated. That drift, roughly 27 percent annualised of return that the macro factors cannot see, is the statistical fingerprint of the driver that took over. As a sanity check, the implied post-2022 Sharpe ratio from the regression intercept, computed as the 27 percent annualised drift less the 2.5 percent risk-free rate divided by gold's long-run 17.7 percent volatility, sits near 1.4. This is an implied figure from the regression output rather than a directly measured Sharpe over a short window, it inherits the same 18-quarter sample limitation as the drift estimate and is therefore an aggressive rather than a settled number, and it is consistent with gold being treated as a higher-conviction holding than the full-sample 0.50 Sharpe suggests on its own.
+
+The driver that took over is the official sector. Central-bank net purchases ran at 863 tonnes in 2025, a figure marked for confirmation against the World Gold Council full-year 2025 release, about twice the pre-2022 base near 470 tonnes per year, after a three-year run above 1,000 tonnes from 2022 to 2024, and into 2026 the pace has stayed at roughly double the pre-2022 norm. This is price-insensitive, strategic reserve diversification that accelerated after the 2022 freezing of Russian reserves, and it places a floor under the market that did not exist a decade ago. As official buying decelerated in 2025 the marginal buyer rotated to exchange-traded funds, which flipped from net outflow into the rally to about 400 tonnes of inflow in the second half of 2025. Gold is an above-ground-stock market, so the price is set by this investment and official-sector flow against a near-fixed stock, which is why a record 2025 total supply near 5,002 tonnes could not cap the price and why the thesis is demand-led rather than supply-led.
+
+The structural thesis is intact, but the cyclical backdrop has turned adverse. The Fed turned hawkish on 17 June 2026, real yields are stretched high at a z-score near 2.8, the dollar is strong at a z-score near 1.7, and the conditional forward-return work places the current real-yield momentum, dollar, and volatility readings all in their unfavourable quartiles. Spot trades near 4,160 to 4,190 dollars, roughly 25 percent below the late-January 2026 record near 5,590 dollars, a level confirmed against public reporting rather than taken from a model. Positioning is the one constructive cyclical reading, washed out to mid-range rather than crowded, which means the rally is led by the structural bid and not by leveraged speculation. The decision that follows is to build the unlevered physical core now, sized to the falsification rule rather than to a price stop, and to stage the tactical and leveraged expressions against confirmation. The favourable real-yield quartile historically delivered the strongest forward returns, so the team would rather add exposure into that than into the current adverse momentum.
+
+\begin{table}[htbp]
+\caption{Gold cyclical dashboard (values as of 9 June 2026)}
+\small
+\begin{tabularx}{\linewidth}{P{3.4cm} P{2.7cm} Q{2.0cm} L}
+\toprule
+\tabh{Indicator} & \tabh{Value (9 Jun)} & \tabh{z-score (252d)} & \tabh{Signal} \\
+\midrule
+XAU spot gold & \$4,252.28/oz & n/a & \(\sim\)25\% below Jan ATH \(\sim\)\$5,590 \\
+Real 10Y TIPS & 2.1814\% & +2.77 & Stretched high; primary cyclical headwind; level link decoupled \\
+Nominal 10Y & 4.5383\% & +2.10 & Elevated \\
+Nominal 2Y & 4.1306\% & +2.39 & Elevated \\
+10Y breakeven & 2.3496\% & +0.07 & Mid-range; weak channel to gold post-2022 \\
+DXY & 100.016 & +1.66 & Strong; most stable correlate; unfavourable quartile \\
+BBDXY & 1,210.37 & +0.66 & Confirms dollar signal \\
+EUR/USD & 1.1544 & \(-\)1.32 & Weak euro; consistent with dollar strength \\
+GLD ETF (price) & \$389.965 & n/a & YoY +25.7\%; use tonnage, not price, as demand signal \\
+IAU ETF (price) & \$79.925 & n/a & YoY +26.0\% \\
+Curve GC2--GC1 & +\$28.5 & \(-\)0.11 & Contango; roll cost \(\sim\)8.0\% p.a.; neutral quartile \\
+VIX & 23.12 & +1.51 & Elevated; unfavourable extreme for gold \\
+CFTC managed-money net long & 111,341 contracts & --- & Not crowded. Trough 89,752 in late Apr; washed-out to mid-range; constructive \\
+Real-yield 60d momentum & +0.374pp & Bottom quartile & UNFAVOURABLE (yields rising) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Gold conditioning signals: current quartile placement}
+\small
+\begin{tabularx}{\linewidth}{P{3.6cm} P{2.6cm} P{4.0cm} L}
+\toprule
+\tabh{Signal} & \tabh{Current reading} & \tabh{Quartile} & \tabh{Favourable?} \\
+\midrule
+Real-yield 60d momentum & +0.374pp & Bottom 25\% (rising yields) & No \\
+DXY 252d z-score & +1.66 & Top 25\% (strong dollar) & No \\
+Curve z-score GC2--GC1 & \(-\)0.11 & Middle 50\% & Neutral \\
+VIX 252d z-score & +1.51 & Top 25\% (elevated VIX) & No \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Deployment tranches for the sleeve}
+\small
+\begin{tabularx}{\linewidth}{P{1.8cm} P{2.6cm} L P{1.7cm} P{3.0cm}}
+\toprule
+\tabh{Tranche} & \tabh{Timing} & \tabh{What deploys} & \tabh{Size (\(\sim\)\% of sleeve)} & \tabh{Trigger} \\
+\midrule
+1. Deploy now & T0, on paper approval & Full passive layer (20\%) + gold physical core (\(\sim\)35 of 50 gold points) + initial copper slice (\(\sim\)15 of 30 copper points) & \(\sim\)65--70\% & No signal required \\
+2. First staged add & Next gold trigger OR \(\sim\)3--4 weeks, whichever first & Remaining gold (\(\sim\)15 points) & \(\sim\)20\% & 29 Jul FOMC pause/ETF-flow turn; hike pushes it back \\
+3. Final staged add & Copper scale-up signal OR hard backstop & Remaining copper (\(\sim\)15 points) & \(\sim\)10--15\% & Composite \(>\)+0.40 with carry confirming \\
+Hard backstop & No later than \(\sim\)6--8 weeks from T0 & Full portfolio deployed regardless of triggers & --- & Prevents indefinite deferral \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The falsification rule is written and observable. The structural core is closed, regardless of price, on any one of three conditions: the real-yield cointegration re-establishing with a negative sign for two or more quarters, central-bank net buying falling below the roughly 470-tonne base while ETF flows turn net negative for two consecutive quarters, or the quarterly drift dropping below about 1 percent and losing significance. The tactical sleeve carries an 8 percent price stop, and the companion adds a structural line at a sustained weekly close below 4,000. The dominant catalyst inside the horizon is the 29 July FOMC, which either relieves the real-yield headwind or entrenches it. The core instrument is a physically backed gold ETF rather than a futures position, because the futures route pays a contango roll cost the workbook measures at about 8 percent per year, which a multi-quarter hold cannot absorb.
+
+\begin{table}[htbp]
+\caption{Gold vs real yield: cointegration test by regime}
+\small
+\begin{tabularx}{\linewidth}{P{2.8cm} Q{2.0cm} Q{1.7cm} P{3.4cm} L}
+\toprule
+\tabh{Period} & \tabh{ADF residual statistic} & \tabh{5\% critical value} & \tabh{Result} & \tabh{Coefficient on real yield} \\
+\midrule
+Pre-2022 (2005--2021) & \(-\)3.778 & \(-\)3.34 & Stationary --- cointegrated & \(-\)0.3329 (correct negative sign) \\
+Post-2022 (2022--2026) & \(-\)0.571 & \(-\)3.34 & Non-stationary --- no cointegration & +0.1953 (sign flipped positive) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Quarterly Newey-West regression of gold returns, by regime}
+\small
+\begin{tabularx}{\linewidth}{P{2.7cm} Q{1.6cm} Q{1.3cm} P{1.7cm} Q{1.6cm} Q{1.3cm} L}
+\toprule
+\tabh{Term} & \tabh{Pre-2022 (n=68) coeff} & \tabh{Pre-2022 HAC t} & \tabh{Pre-2022 p / sig} & \tabh{Post-2022 (n=18) coeff} & \tabh{Post-2022 HAC t} & \tabh{Post-2022 p / sig} \\
+\midrule
+Alpha (intercept) & +0.01812 & 2.42 & 0.0185** & +0.06247 & 4.77 & 0.0002*** \\
+Beta1 (real yield change) & \(-\)0.11873 & \(-\)3.88 & 0.0003*** & \(-\)0.07771 & \(-\)1.65 & 0.1204 ns \\
+Beta2 (dollar return) & \(-\)0.70283 & \(-\)4.27 & 0.0001*** & \(-\)0.39548 & \(-\)0.60 & 0.5542 ns \\
+Adjusted R\textsuperscript{2} & 0.473 & & & 0.133 & & \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Implied annualised drift from intercept: pre-2022 \(\sim\)+7.5\% p.a.\ (\(\sim\)+1.8\%/quarter \(\times\) 4); post-2022 \(\sim\)+27\% p.a.\ (\(\sim\)+6.2\%/quarter \(\times\) 4).}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Signal 1: Real-yield 60-day momentum (quartile cuts: \(-\)0.394pp and +0.145pp; current: +0.374pp --- bottom quartile / unfavourable)}
+\small
+\begin{tabularx}{\linewidth}{L Q{0.9cm} Q{1.7cm} Q{1.3cm} Q{1.3cm} Q{1.5cm} Q{1.7cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{12w avg return} & \tabh{Hit rate} & \tabh{12w vol} & \tabh{5th pctile} & \tabh{Worst observed} \\
+\midrule
+Bottom 25\% (yields rising) & 275 & +2.72\% & 61.8\% & 7.92\% & \(-\)9.28\% & \(-\)12.66\% \\
+Middle 50\% & 547 & +5.19\% & 72.6\% & 8.90\% & \(-\)7.34\% & \(-\)15.0\% \\
+Top 25\% (yields falling) & 275 & +8.43\% & 82.9\% & 7.33\% & \(-\)3.41\% & \(-\)14.58\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Signal 2: DXY 252d z-score (quartile cuts: \(-\)1.392 and +0.823; current: +1.66 --- top quartile / unfavourable)}
+\small
+\begin{tabularx}{\linewidth}{L Q{0.9cm} Q{1.7cm} Q{1.3cm} Q{1.3cm} Q{1.5cm} Q{1.7cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{12w avg return} & \tabh{Hit rate} & \tabh{12w vol} & \tabh{5th pctile} & \tabh{Worst observed} \\
+\midrule
+Bottom 25\% (weak dollar) & 275 & +2.38\% & 53.5\% & 9.04\% & \(-\)9.28\% & \(-\)12.66\% \\
+Middle 50\% & 547 & +6.75\% & 85.0\% & 7.62\% & \(-\)3.72\% & \(-\)15.0\% \\
+Top 25\% (strong dollar) & 275 & +5.67\% & 66.5\% & 8.97\% & \(-\)5.67\% & \(-\)11.28\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Signal 3: Curve z-score GC2--GC1 (quartile cuts: 0.242 and 1.642; current: \(-\)0.11 --- neutral middle)}
+\small
+\begin{tabularx}{\linewidth}{L Q{0.9cm} Q{1.7cm} Q{1.3cm} Q{1.3cm} Q{1.5cm} Q{1.7cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{12w avg return} & \tabh{Hit rate} & \tabh{12w vol} & \tabh{5th pctile} & \tabh{Worst observed} \\
+\midrule
+Bottom 25\% (flat/inverted) & 275 & +6.58\% & 80.4\% & 7.43\% & \(-\)4.57\% & \(-\)12.91\% \\
+Middle 50\% & 547 & +5.99\% & 77.7\% & 8.11\% & \(-\)7.05\% & \(-\)15.0\% \\
+Top 25\% (steep contango) & 275 & +2.99\% & 54.2\% & 9.82\% & \(-\)10.79\% & \(-\)14.58\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Signal 4: VIX 252d z-score (quartile cuts: \(-\)0.905 and +0.605; current: +1.51 --- top quartile / unfavourable)}
+\small
+\begin{tabularx}{\linewidth}{L Q{0.9cm} Q{1.7cm} Q{1.3cm} Q{1.3cm} Q{1.5cm} Q{1.7cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{12w avg return} & \tabh{Hit rate} & \tabh{12w vol} & \tabh{5th pctile} & \tabh{Worst observed} \\
+\midrule
+Bottom 25\% (low VIX) & 275 & +3.52\% & 69.5\% & 5.58\% & \(-\)4.45\% & \(-\)7.19\% \\
+Middle 50\% & 547 & +7.69\% & 82.1\% & 9.12\% & \(-\)7.26\% & \(-\)14.58\% \\
+Top 25\% (high VIX) & 275 & +2.67\% & 56.4\% & 8.52\% & \(-\)9.78\% & \(-\)15.0\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Model-implied quarterly gold return grid}
+\small
+\begin{tabularx}{\linewidth}{P{4.2cm} Q{1.2cm} Q{1.2cm} Q{1.2cm} Q{1.2cm} R}
+\toprule
+\tabh{Real yield change / Dollar return} & \tabh{\(-\)6\%} & \tabh{\(-\)3\%} & \tabh{0\%} & \tabh{+3\%} & \tabh{+6\%} \\
+\midrule
+\(-\)0.50pp & +12.5\% & +11.3\% & +10.1\% & +8.9\% & +7.8\% \\
+\(-\)0.25pp & +10.6\% & +9.4\% & +8.2\% & +7.0\% & +5.8\% \\
+0.00pp & +8.6\% & +7.4\% & +6.2\% & +5.1\% & +3.9\% \\
++0.25pp & +6.7\% & +5.5\% & +4.3\% & +3.1\% & +1.9\% \\
++0.50pp & +4.7\% & +3.5\% & +2.4\% & +1.2\% & 0.0\% \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Model: quarterly return = +6.25\% + (\(-\)7.77\% \(\times\) real yield change in pp) + (\(-\)39.55\% \(\times\) dollar quarterly return). Note: futures-based expressions subtract \(\sim\)2\% per quarter for contango; size off the carry-adjusted adverse cell.}
+\end{table}
+
+\clearpage
+\subsection{Copper}
+
+The copper position is a moderate long in the LME three-month contract near 13,600 dollars, sized at about half the maximum risk budget, with the entry condition already met as of early June. The primary driver over the six-month horizon is the trajectory of Chinese physical demand, monitored most directly through the Yangshan premium, which is the premium Chinese buyers pay above the Shanghai spot to secure imported metal and therefore a clean weekly read on physical tightness.
+
+The central analytical finding, and the most important revision in the copper work, is that the legacy demand signal died. For years a soft Chinese manufacturing PMI was read as bearish for copper. The data shows that relationship broke after 2022, with the PMI-to-copper correlation falling from a significant plus 0.10 before 2022 to an insignificant minus 0.01 after. The team confirmed this across four independent methods: the regime-split correlation matrices, a rolling 252-day correlation that crosses from positive through 2018 to 2020 to negative in 2022 and 2023 and back to near zero, a conditional forward-return analysis whose post-2022 quartile pattern no longer carries a coherent directional signal, and an independent recomputation. The practical consequence was to disable the PMI reflex entirely and to read demand through physical indicators instead. As the PMI signal died, the LME carry gained explanatory power, moving from insignificant before 2022 to significant after, so the curve emerged as an active signal precisely as the old proxy lost explanatory power.
+
+The signals that now carry information are the Yangshan premium, the LME carry, and the mining equities. The mining equities, Freeport-McMoRan and Antofagasta, are the dominant coincident factor, correlated with copper at roughly 0.58 to 0.68 across every regime, and a coincident regression explains about 62 percent of weekly copper variation post-2022. Crucially, that explanatory power is contemporaneous, not predictive. Weekly copper returns are essentially unpredictable from any single variable, with one-week predictive regressions near zero, so the edge lives in z-score levels and in a combined signal rather than in single-variable timing. The conditional forward-return work is where the directional case comes from. The top quartile of the Yangshan z-score historically preceded an average plus 4.47 percent return over twelve weeks at a 79 percent hit rate in the post-2022 sample, and the current Yangshan reading sits in that top quartile at a z-score of plus 1.24, corroborated by China refined imports running about plus 5.2 percent year on year. Beneath this sits a genuine structural floor: a mine-supply deficit driven by seven-to-ten-year lead times and declining ore grades, met by electrification, grid, and data-centre demand. That floor cannot move within six months and is treated as support rather than as the engine of the trade.
+
+\begin{table}[htbp]
+\caption{Copper weekly-return correlations: full overlap (2017-04-25 to 2026-06-08, n=2,295)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.8cm} Q{1.8cm} Q{1.8cm} P{1.2cm}}
+\toprule
+\tabh{Variable} & \tabh{Pearson r} & \tabh{t-stat} & \tabh{p-value} & \tabh{Sig} \\
+\midrule
+LME Cash log return & 0.96457 & 125.378 & 0 & *** \\
+HG1 USD/t log return & 0.92475 & 83.329 & 0 & *** \\
+ANTO log return & 0.59904 & 25.656 & 0 & *** \\
+FCX log return & 0.57456 & 24.074 & 0 & *** \\
+HG1--LME spread d5 & 0.13710 & 4.746 & 0.0 & *** \\
+China PMI d20 & 0.10203 & 3.517 & 0.00044 & *** \\
+Yangshan d5 & 0.08861 & 3.051 & 0.00228 & *** \\
+LME Stocks d5 & 0.04869 & 1.672 & 0.09457 & * \\
+Carry Cash--3M d5 & 0.01918 & 0.658 & 0.51061 & ns \\
+Shanghai premium d5 & \(-\)0.00694 & \(-\)0.238 & 0.81178 & ns \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Copper weekly-return correlations: post-decoupling (2022-01-01 onward, n=1,117)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.8cm} Q{1.8cm} Q{1.8cm} P{1.2cm}}
+\toprule
+\tabh{Variable} & \tabh{Pearson r} & \tabh{t-stat} & \tabh{p-value} & \tabh{Sig} \\
+\midrule
+LME Cash log return & 0.99060 & 241.837 & 0 & *** \\
+HG1 USD/t log return & 0.81209 & 46.470 & 0 & *** \\
+ANTO log return & 0.68010 & 30.977 & 0 & *** \\
+FCX log return & 0.60214 & 25.183 & 0 & *** \\
+Carry Cash--3M d5 & 0.13483 & 4.544 & 0.00001 & *** \\
+HG1--LME spread d5 & 0.08330 & 2.791 & 0.00525 & *** \\
+LME Stocks d5 & 0.05227 & 1.748 & 0.08051 & * \\
+Shanghai premium d5 & 0.05182 & 1.733 & 0.08315 & * \\
+Yangshan d5 & 0.05073 & 1.696 & 0.08988 & * \\
+China PMI d20 & \(-\)0.00572 & \(-\)0.191 & 0.84840 & ns \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Copper weekly-return correlations: recent 18 months (2025-01-01 onward, n=361)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.8cm} Q{1.8cm} Q{1.8cm} P{1.2cm}}
+\toprule
+\tabh{Variable} & \tabh{Pearson r} & \tabh{t-stat} & \tabh{p-value} & \tabh{Sig} \\
+\midrule
+LME Cash log return & 0.98007 & 93.483 & 0 & *** \\
+ANTO log return & 0.70572 & 18.873 & 0 & *** \\
+HG1 USD/t log return & 0.69369 & 18.248 & 0 & *** \\
+FCX log return & 0.52127 & 11.573 & 0 & *** \\
+Carry Cash--3M d5 & 0.13593 & 2.600 & 0.00933 & *** \\
+HG1--LME spread d5 & 0.07909 & 1.503 & 0.13278 & ns \\
+Yangshan d5 & 0.07714 & 1.466 & 0.14266 & ns \\
+China PMI d20 & 0.05564 & 1.056 & 0.29103 & ns \\
+LME Stocks d5 & 0.02591 & 0.491 & 0.62330 & ns \\
+Shanghai premium d5 & \(-\)0.00371 & \(-\)0.070 & 0.94393 & ns \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Rolling 252-day PMI--copper correlation (year-end snapshots): 2018: +0.063 \(\mid\) 2020 (COVID): +0.165 \(\mid\) 2022 (flip): \(-\)0.022 \(\mid\) 2023: \(-\)0.060 \(\mid\) 2024--2026: near zero. FCX and ANTO rolling correlations: stable 0.40--0.73 throughout all years.}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Post-2022 coincident weekly regression (adjusted R\textsuperscript{2} = 0.6212)}
+\small
+\begin{tabularx}{\linewidth}{L Q{2.4cm} Q{2.2cm} P{2.8cm}}
+\toprule
+\tabh{Variable} & \tabh{Coefficient} & \tabh{HAC t-stat} & \tabh{Significance} \\
+\midrule
+FCX weekly return & 0.15745 & 5.93 & *** \\
+ANTO weekly return & 0.22555 & 6.75 & *** \\
+LME Stocks z-score & 0.00202 & & ** (p\(<\)0.05) \\
+HG1--LME spread z-score & 0.00208 & & ** (p\(<\)0.05) \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Pre-2022 coincident (n=193, adj R\textsuperscript{2}=0.5467): FCX=0.18165, ANTO=0.16008; carry marginally sig p\(<\)0.10. Predictive 1-week post-2022 (n=231): adj R\textsuperscript{2}=\(-\)0.0042 (\(\sim\)0). Predictive 4-week post-2022 (n=228): adj R\textsuperscript{2}=0.0401. Predictive full-sample 1-week (n=424): adj R\textsuperscript{2}=0.0051.}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Yangshan z-score quartiles (q25=\(-\)0.93, q75=+0.49; current z=+1.24 --- top quartile / bullish)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.1cm} Q{1.6cm} Q{1.4cm} Q{1.6cm} Q{1.5cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% & 265 & \(-\)0.536\% & 43.8\% & \(-\)2.345\% & 36.6\% \\
+Middle 50\% & 527 & +0.776\% & 59.8\% & +3.046\% & 63.2\% \\
+Top 25\% & 265 & +1.448\% & 68.7\% & +4.475\% & 79.2\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{LME Carry z-score quartiles (q25=\(-\)1.11, q75=+0.14; current z=+0.05 --- middle / neutral)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.1cm} Q{1.6cm} Q{1.4cm} Q{1.6cm} Q{1.5cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% & 265 & +0.691\% & 58.1\% & +3.204\% & 68.7\% \\
+Middle 50\% & 527 & \(-\)0.279\% & 51.4\% & \(-\)1.034\% & 46.5\% \\
+Top 25\% & 265 & +2.320\% & 70.9\% & +7.039\% & 80.4\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{LME Stocks z-score quartiles (q25=+0.20, q75=+1.77; current z=+1.89 --- top quartile / tariff-distorted)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.1cm} Q{1.6cm} Q{1.4cm} Q{1.6cm} Q{1.5cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% & 265 & +0.279\% & 60.0\% & \(-\)0.170\% & 55.5\% \\
+Middle 50\% & 527 & +0.415\% & 54.8\% & +1.568\% & 59.0\% \\
+Top 25\% & 265 & +1.351\% & 62.3\% & +5.239\% & 68.7\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{HG1--LME spread z-score quartiles (q25=\(-\)0.83, q75=+0.73; current z=+0.02 --- middle / neutral)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.1cm} Q{1.6cm} Q{1.4cm} Q{1.6cm} Q{1.5cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% & 265 & +0.469\% & 56.6\% & +0.355\% & 54.7\% \\
+Middle 50\% & 527 & +1.156\% & 61.1\% & +4.157\% & 66.2\% \\
+Top 25\% & 265 & \(-\)0.312\% & 53.2\% & \(-\)0.436\% & 55.1\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{China PMI z-score post-2022 quartiles (q25=\(-\)0.63, q75=+0.52; signal is excluded from the composite, shown only to document the breakdown of the prior relationship)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.1cm} Q{1.6cm} Q{1.4cm} Q{1.6cm} Q{1.5cm}}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% (soft PMI) & 265 & +2.216\% & 67.9\% & +2.339\% & 66.4\% \\
+Middle 50\% & 527 & \(-\)0.141\% & 55.2\% & +2.704\% & 63.4\% \\
+Top 25\% (strong PMI) & 265 & +0.520\% & 53.6\% & +0.469\% & 49.1\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Composite signal construction: six components, each clipped to \(\pm 2\sigma\), sign-aligned, averaged}
+\small
+\begin{tabularx}{\linewidth}{L P{2.6cm} Q{2.5cm} Q{2.4cm}}
+\toprule
+\tabh{Component} & \tabh{Weight} & \tabh{Current reading} & \tabh{Contribution} \\
+\midrule
+Yangshan z-score & +1 & +1.235 & +1.235 \\
+LME carry z-score & +1 & +0.051 & +0.051 \\
+HG1--LME spread z-score & \(-\)1 (inverted) & +0.025 & \(-\)0.025 \\
+FCX 60d relative performance & +1 & \(-\)0.094 & \(-\)0.094 \\
+ANTO 60d relative performance & +1 & \(-\)0.010 & \(-\)0.010 \\
+China imports YoY & +1 & +0.395 & +0.395 \\
+PMI & EXCLUDED & & \\
+\midrule
+Composite score & & & +0.259 (upper-middle) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Composite quartile performance (sample: 2017-04 to 2026-03, n=2,244; correlation with fwd 60-day return: +0.157)}
+\small
+\begin{tabularx}{\linewidth}{L P{3.2cm} Q{1.1cm} Q{1.7cm} Q{1.6cm}}
+\toprule
+\tabh{Quartile} & \tabh{Threshold} & \tabh{n} & \tabh{12w avg} & \tabh{12w hit} \\
+\midrule
+Bottom 25\% & below \(-\)0.260 & 561 & +0.83\% & 49.2\% \\
+Middle 50\% & \(-\)0.260 to +0.334 & 1,122 & +2.19\% & 60.2\% \\
+Top 25\% & above +0.334 & 561 & +5.64\% & 74.3\% \\
+Current (+0.259) & upper-middle & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The position is sized at half rather than full for several specific reasons. The combined composite signal sits at plus 0.259, above the midpoint but below the plus 0.334 threshold that would justify a maximum position, because the Yangshan signal is strong while the corroborating signals are not yet confirming. The LME carry is flat, so the spot curve does not yet show the backwardation a real China-tightness rally should eventually produce. The mining equities are not yet outperforming copper. Visible LME warehouse stocks read high at a z-score near 1.9, which would normally be bearish but is interpreted as tariff-driven stockpiling rather than genuine surplus, because the threat of a United States tariff on refined copper has pulled metal toward United States warehouses, a distortion that suspends the usual inventory reading and that sits inside the horizon as a scheduled catalyst. The tariff-distortion reading is itself an interpretive overlay, and the position would be reassessed if the tariff regime resolves in a way that changes how the inventory signal should be read. Above all, the headline Yangshan edge, while economically meaningful, is not statistically significant on independent non-overlapping windows, where the post-2022 sample leaves only about 53 independent observations and the test returns a p-value near 0.21. This reading is what one would expect once the construction of the metric is understood. The regime change in Chinese copper demand is precisely the reason headline aggregate signals like the PMI lost explanatory power, because the composition of demand shifted away from broad manufacturing toward grid build-out, electrification, and data-centre construction. The Yangshan premium is not a headline aggregate. It is a direct physical market signal, a price paid by Chinese buyers for imported metal cleared at the bonded warehouse, and it measures the marginal tightness of refined copper supply into the country. That property is structural to the metric itself, so the signal retains its information content across the regime break, whether the underlying demand is property completion or grid investment. A lower correlation against weekly price changes in this environment is consistent with the price absorbing additional uncorrelated macro inputs rather than with the physical signal weakening. The position is therefore a positive-expected-value lean, not a high-conviction bet, and the half-budget sizing is the direct expression of that distinction. The trade scales up only if the composite clears plus 0.40 with the carry confirming, reduces if the Yangshan z-score crosses below zero or the miners underperform, and carries a 10 percent soft and 15 percent hard stop, against a tail that the full history shows can reach minus 67 percent in a crisis and minus 33 percent in the post-2022 regime.
+
+\begin{table}[htbp]
+\caption{Copper physical and market dashboard}
+\footnotesize
+\begin{tabularx}{\linewidth}{P{2.6cm} Q{1.7cm} P{1.5cm} Q{1.4cm} Q{1.2cm} Q{1.2cm} L}
+\toprule
+\tabh{Indicator} & \tabh{Value} & \tabh{Unit} & \tabh{z-score (252d)} & \tabh{4w change} & \tabh{YoY} & \tabh{Signal} \\
+\midrule
+LME 3M (LMCADS03) & 13,615.5 & USD/t & & +42.5 & +39.0\% & Primary price reference \\
+LME Cash (LMCADS00) & 13,592.08 & USD/t & & +76.69 & +37.45\% & Spot reference \\
+LME Carry (Cash--3M) & \(-\)23.42 & USD/t & +0.051 & & & Neutral; mild contango \\
+COMEX HG1 (USD/t equiv) & 13,999.34 & USD/t & & & & Spread reference only \\
+HG1--LME spread & 383.84 & USD/t & +0.025 & & & Neutral; tariff-regime normal \\
+LME warehouse stocks & 2,111.8 & kt [VERIFY unit] & +1.890 & +44.9 & +22.2\% & Ambiguous; tariff-distorted \\
+Yangshan premium (CECN0002) & 64 & USD/t & +1.235 & \(-\)6 & +48.8\% & BULLISH, top quartile \\
+Shanghai premium (CECN0001) & 50 & USD/t & & & & Onshore premium \\
+Shanghai minus Yangshan & \(-\)14 & USD/t & & & & Import incentive \\
+China refined imports & 315,798 & tonnes & & & +5.2\% & Confirms demand \\
+China NBS PMI & 50.0 & index & +0.778 & & & Regime context only (broken signal) \\
+FCX & 63.91 & USD & & +3.67\% & +52.7\% & Coincident driver; mild divergence \\
+ANTO & 3,981 & GBp & & +2.14\% & +113.3\% & Coincident driver; mild divergence \\
+FCX 60d vs LME 60d & \(-\)0.00944 & ratio & & & & Mild divergence --- not confirming \\
+ANTO 60d vs LME 60d & \(-\)0.00098 & ratio & & & & Mild divergence --- not confirming \\
+Composite signal & +0.259 & & & & & Upper-middle; directionally bullish \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Ticker note: Yangshan used as CECN0002 (vs.\ planned YNSSPP); must reconcile before citing ticker in bibliography.}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Copper action triggers}
+\small
+\begin{tabularx}{\linewidth}{P{3.1cm} L P{4.4cm}}
+\toprule
+\tabh{Action} & \tabh{Trigger} & \tabh{Empirical basis} \\
+\midrule
+SCALE UP (max long) & Composite \(>\)+0.40 AND Yangshan z \(>\)+1.5 AND Carry z \(>\)+0.5 & Top-quartile composite: +5.64\% 12w, 74\% hit \\
+CURRENT (moderate long) & Composite in [+0.10, +0.40], Yangshan top quartile, miners neutral & +0.259 supports directional bias, not max size \\
+REDUCE (cut to \(\sim\)half) & Yangshan z drops below 0 OR ANTO 60d relative performance \(<\) \(-\)3\% & Yangshan crossing zero invalidates primary signal \\
+EXIT / FLAT & Composite \(<\) \(-\)0.10 OR Yangshan z \(<\) \(-\)0.5 OR Carry z \(<\) \(-\)1.5 & Bottom-quartile composite: +0.83\% 12w, 49\% hit \\
+STOP-LOSS (mandatory) & LME 3M closes below 200d SMA for 3 consecutive days & Trend stop for tail scenarios \\
+FALSIFICATION (kill thesis) & LME Stocks YoY \(>\)+50\% WHILE Yangshan z drops below \(-\)1 & Simultaneous glut + China demand collapse \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Price targets and stops: base-case 6-month median return +8.5\%; soft stop \(-\)10\% from entry; hard stop \(-\)15\% from entry. Tail reference: full-history max drawdown \(-\)67.4\% (2008); post-2022 max drawdown \(-\)32.8\%; recent \(-\)20.9\%.}
+\end{table}
+
+\clearpage
+\subsection{Oil}
+
+Oil is not a strategic core holding. On twenty years of realised data it is the weakest asset in the candidate set, with a Sharpe ratio of 0.04, a maximum drawdown near minus 87 percent, and a weight of exactly zero in every long-only maximum-Sharpe solution the portfolio work produced. That conclusion stands. What the team builds instead is the separate, forward-looking case that the realised history cannot capture: whether the 2026 war changed how oil's geopolitical risk is priced, and if so, the specific conditions under which a position becomes attractive enough to justify its volatility and gap risk.
+
+The structural hypothesis is a regime break of the same kind the team identified for gold and copper. For three decades the market treated a Strait of Hormuz closure as a theoretical tail and priced the Gulf-security risk at near-complacency. The 2026 war converted that scenario into a demonstrated operational reality, because Iran laid mines, boarded vessels, enforced a closure for months, formally redefined the strait as an operational area in May 2026, and extracted concessions in the process. War-risk insurance repriced from about 0.125 percent of hull value per transit to between 0.2 and 0.4 percent, which is the concrete footprint of the change. The contestable part of the thesis is its permanence. The team does not need to win the argument that the shift is permanent. It needs only the weaker claim that the probability distribution for Gulf supply security has shifted enough that a near-zero premium is no longer fair, and it manages the residual uncertainty through entry gates and a stop rather than by betting the regime is permanent. This is where the two-errors discipline applies directly, because both errors are available at once. Treating ``Gulf scares always reopen cheaply'' as a law is the complacency trap the market is in during the current relief rally, and assuming permanent closure is the over-extrapolation trap, and the framework is built to exploit the first while refusing the second.
+
+A fair premium can be decomposed rather than asserted. The pre-war fundamental anchor is about 65 dollars, from the team's own data, where Brent averaged about 64.6 dollars in the oversupplied glut before the war within a range of roughly 59 to 72. The new-regime normalised fair value is about 85 dollars, which the team builds from the anchor plus an inventory-tightness premium that mechanically decays, a permanent spare-capacity and volatility premium from the UAE's exit, and a standing Hormuz security premium, and which lands inside the analyst consensus cluster of 80 to 90. The team's own data marks the war peak near 118 dollars, with the EIA citing a 138-dollar intraday print on 7 April as a higher external reference, and the fair-value decomposition is anchored on the 118 figure. Brent currently trades near 77 to 78 dollars, below the normalised fair value, as the market front-runs a best-case reopening that is real but unfinished.
+
+\begin{table}[htbp]
+\caption{Oil regime comparison: pre-war vs war}
+\small
+\begin{tabularx}{\linewidth}{P{2.5cm} P{3.6cm} P{3.6cm} L}
+\toprule
+\tabh{Variable} & \tabh{Pre-war (Q4-2025 to 27 Feb 2026)} & \tabh{War (28 Feb to 9 Jun 2026)} & \tabh{Read} \\
+\midrule
+Brent level (USD/bbl) & Mean \$64.6; range \$58.9--\$72.5 & Peak \$118.3 (31 Mar); range \$77.7--\$118; last \$91.3 (9 Jun) & War +63\% peak vs pre-war; EIA cites \$138 intraday high 7 Apr \\
+Current (late Jun) & & \(\sim\)\$77--78 & Relief rally on US--Iran MoU; still below normalised FV \\
+Brent curve (CO1/CO2\(-\)1) & Mean +0.8\% (mild backwardation) & Peak +13.8\%; last +1.7\% & Front-month scarcity blew out, now flattening as reopening priced \\
+Crude implied volatility & Pre-war: moderate & \(\sim\)78\% average (CME) since war & Structurally elevated-vol regime \\
+Hormuz flow & \(\sim\)15--15.5 mb/d (norm) & May low \(\sim\)9.6 mb/d; \(\sim\)12 mb/d early Jun & \(\sim\)20\% of global seaborne; not yet normalised \\
+OECD crude cover & Pre-war comfortable & Heading to \(\sim\)50 days by end-2026 & \(\sim\)900 mb cumulative 2026 deficit; fewest since \(\sim\)2003 \\
+Spare capacity & \(\sim\)3.8 mb/d & \(\sim\)2.5 mb/d by 2027 (UAE exit 1 May) & Permanent reduction in OPEC+ shock-absorber \\
+War-risk insurance & \(\sim\)0.125\% of hull & 0.2--0.4\% of hull per transit & Concrete footprint of the regime repricing \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Oil Signal 1: Brent curve backwardation z-score (n=5,213)}
+\small
+\begin{tabularx}{\linewidth}{P{2.9cm} Q{1.0cm} Q{1.2cm} Q{0.9cm} Q{1.2cm} Q{0.95cm} L}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} & \tabh{Interpretation} \\
+\midrule
+Bottom 25\% (deep contango) & 1,304 & \(-\)1.45\% & 49\% & \(-\)3.08\% & 50\% & Bearish term structure; oversupply signal \\
+Middle 50\% & 2,606 & +0.91\% & 58\% & +1.83\% & 56\% & Balanced / mild backwardation \\
+Top 25\% (deep backwardation) & 1,303 & +0.40\% & 56\% & +1.71\% & 58\% & Physical tightness; modest forward edge \\
+Current (z=\(-\)0.13) & & & & & & Middle. Backwardated in level (+1.7\%) but flattening from war peak \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Oil Signal 2: EIA crude stocks z-score (n=3,926)}
+\small
+\begin{tabularx}{\linewidth}{P{2.9cm} Q{1.0cm} Q{1.2cm} Q{0.9cm} Q{1.2cm} Q{0.95cm} L}
+\toprule
+\tabh{Quartile} & \tabh{n} & \tabh{4w avg} & \tabh{4w hit} & \tabh{12w avg} & \tabh{12w hit} & \tabh{Interpretation} \\
+\midrule
+Bottom 25\% (low stocks) & 982 & +0.02\% & 55\% & \(-\)1.12\% & 52\% & Drawn inventories --- mixed signal (noisy) \\
+Middle 50\% & 1,962 & +0.32\% & 57\% & +0.92\% & 54\% & Balanced \\
+Top 25\% (high stocks) & 982 & \(-\)0.48\% & 46\% & \(-\)0.74\% & 40\% & Builds --- the clean bearish read \\
+Current (z=\(-\)3.64) & & & & & & Below bottom quartile. Extreme draw; confirms disruption real and unresolved \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Normalised fair-value decomposition for Brent}
+\small
+\begin{tabularx}{\linewidth}{P{5.2cm} Q{1.5cm} L}
+\toprule
+\tabh{Component} & \tabh{USD/bbl} & \tabh{Basis} \\
+\midrule
+Pre-war fundamental anchor & \$65 & Team data: Brent mean \$64.6, range \$58.9--\$72.5 over Q4-2025 to 27 Feb 2026 \\
++ Inventory-tightness premium & +\$8 & \(\sim\)900 mb 2026 deficit; OECD cover to \(\sim\)50 days; DECAYS as stocks refill \\
++ Spare-capacity/structural-vol premium & +\$4 & UAE exit: OPEC+ buffer 3.8 \(\rightarrow\) 2.5 mb/d; PERMANENT uplift \\
++ Geopolitical/Hormuz security premium & +\$8 & New-regime standing premium (pre-war \(\approx\) \$0); insurance 0.125\% \(\rightarrow\) 0.2--0.4\% \\
+Normalised fair value (new regime) & \$85 & Analyst cluster \$80--90: Kpler \(\sim\)\$85; EIA Q4-2026 \(\sim\)\$89 / 2027 \(\sim\)\$79; Goldman Q4 \(\sim\)\$90 \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Current location vs fair value (as of \(\sim\)23 Jun 2026): live Brent \(\sim\)\$77.5; embedded premium now (live minus anchor) \$12.5 (below the fair structural premium of \(\sim\)\$20); discount to normalised fair value \(\sim\)8.8\%. Upside/downside reference levels: high-conviction long zone \$65--\$75 (market near pre-war floor, structural drivers intact) \(\mid\) value-emerging probe zone \$75--\$82 (current location) \(\mid\) stop / falsification level \(\sim\)\$59 (durable break with verified, permanent reopening + cleared mines) \(\mid\) upside targets \$85 (normalised FV); \$118/\$138 (re-escalation range; \$118 team data / \$138 EIA 7 Apr); \$150 (BofA tail).}
+\end{table}
+
+The position is therefore held as a conditional engagement, not a fourth co-equal thesis, and it is activated only when three gates align at once, because price alone never triggers it. The valuation gate looks for a compressed price, with a small probe defensible in the current 72-to-78 band and the high-conviction asymmetric zone at roughly 62 to 72, where the market has stripped essentially the entire structural premium back toward the pre-war floor. The premium-intact gate requires that the disruption verifiably has not resolved: flows still below the roughly 15-million-barrel-per-day norm, mines not cleared, insurance still elevated, the operational-area posture standing, and inventories still drawn, which they currently are at an extreme. The catalyst gate requires a concrete sign the best-case reopening is faltering, so the entry is timed with a turn rather than against a slide. As of late June the framework says wait, because the price sits only in the probe band and the catalyst gate has not fired. When it does activate, the position is small, below the gold and copper risk budget, stopped on a durable break below about 58 to 60 dollars with the strait verifiably and permanently open, and pre-committed to exit on confirmation of a durable reopening, since the single fact of Hormuz status governs both entry and exit. Framed this way the oil section reads as risk discipline rather than indecision, and it uses the same promotion mechanic the team applies to the passive sleeve, one level up.
+
+\begin{table}[htbp]
+\caption{Oil conditional-engagement gates}
+\small
+\begin{tabularx}{\linewidth}{P{2.4cm} P{2.5cm} L P{2.9cm}}
+\toprule
+\tabh{Gate} & \tabh{Condition required} & \tabh{Specific indicators} & \tabh{Current status} \\
+\midrule
+Gate 1: Valuation & Price attractive vs new-regime fair value & Live Brent at or below value-emerging upper (\(\sim\)\$82); high-conviction zone \(\sim\)\$65--75 & PASS (probe) --- live \(\sim\)\$77.5; in value-emerging band; high-conviction zone not yet reached \\
+Gate 2: Structural premium intact & Disruption verifiably NOT resolved & Hormuz flows still below \(\sim\)15 mb/d norm (\checkmark); mines not certified cleared (\checkmark); war-risk insurance still above 0.125\% baseline (monitoring); ``operational area'' posture standing (\checkmark); no holding political settlement (monitoring --- MoU fragile); OECD cover \(<\) \(\sim\)55--60 days (\checkmark\ --- heading to \(\sim\)50 days) & PASS --- danger real, merely mispriced \\
+Gate 3: Deterioration catalyst & Concrete sign best-case reopening is faltering & Renewed Hormuz incident or vessel attack; talks stalling/cancelled; enforcement action under ``operational area'' posture; war-risk insurance ticking back up; failed nuclear-inspection milestone & NOT FIRED --- no active catalyst as of late Jun \\
+Combined entry signal & ALL THREE gates must be TRUE & & WAIT --- Gate 3 not fired \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Sizing and stop when activated: size small, below gold and copper risk budget (supply-shock trade, not a structural long). Stop: durable close below \(\sim\)\$58--60 WITH strait verifiably and permanently open and mines cleared. Exit: confirmed durable reopening (mines cleared, insurance normal, unescorted commercial flows).}
+\end{table}
+
+\clearpage
+\section{Portfolio Construction, Risk, and Deployment}
+
+\subsection{The tested allocation space and the ranking}
+
+The portfolio was not chosen by intuition. Twelve allocations spanning the economically sensible weight space, from concentrated single-conviction portfolios to broad four-asset mixes, with and without oil and with and without the passive layer, were each evaluated over the same covariance matrix so the results are directly comparable. The primary ordering criterion is the Sharpe ratio at a 2.5 percent risk-free rate, supported by volatility, expected return, the effective number of bets, and the efficiency loss against the mean-variance frontier. The most important result is structural rather than the rank order itself. The top of the table is almost entirely oil-free and the bottom is oil-heavy, and every allocation with a meaningful oil weight shows an efficiency loss of 15 to 36 percent against the frontier while the oil-free allocations sit between 1.5 and 13 percent. The spread is real and not cosmetic, since the best portfolio's Sharpe of 0.478 is more than two and a half times the worst at 0.183.
+
+\begin{table}[htbp]
+\caption{Asset-level risk metrics (sample: 2 January 2005 to June 2026; risk-free rate 2.5\%; annualisation 252 days)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.5cm} Q{1.6cm} Q{1.3cm} Q{1.3cm} Q{1.9cm}}
+\toprule
+\tabh{Asset} & \tabh{Ann.\ return*} & \tabh{Ann.\ volatility} & \tabh{Sharpe ratio} & \tabh{Calmar ratio} & \tabh{Max drawdown} \\
+\midrule
+Gold & \(\sim\)11.4\% & 17.7\% & 0.504 & 0.26 & \(-\)44.6\% \\
+Brent crude oil & \(\sim\)4.0\% & 37.0\% & 0.041 & 0.05 & \(-\)86.8\% \\
+Copper (LME 3M) & \(\sim\)7.3\% & 25.5\% & 0.190 & 0.11 & \(-\)67.4\% \\
+Passive A (Bloomberg Agriculture Index) & \(\sim\)0.0\% & 18.4\% & \(-\)0.182 & \(-\)0.01 & \(-\)66.5\% \\
+Passive B (WisdomTree Ag ETF) & \(\sim\)0.5\% & 21.0\% & \(-\)0.094 & 0.01 & \(-\)68.4\% \\
+\bottomrule
+\end{tabularx}
+\fshfsource{*Annualised returns back-calculated from Sharpe \(\times\) volatility + 2.5\%. The portfolio uses Passive B (WisdomTree Ag).}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Correlation matrix of the portfolio assets}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.6cm} Q{1.6cm} Q{1.6cm} Q{1.8cm}}
+\toprule
+ & \tabh{Gold} & \tabh{Oil} & \tabh{Copper} & \tabh{Passive B} \\
+\midrule
+Gold & 1.00 & 0.16 & 0.33 & 0.21 \\
+Oil & 0.16 & 1.00 & 0.33 & 0.29 \\
+Copper & 0.33 & 0.33 & 1.00 & 0.34 \\
+Passive B & 0.21 & 0.29 & 0.34 & 1.00 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Full five-asset correlation matrix (including Passive A, for reference)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.35cm} Q{1.35cm} Q{1.35cm} Q{1.6cm} Q{1.6cm}}
+\toprule
+ & \tabh{Gold} & \tabh{Oil} & \tabh{Copper} & \tabh{Passive A} & \tabh{Passive B} \\
+\midrule
+Gold & 1.00 & 0.16 & 0.33 & 0.21 & 0.21 \\
+Oil & 0.16 & 1.00 & 0.33 & 0.34 & 0.29 \\
+Copper & 0.33 & 0.33 & 1.00 & 0.33 & 0.34 \\
+Passive A & 0.21 & 0.34 & 0.33 & 1.00 & 0.66 \\
+Passive B & 0.21 & 0.29 & 0.34 & 0.66 & 1.00 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Allocation ranking (primary criterion: Sharpe ratio at 2.5\% risk-free rate; efficiency loss = percentage distance from the mean-variance efficient frontier)}
+\small
+\begin{tabularx}{\linewidth}{Q{0.9cm} P{3.9cm} Q{1.3cm} Q{1.4cm} Q{1.2cm} Q{0.9cm} Q{1.6cm}}
+\toprule
+\tabh{Rank} & \tabh{Allocation (Gold/Oil/Copper/Passive)} & \tabh{Return p.a.} & \tabh{Volatility} & \tabh{Sharpe} & \tabh{ENB} & \tabh{Efficiency loss} \\
+\midrule
+1 & 75 / 0 / 25 / 0 & 10.4\% & 16.5\% & 0.478 & 1.60 & 1.5\% \\
+2 & 50 / 0 / 50 / 0 & 9.4\% & 17.8\% & 0.387 & 2.00 & 13.4\% \\
+3 & 50 / 0 / 30 / 20 & 8.0\% & 15.3\% & 0.359 & 2.63 & 4.4\% \\
+4 & 50 / 25 / 25 / 0 & 8.5\% & 17.5\% & 0.345 & 2.67 & 15.2\% \\
+5 & 40 / 0 / 40 / 20 & 7.6\% & 16.1\% & 0.317 & 2.78 & 9.6\% \\
+6 & 35 / 20 / 35 / 10 & 7.4\% & 17.3\% & 0.285 & 3.39 & 15.9\% \\
+7 & 25 / 0 / 75 / 0 & 8.4\% & 21.0\% & 0.279 & 1.60 & 29.6\% \\
+8 & 33 / 33 / 33 / 0 & 7.5\% & 19.4\% & 0.259 & 3.06 & 25.0\% \\
+9 & 25 / 25 / 50 / 0 & 7.5\% & 19.9\% & 0.253 & 2.67 & 26.8\% \\
+10 & 25 / 0 / 50 / 25 & 6.7\% & 17.3\% & 0.240 & 2.67 & 15.9\% \\
+11 & 25 / 25 / 25 / 25 & 5.8\% & 17.5\% & 0.191 & 4.00 & 15.0\% \\
+12 & 25 / 50 / 25 / 0 & 6.7\% & 22.9\% & 0.183 & 2.67 & 36.4\% \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Note: unconstrained Sharpe maximisation collapses to \(\sim\)96\% Gold / 4\% Copper. Under constraint of min 25\% Copper and no Oil, optimum is 75/0/25 (Rank 1). Oil weight in minimum-variance portfolio: 3.4\%. Passive weight in minimum-variance portfolio: 33\%.}
+\end{table}
+
+\subsection{The mathematically optimal allocation, and why it is not the recommended one}
+
+An unconstrained Sharpe maximisation collapses onto roughly 96 percent gold and 4 percent copper, and even under the copper minimum constraint and no oil the formal optimum is 75 percent gold and 25 percent copper, which sits almost exactly on the efficiency frontier with a Sharpe of 0.478. Both results point in the same direction, namely that on the team's covariance structure and on the conviction-overlaid return view a heavier gold position would mathematically increase risk-adjusted return. The team has set the allocation at 50 percent rather than at the mathematical optimum for two reasons. The first is that gold has corrected roughly 25 percent from its late-January 2026 record over a short window, and entering at maximum size into a position that has just experienced a sharp drawdown is operationally imprudent regardless of what the optimiser suggests. The second is that the 50 percent level preserves the option to add to gold or to redirect capital toward an activated oil engagement without breaching a structural ceiling. If the conditional oil framework fires within the horizon, the gold weight is the first source of funding and is reduced proportionally rather than across the whole portfolio, which is the orderly way to fund a triggered position from the asset whose mathematical case supports the highest weight in the sleeve. Gold is therefore held at 50 percent as a deliberate underweight versus the optimum, and it is monitored more closely than any other holding because it is the position the team is most willing to scale in either direction. The optimum itself, it should be added, reflects realised returns from a twenty-year gold bull market rather than a forecast, which is a separate reason not to follow it mechanically.
+
+The recommended allocation is therefore 50 percent gold, 30 percent copper, 20 percent passive agriculture, and 0 percent oil. It is the best risk-adjusted portfolio within the oil-free, mandate-compliant group, it carries the lowest volatility of the entire top group at 15.3 percent, it sits only 4.4 percent off the frontier, and it distributes risk in a balanced way, with risk contributions of about 46 percent gold, 39 percent copper, and 15 percent passive. If the team wished to weight its copper conviction more heavily, the coherent variant is 40 percent gold, 40 percent copper, and 20 percent passive, which shifts the copper risk contribution to about 55 percent at the cost of a slightly lower Sharpe of 0.317. The choice between the two is a conviction decision rather than a purely mathematical one, and it is presented as such.
+
+\begin{table}[htbp]
+\caption{Recommended allocation vs conviction variant}
+\small
+\begin{tabularx}{\linewidth}{L Q{4.0cm} Q{4.2cm}}
+\toprule
+\tabh{Metric} & \tabh{Recommended: 50/0/30/20} & \tabh{Conviction variant: 40/0/40/20} \\
+\midrule
+Gold weight & 50\% & 40\% \\
+Oil weight & 0\% & 0\% \\
+Copper weight & 30\% & 40\% \\
+Passive B weight & 20\% & 20\% \\
+Expected return p.a. & 8.0\% & 7.6\% \\
+Annualised volatility & 15.3\% & 16.1\% \\
+Sharpe ratio & 0.359 & 0.317 \\
+ENB & 2.63 & 2.78 \\
+Efficiency loss vs frontier & 4.4\% & 9.6\% \\
+Risk contribution: Gold & \(\sim\)46\% & \\
+Risk contribution: Copper & \(\sim\)39\% & \(\sim\)55\% \\
+Risk contribution: Passive B & \(\sim\)15\% & \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Comparison: 50/0/50/0 (no passive layer) --- return 9.4\%, vol 17.8\%, Sharpe 0.387, ENB 2.00, efficiency loss 13.4\%. Adding 20\% passive reduces volatility from 17.8\% to 15.3\%; Sharpe moves from 0.387 to 0.359.}
+\end{table}
+
+\subsection{The oil question, settled quantitatively}
+
+The mean-variance work disposes of the narrow question cleanly. Oil's only possible defence in the portfolio is diversification, since its correlation with gold is genuinely low at 0.16, but that effect is too small to matter. Oil receives a weight of exactly zero in every Sharpe-maximising portfolio under all copper and passive minimum-weight constraints, and even in the pure minimum-variance portfolio, which targets risk reduction alone, oil reaches only 3.4 percent. The diversification benefit is real but is swamped by the weak return and the extreme tail, and it can be supplied more cheaply by the passive layer. Oil therefore enters the portfolio only through a standalone, thesis-driven engagement, which is the conditional framework of Section 4.3, and not as a permanent diversification building block.
+
+\subsection{The passive layer, and what it actually does}
+
+The passive layer is often passed over without rigorous examination. Here it receives the same quantitative treatment as the active positions, because its justification is entirely quantitative and partly counter-intuitive. The layer is not a return source. Over the twenty-year window its own Sharpe ratio is negative at minus 0.09 and its return is effectively zero. Its entire value sits on the risk side, and there it is substantial. In the minimum-variance portfolio the passive agriculture sleeve receives a weight of 33 percent, which is the clearest single statement of its role as a variance and drawdown dampener. Concretely, adding a 20 percent passive weight to the 50/0/30 portfolio lowers portfolio volatility from 17.8 to 15.3 percent for only a moderate Sharpe decline from 0.387 to 0.359. That is the trade the layer exists to make.
+
+The correlation structure then yields a finding that separates a strong risk argument from a hand-waved one. The passive agriculture sleeve correlates lowest with gold at 0.21 and highest with copper at 0.34. It therefore diversifies most strongly against the asset the portfolio already holds as its stability anchor, gold, and overlaps most with the conviction asset, copper. The economic logic is coherent, because copper and agricultural commodities are both real-economy and inflation-sensitive, while gold is a monetary asset that follows a different logic. The practical consequence is that the layer's diversification works concentrated against the gold position, and that part of its apparent diversification against copper is relativised by the shared business-cycle and inflation factor. This is the difference between showing diversification and claiming it.
+
+The product choice is also defended on data rather than convenience. The investable vehicle is the WisdomTree Agriculture ETF, after the originally considered strategic-metals sleeve was dropped, which narrowed the passive layer to agriculture alone. Of the two agriculture variants examined, the investable product carried the better risk-adjusted history, with a Sharpe of minus 0.09 against minus 0.18 for the broader alternative, so the choice followed both investability and the stronger metric. Beyond risk, the layer does two jobs the active core cannot. It guarantees segment coverage so the portfolio has no unintended segment gaps, and it serves as the candidate pool from which a holding is promoted to active analysis as the team scales, which is the same promotion mechanic applied one level up to oil. One methodological note belongs here. The original analysis tool did not recompute portfolio volatility and Sharpe in some passive scenarios, so the figures in this paper are recomputed directly from the covariance matrix, and the corrected numbers mean the real volatility-dampening benefit of the layer is somewhat larger than the raw tool screenshots suggested, not smaller.
+
+\subsection{Capital deployment}
+
+Once the allocation is approved, the question is whether to deploy it all at once or in tranches. The answer is derived from a Monte-Carlo study rather than asserted, and it is that the structural, low-volatility part of the portfolio should be deployed immediately while only the conviction and cyclical remainder is staged against the entry triggers the team already owns, a mostly-upfront entry of two to three trades. Mechanical calendar dollar-cost-averaging is rejected.
+
+The reason is that this is a variance-versus-drift trade-off, not a timing call, because the team holds no model that says gold or copper will be cheaper in eight weeks. Phasing trims the dispersion of the entry price but leaves capital in cash that the positive-expected-return portfolio would otherwise compound. Simulating the deployment over the 126-trading-day horizon on the recommended portfolio's moments shows the trade-off is real but modest. A same-day lump sum returns about 4.08 percent on average with a fifth-percentile outcome near minus 13.4 percent, while full weekly dollar-cost-averaging over three months returns about 3.40 percent with a fifth-percentile near minus 11.1 percent. The cost of waiting ranges from about 0.14 percentage points for light staging to 0.68 points for full weekly averaging, and the tail cushion bought ranges from 0.54 to 2.37 points, while phasing beats lump sum only 45 to 47 percent of the time, exactly as a positive-drift book predicts. A robustness check that strips out the unreliable drift estimate is the decisive one, because with zero drift the means converge and phasing's only durable benefit is variance and tail reduction, while its cost is conditional on a drift the team does not trust. That asymmetry argues for light staging, not aggressive averaging.
+
+\begin{table}[htbp]
+\caption{Deployment simulation: main panel (200,000 paths; horizon 126 trading days to the December 2026 rebalance; inputs: expected return 8.0\% p.a., volatility 15.3\% p.a., cash rate 2.5\% p.a.; normally distributed daily returns)}
+\small
+\begin{tabularx}{\linewidth}{L Q{1.3cm} Q{1.4cm} Q{1.3cm} Q{1.6cm} Q{1.6cm}}
+\toprule
+\tabh{Deployment style} & \tabh{Mean} & \tabh{Median} & \tabh{Std dev} & \tabh{5th pctile} & \tabh{1st pctile} \\
+\midrule
+Lump sum (100\% day 0) & +4.08\% & +3.49\% & 11.30 & \(-\)13.44\% & \(-\)19.60\% \\
+Hybrid: 70\% now / 30\% at \(\sim\)4 weeks & +3.94\% & +3.41\% & 10.81 & \(-\)12.90\% & \(-\)18.73\% \\
+Thirds over 6 weeks (0 / 3wk / 6wk) & +3.74\% & +3.25\% & 10.24 & \(-\)12.25\% & \(-\)17.84\% \\
+Weekly DCA over 3 months (13 tranches) & +3.40\% & +3.00\% & 9.22 & \(-\)11.07\% & \(-\)16.20\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Deployment simulation: summary statistics}
+\small
+\begin{tabularx}{\linewidth}{L Q{2.6cm} Q{3.2cm} Q{3.3cm}}
+\toprule
+\tabh{Style} & \tabh{Mean give-up vs lump sum} & \tabh{5th-pctile improvement vs lump sum} & \tabh{Probability phasing beats lump sum} \\
+\midrule
+Hybrid 70/30 & \(-\)0.14pp & +0.54pp & 45--47\% \\
+Thirds / 6wk & \(-\)0.34pp & +1.19pp & 45--47\% \\
+Weekly DCA / 3m & \(-\)0.68pp & +2.37pp & 45--47\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Deployment simulation: robustness check (zero drift --- drift estimate removed)}
+\small
+\begin{tabularx}{\linewidth}{L Q{2.2cm} Q{2.2cm}}
+\toprule
+\tabh{Style} & \tabh{Mean} & \tabh{5th pctile} \\
+\midrule
+Lump sum & \(-\)0.03\% & \(-\)16.86\% \\
+Hybrid 70/30 & +0.03\% & \(-\)16.15\% \\
+Weekly DCA / 3m & +0.27\% & \(-\)13.75\% \\
+\bottomrule
+\end{tabularx}
+\fshfsource{Conclusion from zero-drift panel: with no drift, means converge (cost of waiting disappears); phasing's only durable benefit is tail/variance reduction.}
+\end{table}
+
+The plan that follows deploys roughly two thirds now: the full passive layer, the gold physical core, and an initial copper slice, since none of that carries a signal to wait. The remaining gold is staged on the next gold trigger or within three to four weeks, and the remaining copper is staged against the copper scale-up signal rather than bought at the high. A hard backstop fully deploys the portfolio within six to eight weeks regardless of triggers, because an indefinitely deferred entry is itself an uncompensated timing bet against the portfolio's positive carry. This inherits the gold thesis's condition-triggered staging and the copper position's crowding caution, on two to three trades rather than thirteen.
+
+\subsection{Portfolio-level risk}
+
+The recommended portfolio carries an expected return near 8.0 percent, a volatility of 15.3 percent, a Sharpe of about 0.36, and an effective number of bets of 2.63, which places it near the knee of the trade-off curve between risk-adjusted return and diversification rather than at either extreme. The governing portfolio risk is not any single leg but correlated reversal, the scenario in which a durable Hormuz de-escalation and a sharp dollar rally pressure gold, copper, and oil at once. All figures above assume the historical covariance persists. That assumption is defensible for a covariance estimated over a long, multi-regime window, but it understates the convergence of correlations toward one in a sharp risk-off event, so the true tail is worse than the modelled fifth-percentile suggests. That convergence risk, together with oil's minus 87 percent historical drawdown and gap risk, is the specific reason the oil position is held outside this portfolio on its own supply-shock discipline rather than folded into it. Drawdown-sensitive measures such as the Calmar ratio favour the gold-heavy, oil-free allocations, which is the same ordering the Sharpe analysis produced, so the risk-adjusted and the drawdown-adjusted views agree on the shape of the recommended portfolio.
+
+\clearpage
+\section{Allocation Table and Instruments}
+
+The allocation table is the one-page summary of the entire paper, and its governing discipline is traceability: every row corresponds to a thesis section, so a position whose rationale cannot be found in the body does not appear in the table. The recommended sleeve is 50 percent gold, 30 percent copper, and 20 percent passive agriculture, with a contingent oil row held at zero until its entry gates fire.
+
+The gold row is a 50 percent long whose primary driver is the structural central-bank bid. The core is entered now and sized to the falsification rule, the tactical sleeve is staged on a downturn in real-yield momentum, and the exits are an 8 percent stop on the tactical sleeve, a structural line at a sustained weekly close below 4,000, and the three written falsification conditions on the core. The copper row is a 30 percent long on Chinese physical demand read through the Yangshan premium, with the entry condition already met in early June and the position sized at about half the risk budget, scaling up only if the composite signal clears plus 0.40 with the carry confirming, carrying 10 percent soft and 15 percent hard stops, and falsified by a Yangshan reversal alongside an inventory glut. The passive agriculture row is a 20 percent strategic long whose role is segment coverage, variance and drawdown dampening, and the candidate pool, held without a timing signal and governed by the promotion mechanic. The oil row is contingent at zero, with the driver the Hormuz supply-shock repricing and the entry and exit set by the three-gate conditional framework, which currently reads wait.
+
+\begin{small}
+\begin{longtable}{P{1.9cm} P{1.2cm} P{1.75cm} P{2.25cm} P{3.0cm} P{3.0cm}}
+\caption{Allocation table}\\
+\toprule
+\tabh{Exposure} & \tabh{Weight} & \tabh{Direction} & \tabh{Primary driver} & \tabh{Entry summary} & \tabh{Exit / Stop} \\
+\midrule
+\endfirsthead
+\caption[]{Allocation table (continued)}\\
+\toprule
+\tabh{Exposure} & \tabh{Weight} & \tabh{Direction} & \tabh{Primary driver} & \tabh{Entry summary} & \tabh{Exit / Stop} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Gold (physical ETF core + tactical sleeve) & 50\% & Long --- structural core now; tactical sleeve staged & Official-sector (central-bank) bid; cointegration break from real yields post-2022 & Core: entered now, structural bid intact and positioning not crowded. Tactical sleeve: stages on real-yield 60d momentum turning down and/or dip to 200d (\(\sim\)\$4,463). Leveraged add: on weekly close above 200d then 100d (\(\sim\)\$4,750) on volume. & Core: falsified if real-yield cointegration re-establishes with negative sign for 2+ quarters OR CB buying \(<\) \(\sim\)470t/yr while ETF flows net negative for 2 consecutive quarters OR quarterly drift \(<\) \(\sim\)1\%/qtr and losing significance. Tactical sleeve: \(-\)8\% price stop from entry; structural line at sustained weekly close below \$4,000. \\
+\midrule
+Copper (LME 3M) & 30\% & Long, moderate, at half of max risk budget & Chinese physical demand; Yangshan premium z=+1.24 & Entry condition already met (8 Jun 2026). Current composite +0.259. Scale to full size if composite \(>\)+0.40 AND Yangshan z \(>\)+1.5 AND carry z \(>\)+0.5. & Reduce: Yangshan z below 0 OR ANTO 60d relative performance \(<\) \(-\)3\%. Exit: composite \(<\) \(-\)0.10 OR Yangshan z \(<\) \(-\)0.5 OR carry z \(<\) \(-\)1.5. Stop-loss: LME 3M below 200d SMA for 3 consecutive days (\(-\)10\% soft / \(-\)15\% hard). Falsification: LME stocks YoY \(>\)+50\% while Yangshan z \(<\) \(-\)1. \\
+\midrule
+Passive Agriculture (WisdomTree Ag) & 20\% & Long, strategic hold & Segment coverage; variance/drawdown dampening; candidate pool for promotion to active & Deploy in full at T0 (Tranche 1). No timing signal required. & No active exit trigger. Held to December 2026 evaluation. Promotion-to-active criteria: durable structural driver becomes analysable or dedicated sub-team forms. \\
+\midrule
+Brent crude oil (conditional) & 0\% (contingent) & Long, standing trigger-activated engagement only & Post-2026 war Hormuz structural repricing; permanent geopolitical risk-premium revision & Activate ONLY when all three gates align: (1) price at or below value-emerging upper (\(\sim\)\$82) currently in band at \(\sim\)\$77--78; (2) disruption premium verifiably intact (flows below norm, mines uncleared, insurance elevated) currently PASS; (3) concrete deterioration catalyst fires currently NOT FIRED. Current overall signal: WAIT. & Stop: durable close below \(\sim\)\$58--60 with strait verifiably and permanently open and mines cleared. Exit: confirmed durable reopening (mines cleared, insurance normal, unescorted commercial flows). Sized small, below gold and copper risk budget. \\
+\end{longtable}
+\end{small}
+
+On instruments, the gold core is expressed through a physically backed ETF rather than futures, because the futures route pays a contango roll cost the workbook measures at about 8 percent per year that a multi-quarter hold cannot absorb. Within physical products the deployable line is the iShares Physical Gold ETC (IGLN, IE00B4ND3602) at a 0.12 percent expense ratio, since the US-listed trusts referenced in the gold workbook, the iShares Gold Trust at 0.25 percent, GLDM at 0.10 percent, and GLD at 0.40 percent, are US funds that EU clients cannot buy, and the miner ETFs are deferred as high-beta adds against a breakout rather than core holdings. The workbook-sourced US tickers are retained for context only, and the deployable identifier is the one carried in the instrument table below, to be verified on Interactive Brokers at deployment.
+
+The copper, passive, and oil instruments require selection and due diligence that the trusted analysis did not complete, so each field is marked for verification rather than invented. The copper position is analytical in the LME three-month contract, and the investable expression, whether a copper ETC or a futures position, with its identifier, fee, roll cost, and liquidity, is marked for verification. One tension is noted for that due diligence: the WisdomTree Copper ETC carried in the instrument table is a Bloomberg-subindex product bearing the same roll and collateral drag that disqualified the gold futures route at about 8 percent per year, so it will not track the LME three-month analysis and must pass the same roll-cost filter before it goes live. The passive layer is the WisdomTree Agriculture ETF, whose identifier and expense ratio must be confirmed and whose realised correlation against gold and copper must be checked on first data, since a realised figure above 0.25 with either would weaken the diversification case the simulation implies. The oil engagement, when activated, is expressed in Brent, and the specific instrument is marked for verification. For every instrument, no ISIN, ticker, fee, or assets-under-management figure that is not present in a trusted source is invented, and each such field is marked to verify on Interactive Brokers or with the issuer as of June 2026.
+
+\begin{table}[htbp]
+\caption{Gold instrument}
+\small
+\begin{tabularx}{\linewidth}{P{3.0cm} P{1.4cm} P{2.9cm} P{3.2cm} L}
+\toprule
+\tabh{Instrument} & \tabh{Ticker} & \tabh{ISIN} & \tabh{Role} & \tabh{Notes} \\
+\midrule
+iShares Physical Gold & IGLN & IE00B4ND3602 & 50\% Gold allocation, physically backed & Low fee, liquid, physically allocated \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Copper instrument}
+\small
+\begin{tabularx}{\linewidth}{P{3.0cm} P{1.4cm} P{2.9cm} P{3.2cm} L}
+\toprule
+\tabh{Instrument} & \tabh{Ticker} & \tabh{ISIN} & \tabh{Role} & \tabh{Notes} \\
+\midrule
+WisdomTree Copper & COPA & GB00B15KXQ89 & Express the 30\% copper allocation & Analytical reference is LME 3M \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Passive layer instrument}
+\small
+\begin{tabularx}{\linewidth}{P{3.0cm} P{1.4cm} P{2.9cm} P{3.2cm} L}
+\toprule
+\tabh{Instrument} & \tabh{Ticker} & \tabh{ISIN} & \tabh{Role} & \tabh{Notes} \\
+\midrule
+WisdomTree Agriculture & AIGA & GB00B15KYH63 & 20\% passive diversification and coverage layer & Confirm correlation with gold and copper on first data; if realised correlation with either \(>\)0.25 the diversification case weakens \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Oil instrument (contingent)}
+\small
+\begin{tabularx}{\linewidth}{P{3.0cm} P{1.4cm} P{2.9cm} P{3.2cm} L}
+\toprule
+\tabh{Instrument} & \tabh{Ticker} & \tabh{ISIN} & \tabh{Role} & \tabh{Notes} \\
+\midrule
+WisdomTree Brent Crude Oil & BRNT & JE00B78CGV99 & Activate only when three-gate framework fires & Sized small; event-driven / gap-risk discipline \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\clearpage
+\section{Conclusion}
+
+The portfolio is a deliberate construction, and the reasoning behind each decision is what gives it credibility. The team built a commodities sleeve on its own merits, tested every thesis against twenty years of data rather than asserting it, and let the data overturn three comfortable starting assumptions. Gold's two-decade link to real yields broke, so the thesis was re-anchored on the measured central-bank bid and the cyclical timing was acknowledged as adverse rather than wished away. Copper's old PMI signal died, so demand is now read through the Yangshan premium, and the position is sized at half because the strongest signal is not yet confirmed by the carry, by the mining equities, or by an independent significance test. Oil failed the data test as a strategic holding and was not forced into the portfolio, but it was not ignored either, since the 2026 Hormuz repricing was developed as a conditional engagement with explicit gates that currently say wait.
+
+The allocation of 50 percent gold, 30 percent copper, and 20 percent passive agriculture is not the mathematical optimum, which would be a concentrated gold portfolio. That is a deliberate feature rather than a compromise. The optimum reflects what worked over a twenty-year gold bull market, not what the team believes will work, and the chosen allocation keeps the stable covariance from the data while overriding the historical returns with forward conviction, which is what places copper at a genuine weight. The passive layer earns its place on the risk side rather than the return side, and the analysis shows precisely where its diversification acts, concentrated against the gold position. Deployment is mostly upfront and lightly staged, because over a six-month horizon the variance benefit of phasing is small and its drift cost is real.
+
+The open points are set out so the work can be audited and continued. The instrument and product due diligence for copper, the passive layer, and oil was not completed and is the immediate next task. Several figures are marked for primary-source verification before they carry the team's name: the copper inventory level and the ticker reconciliation, the gold real-yield series, and the externally sourced flow and cost figures. The statistical caveats are real, with short post-2022 samples on both the gold and copper regime work, in-sample and overlapping windows in the conditional returns, and a genuinely unresolved permanence question on the oil thesis that the framework is built to survive rather than to answer. Each thesis carries a written falsification rule, which is the mechanism by which the portfolio is monitored and, if the regime turns, closed. The positions run to the December 2026 evaluation unless those rules trigger first.
+
+\end{document}
