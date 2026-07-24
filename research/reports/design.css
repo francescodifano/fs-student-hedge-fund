@@ -1,0 +1,100 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#e9e9ee; }
+.page { position:relative; width:794px; height:1123px; background:#ffffff; overflow:hidden;
+        font-family:"nunito-sans",sans-serif; color:#060033; margin:24px auto; }
+.page.cover { background:#060033; color:#ffffff; }
+
+/* ---------- cover ---------- */
+.cover .logo { position:absolute; top:62px; left:64px; height:56px; }
+.cover .rule-top { position:absolute; top:436px; left:64px; right:64px; height:1px; background:rgba(255,255,255,.28); }
+.cover .eyebrow { position:absolute; top:472px; left:64px; right:64px; font-weight:700; font-size:13px; letter-spacing:.07em; color:rgba(255,255,255,.55); }
+.cover h1 { position:absolute; top:504px; left:64px; right:64px; font-family:"georgiapro",serif; font-weight:700; font-size:58px; line-height:1.1; }
+.cover .subtitle { position:absolute; top:660px; left:64px; right:150px; font-size:16.5px; line-height:1.55; color:rgba(255,255,255,.72); }
+.cover .rule-bottom { position:absolute; top:772px; left:64px; right:64px; height:1px; background:rgba(255,255,255,.28); }
+.cover .meta { position:absolute; bottom:64px; left:64px; font-size:13px; line-height:1.7; color:rgba(255,255,255,.6); }
+.cover .meta strong { color:#ffffff; font-weight:700; }
+.coverstats { position:absolute; top:648px; left:64px; right:64px; display:flex; gap:14px; }
+.cs { flex:1; border:1px solid rgba(255,255,255,.25); padding:16px 16px 13px; }
+.csl { font-size:11.5px; font-weight:700; letter-spacing:.05em; color:rgba(255,255,255,.55); margin-bottom:7px; }
+.csn { font-family:"georgiapro",serif; font-weight:700; font-size:26px; color:#ffffff; }
+
+/* ---------- page chrome ---------- */
+.hdr { position:absolute; top:0; left:0; right:0; height:78px; padding:0 64px; display:flex; align-items:center; justify-content:space-between; }
+.hdr img { height:30px; }
+.hdr .doc { font-size:12px; font-weight:700; letter-spacing:.05em; color:rgba(6,0,51,.5); }
+.hdr-rule { position:absolute; top:78px; left:64px; right:64px; height:1px; background:rgba(6,0,51,.14); }
+.ftr { position:absolute; bottom:0; left:0; right:0; height:60px; padding:0 64px; display:flex; align-items:center; justify-content:space-between;
+       font-size:12px; color:rgba(6,0,51,.45); }
+.ftr-rule { position:absolute; bottom:60px; left:64px; right:64px; height:1px; background:rgba(6,0,51,.1); }
+.content { position:absolute; top:112px; left:64px; right:64px; bottom:84px; }
+
+/* ---------- blocks ---------- */
+.band { position:relative; left:-64px; width:540px; background:#060033; color:#fff; padding:20px 36px 20px 64px; margin:0 0 28px; }
+.band .eyebrow { font-size:12px; font-weight:800; letter-spacing:.08em; color:rgba(255,255,255,.55); margin-bottom:5px; }
+.band h2 { font-family:"georgiapro",serif; font-weight:700; font-size:27px; line-height:1.18; }
+.band .bandsub { display:block; font-size:16px; font-weight:400; color:rgba(255,255,255,.7); margin-top:4px; font-family:"georgiapro",serif; }
+
+h3 { font-family:"georgiapro",serif; font-weight:700; font-size:19px; margin:24px 0 10px; }
+h4 { font-size:14.5px; font-weight:800; margin:18px 0 8px; color:rgba(6,0,51,.85); }
+p.body { font-size:14px; line-height:1.6; color:rgba(6,0,51,.84); margin-bottom:12px; }
+ul.list { margin:2px 0 14px 18px; }
+ul.list li { font-size:14px; line-height:1.58; color:rgba(6,0,51,.84); margin-bottom:7px; }
+.stats { display:flex; gap:14px; margin:20px 0; }
+.stat { flex:1; background:#060033; color:#fff; padding:20px 18px 16px; }
+.stat .num { font-family:"georgiapro",serif; font-weight:700; font-size:28px; margin-bottom:5px; }
+.stat .lbl { font-size:11.5px; font-weight:700; letter-spacing:.04em; color:rgba(255,255,255,.6); line-height:1.35; }
+table { width:100%; border-collapse:collapse; margin:16px 0 18px; }
+th { background:#060033; color:#fff; font-size:12.5px; font-weight:700; text-align:left; padding:10px 12px; }
+td { font-size:13px; line-height:1.5; color:rgba(6,0,51,.82); padding:9px 12px; border-bottom:1px solid rgba(6,0,51,.12); vertical-align:top; }
+td strong { color:#060033; }
+.figure { margin:18px 0 20px; }
+.figure .frame { border:1px solid rgba(6,0,51,.12); padding:14px; background:#fff; }
+.figure img { width:100%; display:block; }
+.figure .cap { margin-top:9px; font-size:12.5px; font-weight:700; color:rgba(6,0,51,.62); }
+.figure .src { margin-top:2px; font-size:11.5px; color:rgba(6,0,51,.42); }
+
+/* ---------- toc ---------- */
+.toc { margin-top:6px; }
+.ti { display:flex; align-items:baseline; padding:11px 2px; border-bottom:1px solid rgba(6,0,51,.1); }
+.tn { width:34px; font-family:"georgiapro",serif; font-weight:700; font-size:15px; color:rgba(6,0,51,.45); }
+.tt { flex:1; font-size:14.5px; font-weight:700; color:rgba(6,0,51,.85); }
+.tp { font-size:13px; color:rgba(6,0,51,.45); }
+
+/* ---------- authors ---------- */
+.authors { display:flex; flex-wrap:wrap; gap:26px 20px; margin-top:8px; }
+.author { width:200px; text-align:center; }
+.author img { width:120px; height:129px; object-fit:cover; border-radius:50%; margin-bottom:10px; }
+.an { font-size:14.5px; font-weight:800; }
+.ar { font-size:12px; color:rgba(6,0,51,.55); margin-top:2px; }
+
+/* ---------- references ---------- */
+.ref { padding:8px 0; border-bottom:1px solid rgba(6,0,51,.08); }
+.ref .rt { font-size:12.5px; font-weight:700; color:rgba(6,0,51,.8); line-height:1.45; }
+.ref .ru { font-size:11px; color:rgba(6,0,51,.45); word-break:break-all; margin-top:2px; }
+.srcline { font-size:12.5px; }
+
+/* measurement container */
+.mb { }
+
+@media print {
+  body { background:none; }
+  .page { margin:0; page-break-after:always; }
+}
+
+/* ---------- ordered list items (report index) ---------- */
+.oli { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid rgba(6,0,51,.1); }
+.oli .on { font-family:"georgiapro",serif; font-weight:700; font-size:16px; color:rgba(6,0,51,.45); width:22px; }
+.oli .ot { flex:1; font-size:13.5px; line-height:1.55; color:rgba(6,0,51,.84); }
+
+sup { font-size:9.5px; line-height:0; vertical-align:super; letter-spacing:0; }
+.mb { overflow:hidden; }
+
+/* explicit per-element font wiring (importer reads computed styles per element) */
+p.body, ul.list li, table, th, td, .hdr .doc, .ftr, .stat .lbl, .cs .csl,
+.figure .cap, .figure .src, .toc .tt, .toc .tp, .ref .rt, .ref .ru,
+.an, .ar, .oli .ot, .cover .eyebrow, .cover .subtitle, .cover .meta, .band .eyebrow, h4 {
+  font-family: "nunito-sans", sans-serif;
+}
+.band h2, h3, .stat .num, .cs .csn, .cover h1, .toc .tn, .oli .on, .band .bandsub {
+  font-family: "georgiapro", serif;
+}

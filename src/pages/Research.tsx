@@ -1,11 +1,10 @@
 import { asset as A } from '../lib/asset'
 import Button from '../components/Button'
 import { usePageTitle } from '../lib/usePageTitle'
-import { PAPERS } from '../lib/papers'
+import { FEATURED, PAPERS } from '../lib/papers'
 
-// The report PDF is hosted on this site itself (public/papers), served under the
-// GitHub Pages base path — no external redirect.
-const REPORT_URL = `${import.meta.env.BASE_URL}papers/seagate-technology-equity-research-2025.pdf`
+// All report PDFs are hosted on this site itself (public/papers) — no external redirects.
+const FEATURED_URL = `${import.meta.env.BASE_URL}papers/${FEATURED.pdf}`
 
 export default function Research() {
   usePageTitle('Research')
@@ -36,32 +35,27 @@ export default function Research() {
         <div aria-hidden className="absolute -bottom-6 left-0 z-0 h-16 w-[78vw] bg-navy md:-bottom-10 md:h-28 md:w-[70vw] md:max-w-[1054px]" />
       </div>
 
-      {/* Latest research (unchanged; extra top padding clears the band overhang) */}
+      {/* Latest research: the flagship report (extra top padding clears the band overhang) */}
       <section className="container-page pt-24 pb-16 md:pt-32 md:pb-24">
         <h2 className="font-display text-h1 font-bold text-navy">Latest Research</h2>
         <p className="mt-6 max-w-3xl text-lead text-navy/80">
-          Our members publish in-depth equity research, distilling fundamental analysis into a single, readable report.
+          The fund publishes a flagship report each half year, synthesizing the work of every investment team into one
+          view of how we are positioned.
         </p>
 
         <article className="mt-10 grid overflow-hidden bg-navy text-white lg:grid-cols-2">
-          {/* On mobile, crop tighter to the title area so the report text stays
-              legible (the cover is a raster, so shrinking it whole makes the
-              masthead unreadable) */}
           <img
-            src={A('research-seagate-cover.jpg')}
-            alt="Cover of the Seagate Technology equity research report"
-            className="aspect-square w-full object-cover object-[0%_15%] sm:aspect-[4/3] sm:object-left lg:aspect-auto lg:h-full"
+            src={A(FEATURED.cover)}
+            alt={FEATURED.coverAlt}
+            className="aspect-square w-full object-cover object-top sm:aspect-[4/3] lg:aspect-auto lg:h-full"
             loading="lazy"
           />
           <div className="flex flex-col justify-center p-8 md:p-12">
-            <p className="font-sans text-sm font-bold tracking-wide text-white/60">Equity Research · 2025</p>
-            <h3 className="mt-4 font-display text-h2 font-bold">Seagate Technology Holdings PLC</h3>
-            <p className="mt-4 text-white/75">
-              In-depth equity research on Seagate Technology, a leading provider of data storage solutions, covering
-              the business, its financials, and the valuation case behind our view.
-            </p>
+            <p className="font-sans text-sm font-bold tracking-wide text-white/60">{FEATURED.tag}</p>
+            <h3 className="mt-4 font-display text-h2 font-bold">{FEATURED.title}</h3>
+            <p className="mt-4 text-white/75">{FEATURED.blurb}</p>
             <div className="mt-8">
-              <Button href={REPORT_URL} variant="light">
+              <Button href={FEATURED_URL} variant="light">
                 Read the report
               </Button>
             </div>
