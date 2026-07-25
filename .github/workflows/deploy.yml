@@ -46,18 +46,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Warm CDN cache
+        # Warming is best effort: a single TLS hiccup on one asset (curl exit
+        # 35) used to abort the whole job under `bash -e` and report the
+        # deploy as failed, even though the site was already live. Every
+        # request retries, and the job never fails on a warm miss.
+        continue-on-error: true
         run: |
+          set +e
           BASE="https://fs-student-hedgefund.com"
+          warm() { curl -s --retry 3 --retry-all-errors --max-time 30 -o /dev/null -w "warmed %{time_total}s  $2\n" "$1" || echo "warm miss  $2"; }
           sleep 10
-          HTML=$(curl -s "$BASE/")
+          HTML=$(curl -s --retry 3 --retry-all-errors "$BASE/")
           # bundle (hashed name changes every deploy)
           echo "$HTML" | grep -oE '/assets/index-[A-Za-z0-9_-]+\.(js|css)' | sort -u | while read -r p; do
-            curl -s -o /dev/null -w "warmed %{time_total}s  $p\n" "https://francescodifano.github.io$p"
+            warm "https://francescodifano.github.io$p" "$p"
           done
-          # all images and the report
-          curl -s "https://api.github.com/repos/francescodifano/fs-student-hedge-fund/contents/public/assets" \
+          # all images and the reports
+          curl -s --retry 3 --retry-all-errors "https://api.github.com/repos/francescodifano/fs-student-hedge-fund/contents/public/assets" \
             | grep -oE '"name": *"[^"]+"' | cut -d'"' -f4 | while read -r f; do
-            curl -s -o /dev/null -w "warmed %{time_total}s  assets/$f\n" "$BASE/assets/$f"
+            warm "$BASE/assets/$f" "assets/$f"
           done
-          curl -s -o /dev/null "$BASE/papers/seagate-technology-equity-research-2025.pdf"
-          curl -s -o /dev/null "$BASE/favicon.png"
+          curl -s "https://api.github.com/repos/francescodifano/fs-student-hedge-fund/contents/public/papers" \
+            | grep -oE '"name": *"[^"]+"' | cut -d'"' -f4 | while read -r f; do
+            warm "$BASE/papers/$f" "papers/$f"
+          done
+          warm "$BASE/favicon.png" "favicon.png"
+          exit 0
