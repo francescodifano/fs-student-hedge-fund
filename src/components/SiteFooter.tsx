@@ -6,10 +6,11 @@ import Button from './Button'
 
 // Only platforms with a verified URL are listed (dead links don't ship).
 // The Instagram handle uses a dot, not an underscore — fs.studenthedgefund.
-// LinkedIn (company/fs-student-hedge-fund) is deliberately held back until
-// the team updates the page (Francesco, 26 Jul) — re-add it here then.
+// The LinkedIn slug is the existing FS Associates-era company page; it stays
+// valid when the team rebrands the page in place.
 const SOCIALS = [
   { icon: 'icon-instagram.svg', label: 'Instagram', url: 'https://www.instagram.com/fs.studenthedgefund/' },
+  { icon: 'icon-linkedin.svg', label: 'LinkedIn', url: 'https://www.linkedin.com/company/fs-student-hedge-fund/' },
 ]
 
 // Report slides for the footer carousel (auto-advances every 5 seconds).
