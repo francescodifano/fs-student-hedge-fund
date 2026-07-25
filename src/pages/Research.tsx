@@ -26,8 +26,8 @@ export default function Research() {
         {/* image layered above the band (band peeks out left and below, unchanged position) */}
         <div className="container-wide relative z-10">
           <img
-            src={A('research-3.jpg')}
-            alt=""
+            src={A('research-hero.jpg')}
+            alt="Pages from the fund's published research reports"
             className="h-[44vw] max-h-[640px] min-h-[220px] w-full object-cover"
             fetchPriority="high"
           />

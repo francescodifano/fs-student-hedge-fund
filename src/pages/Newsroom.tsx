@@ -5,18 +5,15 @@ import { usePageTitle } from '../lib/usePageTitle'
 
 // Events render as compact cards in a grid so several fit side by side.
 // The visual is the organiser's logo on white (team feedback), not a photo.
-const EVENTS = [
-  {
-    title: 'J.P. Morgan',
-    logo: 'jpmorgan-logo.jpg',
-    date: { month: 'Oct', day: '22' },
-    details: [
-      ['Time', 'Start: 13:00 (Entry at 12:30)'],
-      ['Location', 'FS Campus, Room 2A'],
-      ['Dress code', 'Business Casual'],
-    ] as [string, string][],
-  },
-]
+// Team decision 25 Jul: events stay off the page until they are 100% confirmed
+// (the J.P. Morgan card was removed under that rule; restore it from git
+// history once the event is locked in).
+const EVENTS: {
+  title: string
+  logo: string
+  date: { month: string; day: string }
+  details: [string, string][]
+}[] = []
 
 export default function Newsroom() {
   usePageTitle('Newsroom')
@@ -35,6 +32,20 @@ export default function Newsroom() {
         <Container>
           <h2 className="font-display text-h1 font-bold text-navy">This Semester</h2>
           <div className="mt-5 h-px w-full bg-navy/15" />
+
+          {EVENTS.length === 0 && (
+            <div className="mt-10 max-w-2xl">
+              <p className="text-lead text-navy/80">
+                The events for the coming semester are being finalized and will be announced here. In the meantime,
+                our latest published work is on the Research page.
+              </p>
+              <div className="mt-8">
+                <Button to="/research" className="w-full sm:w-auto">
+                  Read our research
+                </Button>
+              </div>
+            </div>
+          )}
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {EVENTS.map((e) => (

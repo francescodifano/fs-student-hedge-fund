@@ -19,7 +19,7 @@ export default function About() {
           </h1>
           <div>
             <p className="text-lead text-navy">
-              Frankfurt School's student-managed investment fund, where academic rigor meets real capital.
+              Frankfurt School's student-run finance initiative, where academic rigor meets real markets.
             </p>
             <div className="mt-8">
               <Button to="/contact" className="w-full sm:w-auto">Apply</Button>

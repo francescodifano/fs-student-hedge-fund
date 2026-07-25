@@ -8,6 +8,7 @@ import Social from './pages/Social'
 import Contact from './pages/Contact'
 import DepartmentPage from './pages/DepartmentPage'
 import IndexConstruction from './pages/IndexConstruction'
+import Imprint from './pages/Imprint'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="quant" element={<DepartmentPage slug="quant" />} />
 
         <Route path="contact" element={<Contact />} />
+        <Route path="imprint" element={<Imprint />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

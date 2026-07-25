@@ -47,8 +47,8 @@ export default function Home() {
             <span className="font-bold">Ambition</span>
           </h1>
           <p className="text-lead text-navy">
-            FS Student Hedge Fund is a student-managed investment fund at Frankfurt School, applying rigorous
-            analysis and institutional-grade investment strategies to generate long-term returns.
+            FS Student Hedge Fund is Frankfurt School's student-run finance initiative, spanning Hedge Fund,
+            Trading &amp; Derivatives, and Index Construction teams pursuing diverse strategies across real markets.
           </p>
         </div>
       </section>
@@ -79,14 +79,14 @@ export default function Home() {
               One Mission.
             </h2>
             <p className="mt-6 text-lead text-navy/80">
-              FS Student Hedge Fund is Frankfurt School's student-managed investment initiative; a selective team
-              operating across three departments: Hedge Fund, Trading &amp; Derivatives, and Index Construction.
+              FS Student Hedge Fund is Frankfurt School's student-managed investment initiative, a selective team
+              operating across three departments, Hedge Fund, Trading &amp; Derivatives, and Index Construction.
               Together, we apply institutional-grade strategies to real markets, from developing macro theses and
-              managing derivative portfolios to constructing structured indices in collaboration with industry
-              partners like Solactive and UniCredit.
+              managing derivative portfolios to constructing structured indices in collaboration with our industry
+              partners.
             </p>
             <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              <StatBlock value="50+" label="Members" />
+              <StatBlock value="95+" label="Members" />
               <StatBlock value="10+" label="Nationalities" />
               <StatBlock value="5" label="Departments" />
               <StatBlock value="200+" label="Applications" />

@@ -56,17 +56,14 @@ export default function IndexConstruction() {
         <div className="mt-5 h-px w-full bg-navy/15" />
         <div className="mt-8 space-y-6 text-lead text-navy/85">
           <p>
-            The Index Construction department translates market insights into investable strategies. Our members
-            analyze financial markets, identify opportunities, and develop thematic baskets by selecting relevant
-            underlyings across asset classes such as equities, commodities, and alternatives.
-          </p>
-          <p>
-            These baskets are then transformed into structured indices with defined weighting methodologies in
-            collaboration with our partner Solactive. Building on this, we work with UniCredit to structure tailored
-            financial products, bringing our ideas from research into real-world market applications.
+            The Index Construction Department designs and launches publicly tradable financial indices, taking ideas
+            from raw sector research all the way through to a live investable product. Our process follows a rigorous
+            top-down methodology, systematic market screening, pod-based sector research, disciplined asset
+            selection, and formal index construction by our structuring desk. Every index comes with a defined
+            methodology, transparent selection criteria, and a full performance backtest.
           </p>
           <p className="font-display text-h3 font-bold text-navy">
-            In partnership with Solactive and UniCredit, we build real financial products, not simulations.
+            In partnership with leading industry players, we build real financial products, not simulations.
           </p>
         </div>
       </section>

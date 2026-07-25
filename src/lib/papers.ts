@@ -20,8 +20,10 @@ export const FEATURED: Paper = {
   blurb:
     'The fund’s positioning for the second half of 2026, built from the published research of the commodities, equities and fixed income teams: a late cycle reflation regime, expressed through three sleeves with written triggers on every position.',
   pdf: 'h2-2026-report.pdf',
-  cover: 'research-h2-2026-cover.jpg',
-  coverAlt: 'Cover of the FS Student Hedge Fund H2 2026 Report',
+  // Inner chart pages, not the navy title page: the featured box is itself
+  // navy, so the cover render used to blend in and read as "no picture".
+  cover: 'research-h2-2026-pages.jpg',
+  coverAlt: 'Chart pages from the FS Student Hedge Fund H2 2026 Report',
 }
 
 export const PAPERS: Paper[] = [

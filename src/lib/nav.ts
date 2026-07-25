@@ -13,6 +13,7 @@ export const DEPARTMENTS: NavItem[] = [
 ]
 
 export const FOOTER_PAGES: NavItem[] = [
+  { label: 'Homepage', to: '/' },
   { label: 'Newsroom', to: '/newsroom' },
   { label: 'Research', to: '/research' },
   { label: 'Index Construction', to: '/index-construction' },

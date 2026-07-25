@@ -5,9 +5,10 @@ import { FOOTER_PAGES } from '../lib/nav'
 import Button from './Button'
 
 // Only platforms with a verified URL are listed (dead links don't ship).
-// TikTok/LinkedIn/YouTube can be added here as soon as their URLs exist.
+// The Instagram handle uses a dot, not an underscore — fs.studenthedgefund.
 const SOCIALS = [
-  { icon: 'icon-instagram.svg', label: 'Instagram', url: 'https://instagram.com/fs_studenthedgefund' },
+  { icon: 'icon-instagram.svg', label: 'Instagram', url: 'https://www.instagram.com/fs.studenthedgefund/' },
+  { icon: 'icon-linkedin.svg', label: 'LinkedIn', url: 'https://www.linkedin.com/company/fs-student-hedge-fund/' },
 ]
 
 // Report slides for the footer carousel (auto-advances every 5 seconds).
@@ -15,7 +16,14 @@ const SOCIALS = [
 // slides show the report cover as a thumbnail beside the text instead
 // (covers carry their own typography, so text must not overlap them).
 const REPORTS: { img: string; title: string; cta: string; to?: string; href?: string; style: 'backdrop' | 'document' }[] = [
-  { img: 'q1report.jpg', title: 'Q1 Report', cta: 'Get Report', to: '/newsroom', style: 'backdrop' },
+  {
+    img: 'research-h2-2026-cover.jpg',
+    title: 'H2 2026 Report',
+    cta: 'Read the report',
+    href: `${import.meta.env.BASE_URL}papers/h2-2026-report.pdf`,
+    style: 'document',
+  },
+  { img: 'research-h2-2026-pages.jpg', title: 'Published Research', cta: 'Browse the papers', to: '/research', style: 'backdrop' },
   {
     img: 'research-seagate-cover.jpg',
     title: 'Seagate Equity Research',
@@ -114,10 +122,6 @@ export default function SiteFooter() {
             <h3 className="font-sans text-xl font-extrabold">Contact</h3>
             <ul className="mt-5 space-y-3 text-white">
               <li className="flex gap-3">
-                <ClockIcon />
-                <span>Mon-Fri: 8:00am to 6:00pm</span>
-              </li>
-              <li className="flex gap-3">
                 <PinIcon />
                 <span>
                   Adickesallee 32-34, 60322
@@ -144,19 +148,21 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
+
+      {/* Legal row */}
+      <div className="border-t border-white/10">
+        <div className="container-page flex flex-col gap-2 py-5 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {new Date().getFullYear()} FS Student Hedge Fund, a student initiative of Frankfurt School of Finance &amp; Management</span>
+          <Link to="/imprint" className="text-white/60 transition-opacity hover:text-white">
+            Imprint &amp; Disclaimer
+          </Link>
+        </div>
+      </div>
     </footer>
   )
 }
 
 const iconProps = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, className: 'mt-0.5 shrink-0' } as const
-function ClockIcon() {
-  return (
-    <svg {...iconProps}>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
 function PinIcon() {
   return (
     <svg {...iconProps}>
