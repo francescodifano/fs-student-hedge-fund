@@ -314,7 +314,7 @@ def band_html(b):
 def emit_measure():
     sgb, sgr, _cert = seagate_blocks()
     h2md = open(os.path.join(R, 'h2-final.md')).read()
-    h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of Hedge Fund', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of Hedge Fund')
+    h2md = h2md.replace('**Francesco di Fano, Julius Jagland and Jakob Hautkappe**\nHeads of Hedge Fund', '**Francesco di Fano, Julius Jagland and Jakob Hautkappe**@@BR@@Heads of Hedge Fund')
     h2b = parse_flow(h2md, 'h2')
     out = [head('measure')]
     out.append('<div style="width:666px; margin:0 auto; background:#fff;">')
@@ -424,7 +424,7 @@ def assemble():
 
     # ---------- H2 2026 report ----------
     h2md = open(os.path.join(R, 'h2-final.md')).read()
-    h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of Hedge Fund', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of Hedge Fund')
+    h2md = h2md.replace('**Francesco di Fano, Julius Jagland and Jakob Hautkappe**\nHeads of Hedge Fund', '**Francesco di Fano, Julius Jagland and Jakob Hautkappe**@@BR@@Heads of Hedge Fund')
     h2b = parse_flow(h2md, 'h2')
     h2ids = {f'h2-{j}': b for j, b in enumerate(h2b)}
     pages, _ = paginate('h2', h2b, measures, 3)

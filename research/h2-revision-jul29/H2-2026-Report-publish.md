@@ -37,7 +37,7 @@ One thing has changed since the reporting date and it belongs in the opening par
 
 We thank every analyst who contributed, and we invite the reader to consult the underlying papers on our Research page.
 
-**Francesco di Fano and Julius Jagland**
+**Francesco di Fano, Julius Jagland and Jakob Hautkappe**
 Heads of Hedge Fund
 
 ---
