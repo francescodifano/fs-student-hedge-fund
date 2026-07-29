@@ -21,7 +21,7 @@ Halfway through 2026, the global economy is mostly driven by one dominant factor
 
 This paper first presents the full underlying research: the global macro and rate environment, the US sector analysis, and the European sector analysis. Each part first includes its complete data set and figures and, second, synthesizes them into a single combined allocation. We construct the equity portion of the portfolio, which accounts for 100 percent of the portfolio, around a passive core of ETFs, approximately 60\% of which consists of the broad U.S.\ and European markets, with the remaining approximately 40\% consisting of thematic satellites: European banks, global defense, health care, consumer staples/food, energy, US financials, and a small rare-earths position.
 
-The portfolio's regional breakdown is slightly skewed toward the U.S.\ (\(\sim\)55\%) due to the growth momentum and liquidity of thematic sectors, which is offset by the discount in European asset valuations, the ECB's interest rate policy, which creates favorable conditions for banks, and the absence of a negative currency impact from the USD/EUR exchange rate on the euro-denominated fund. The portfolio's largest active holdings (energy and the defense industry) represent, in part, a volatile forecast on the duration of the energy crisis. However, at the time of writing this paper, that crisis is gradually subsiding, although not without the emergence of new risks.
+The portfolio's regional breakdown is slightly skewed toward the U.S.\ (\(\sim\)55\%) due to the growth momentum and liquidity of thematic sectors, which is offset by the discount in European asset valuations, the ECB's interest rate policy, which creates favorable conditions for banks, and the fact that the European assets carry no USD/EUR currency risk for the euro-denominated fund --- unlike the unhedged US sleeve, which carries a negative currency contribution from the dollar's 2026 weakness. The portfolio's largest active holdings (energy and the defense industry) represent, in part, a volatile forecast on the duration of the energy crisis. However, at the time of writing this paper, that crisis is gradually subsiding, although not without the emergence of new risks.
 
 A US--Iran interim ceasefire (a memorandum of understanding) was signed on 17 June, and front-month Brent futures fell back toward \$80 by 19 June from a late March peak near \$119. Nevertheless, it is hard to claim if it was the final accord in this long-standing global uncertainty, especially given that de-escalation is not yet settled: by 20--21 June Iran again declared the Strait of Hormuz closed, while US disputing that fact. Hence, we size energy down and reframe it as a hedge, while retaining defense on its more durable NATO/budget backlog logic due to its unreliability on the previously discussed factors with financing being solely driven by the treaty's budget commitments.
 
@@ -94,7 +94,7 @@ Fed Funds Rate & 3.50--3.75\% & Hold (97.4\% prob, Jun 17) & Higher-for-longer; 
 Dec 2026 hike probability & \(\sim\)59\% & Hawkish drift & No cuts priced; possible tightening \\
 10-year Treasury yield & \(\sim\)4.54\% & Elevated & Headwind for rate-sensitive sectors \\
 2s10s curve slope & +0.38\% & Positive / steepening & Tailwind for bank NIM \\
-US Dollar (DXY) & \(\sim\)99.7 & Firm, +1.8\% MoM & Headwind for commodities, Materials \\
+US Dollar (DXY) & \(\sim\)99.7 & Countertrend bounce (+1.8\% MoM) within 2026 weakness vs EUR & Headwind for commodities, Materials \\
 ISM Manufacturing PMI & 54.0 (May) & Expanding (5th month) & GDP growth \(\sim\)2.2\% annualised \\
 New Orders sub-index & 56.8 & Rising from 54.1 & Production momentum continues \\
 Non-farm payrolls (May) & +172,000 & Beat vs \(\sim\)85,000 exp. & Labor market firm \\
@@ -318,7 +318,7 @@ Banks-plus-financials (12\% combined) is the largest active bet. Technology and 
 
 \section{Instrument List (IBKR-Deployable UCITS Vehicles)}
 
-Critical constraint: under EU PRIIPs/KID rules, US-domiciled ETFs (XLE, XLK, ITA, REMX-US) are generally not purchasable by EU-resident clients on Interactive Brokers. The list uses UCITS equivalents. ``Verified'' rows were checked against fund-provider/exchange data; ``confirm'' rows exist but need exact ISIN/listing confirmed in IBKR on deployment day.
+Critical constraint: under EU PRIIPs/KID rules, US-domiciled ETFs (XLE, XLK, ITA, REMX-US) are generally not purchasable by EU-resident clients on Interactive Brokers. The list uses UCITS equivalents. All rows were checked against fund-provider and exchange data (ISINs verified against issuer product pages, July 2026); listings should still be re-confirmed in IBKR on deployment day.
 
 \begin{table}[htbp]
 \caption{Instrument list --- IBKR-deployable UCITS vehicles}
@@ -332,10 +332,10 @@ Europe core & iShares STOXX Europe 600 UCITS ETF (DE) & EXSA & DE0002635307 & 0.
 EU banks & iShares STOXX Europe 600 Banks UCITS ETF (DE) & EXV1 & DE000A0F5UJ7 & 0.47\% & verified \\
 Defense & HANetf Future of Defence UCITS ETF (Acc) & NATO & IE000OJ5TQP4 & 0.49\% & verified \\
 Rare earths & VanEck Rare Earth \& Strategic Metals UCITS & VVMX & IE0002PG6CA6 & 0.59\% & verified \\
-Health care & iShares STOXX Europe 600 Health Care UCITS (DE) & EXV4 & confirm & \(\sim\)0.46\% & confirm \\
-Energy & iShares STOXX Europe 600 Oil \& Gas UCITS (DE) & EXH1 & confirm & \(\sim\)0.47\% & confirm \\
-Staples / food & iShares STOXX Europe 600 Food \& Beverage (DE) & confirm & confirm & \(\sim\)0.47\% & confirm \\
-US financials & iShares S\&P 500 Financials Sector UCITS ETF & confirm & confirm & \(\sim\)0.15\% & confirm \\
+Health care & iShares STOXX Europe 600 Health Care UCITS (DE) & EXV4 & DE000A0Q4R36 & 0.46\% & verified \\
+Energy & iShares STOXX Europe 600 Oil \& Gas UCITS (DE) & EXH1 & DE000A0H08M3 & 0.47\% & verified \\
+Staples / food & iShares STOXX Europe 600 Food \& Beverage (DE) & EXH3 & DE000A0H08H3 & 0.46\% & verified \\
+US financials & iShares S\&P 500 Financials Sector UCITS ETF & IUFS & IE00B4JNQZ49 & 0.15\% & verified \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -360,7 +360,7 @@ Directional sensitivity: with energy \(\sim\)5\% and underweights via the core, 
 \item \textbf{Hawkish Fed surprise} --- supports financials but pressures the core; offset by the value/defensive tilt.
 \item \textbf{Deeper European recession} --- the genuine stagflation risk; hurts EU banks and the EU core; cushioned by the discount and dividend.
 \item \textbf{Defense budget delay} --- backlog is multi-year but order timing can slip; sized at 8\% to avoid single-point failure.
-\item \textbf{Dollar strength} --- hurts rare-earths/commodity exposure; but continued dollar weakness helps EUR returns, so two-sided.
+\item \textbf{Dollar moves} --- dollar strength hurts USD-priced rare-earths/commodity exposure but lifts the EUR value of the unhedged US sleeve; dollar weakness does the opposite, dragging on unhedged US returns in EUR --- a two-sided exposure.
 \item \textbf{Rare-earths China concentration} --- a China shock hits the vehicle; mitigated by the small 3\% size.
 \end{itemize}
 
@@ -372,14 +372,14 @@ A permanent, verified peace agreement (not just the 60-day interim), Hormuz full
 
 Weekly watch items: Brent and US--Iran talks status; ECB/Fed communications and hike-expectation shifts (CME FedWatch, ECB-Watch); EUR/USD as a return driver; defense-budget news; satellite-ETF spreads/liquidity before resizing.
 
-Pre-deployment checklist: (1) re-pull live oil price and ceasefire status on deployment morning; (2) approve the ``confirm'' instrument ISINs in IBKR; (3) refresh live forward-P/E and dividend figures and rescale weights to exactly 100\%; (4) confirm accumulating vs distributing share-class preference.
+Pre-deployment checklist: (1) re-pull live oil price and ceasefire status on deployment morning; (2) re-confirm the instrument listings in IBKR; (3) refresh live forward-P/E and dividend figures and rescale weights to exactly 100\%; (4) confirm accumulating vs distributing share-class preference.
 
 To summarize the position: the portfolio holds a value- and defensive-tilted global equity sleeve, supported by income and built around a passive core. The satellites express a coherent late-cycle, higher-for-longer thesis through targeted, liquid UCITS instruments. Their sizing reflects a deliberate choice to lean into the regime without concentrating risk on a single outcome. That restraint is warranted. The defining variable of mid-2026 is still unwinding, and the balance of probabilities could shift materially in either direction before December.
 
 \section*{Limitations}
 \addcontentsline{toc}{section}{Limitations}
 
-Macro figures are verified to the date of writing, but oil and the ceasefire move daily --- re-check both at deployment. The four ``confirm'' instrument rows need exact ISINs verified in IBKR. Valuation and yield figures should be refreshed to live data on the start date rather than carried from the June-11 source snapshots.
+Macro figures are verified to the date of writing, but oil and the ceasefire move daily --- re-check both at deployment. All instrument ISINs are verified against issuer data; re-confirm listings in IBKR at deployment. Valuation and yield figures should be refreshed to live data on the start date rather than carried from the June-11 source snapshots.
 
 \begin{fshfreferences*}{Key Sources}
 \addcontentsline{toc}{section}{Key Sources}
@@ -409,5 +409,7 @@ Macro figures are verified to the date of writing, but oil and the ceasefire mov
 \item HANetf --- Thematic and specialist ETF data. \url{https://www.hanetf.com}
 \item VanEck --- ETF product data and fund documentation. \url{https://www.vaneck.com}
 \end{fshfreferences*}
+
+\fshfdisclaimer{on 24 June 2026}
 
 \end{document}

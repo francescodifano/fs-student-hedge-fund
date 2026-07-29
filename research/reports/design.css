@@ -47,6 +47,7 @@ table { width:100%; border-collapse:collapse; margin:16px 0 18px; }
 th { background:#060033; color:#fff; font-size:12.5px; font-weight:700; text-align:left; padding:10px 12px; }
 td { font-size:13px; line-height:1.5; color:rgba(6,0,51,.82); padding:9px 12px; border-bottom:1px solid rgba(6,0,51,.12); vertical-align:top; }
 td strong { color:#060033; }
+p.body.callout { border-left:3px solid #060033; background:rgba(6,0,51,.045); padding:10px 14px 10px 16px; }
 .figure { margin:18px 0 20px; }
 .figure .frame { border:1px solid rgba(6,0,51,.12); padding:14px; background:#fff; }
 .figure img { width:100%; display:block; }

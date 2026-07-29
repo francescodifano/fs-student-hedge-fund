@@ -37,6 +37,7 @@ def inline(t):
     t = html.escape(t, quote=False)
     t = re.sub(r'"([^"\n]+)"', '“\\1”', t)
     t = re.sub(r"(\w)'(\w)", '\\1’\\2', t)
+    t = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', t)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<!\*)\*(?!\s)(.+?)(?<!\s)\*(?!\*)', r'<em>\1</em>', t)
     t = t.replace('@@BR@@', '<br/>')
@@ -66,14 +67,14 @@ FIGMETA = {
  'equity-fig3-policy-rates.png': ('Major central bank policy rates (as of 20 June 2026)', 'Source: central bank communications. From the Equities Portfolio Research paper.'),
  'equity-fig8-combined-portfolio.png': ('Recommended combined portfolio: 60% core / 40% satellites', 'From the Equities Portfolio Research paper.'),
  'fi-fig2-core-inflationary-data.png': ('Core PCE inflation, percent change from year ago', 'Source: FRED, series PCEPILFE. From the Fixed Income Portfolio paper.'),
- 'fi-fig5-aaa-10y-yield.png': ('Euro area AAA rated 10 year government bond yield', 'Source: ECB Data Portal, AAA yield curve 10 year spot rate, daily data through 23 July 2026. Redrawn by the fund.'),
+ 'fi-fig5-aaa-10y-yield.png': ('Euro area AAA rated 10 year government bond yield', 'Source: ECB Data Portal, AAA yield curve 10 year spot rate, daily data through the reporting date of 30 June 2026. Redrawn by the fund.'),
 }
 
 def b64(name, sub='figb64'):
     p = os.path.join(R, sub, name + '.b64') if sub == 'figb64' else os.path.join(R, sub, name)
     return open(p).read()
 
-B64MAP = {'fi-fig5-aaa-10y-yield.png': 'fi-fig5-aaa-10y-redrawn.png'}
+B64MAP = {'fi-fig5-aaa-10y-yield.png': 'fi-fig5-aaa-10y-30jun.png'}
 
 def fig_block(fname):
     cap, src = FIGMETA[fname]
@@ -110,10 +111,12 @@ def parse_flow(md, doc):
             txt = ' '.join(para).strip()
             if txt:
                 ptype = 'p'
+                cls = 'body'
                 if re.match(r'^(\*\*)?Table \d', txt): ptype = 'tcap'
                 elif re.match(r'^(\*\*)?Analysis:', txt): ptype = 'tnote'
                 elif re.fullmatch(r'\*\*[^*]{3,64}\*\*', txt): ptype = 'h4label'
-                blocks.append({'t': ptype, 'html': f'<p class="body">{inline(dedash(txt) if doc=="h2" else txt)}</p>'})
+                elif txt.startswith('***'): ptype, cls = 'callout', 'body callout'
+                blocks.append({'t': ptype, 'html': f'<p class="{cls}">{inline(dedash(txt) if doc=="h2" else txt)}</p>'})
             para = []
         if ul:
             items = ''.join(f'<li>{inline(dedash(x) if doc=="h2" else x)}</li>' for x in ul)
@@ -133,13 +136,22 @@ def parse_flow(md, doc):
         if m:
             flush()
             raw = re.sub(r'\*', '', m.group(1)).strip()
-            nm = re.match(r'^(\d+)\.\s*(.+)$', raw)
             special = None
             if doc == 'h2':
                 lowraw = raw.lower()
-                if 'letter' in lowraw: special = 'Foreword'
+                msec = re.match(r'^Section (\d+):\s*(.+)$', raw)
+                mapp = re.match(r'^Appendix ([A-Z]):\s*(.+)$', raw)
+                if msec:
+                    raw = f'{msec.group(1)}. {msec.group(2)}'
+                elif mapp:
+                    special = f'Appendix {mapp.group(1)}'
+                    raw = mapp.group(2)
+                elif lowraw.startswith('foreword') or 'letter' in lowraw:
+                    special = 'Foreword'
+                    raw = re.sub(r'^Foreword:\s*', '', raw)
                 elif 'published research' in lowraw: special = 'Appendix'
                 elif 'disclaimer' in lowraw: special = 'Notice'
+            nm = re.match(r'^(\d+)\.\s*(.+)$', raw)
             if nm:
                 num, title = nm.group(1), nm.group(2)
             elif special:
@@ -301,8 +313,7 @@ def band_html(b):
 # ---------------- measurement emit ----------------
 def emit_measure():
     sgb, sgr, _cert = seagate_blocks()
-    h2md = open(os.path.join(R, 'h2-draft.md')).read()
-    h2md = h2md[h2md.index('## Letter'):]
+    h2md = open(os.path.join(R, 'h2-final.md')).read()
     h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of Hedge Fund', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of Hedge Fund')
     h2b = parse_flow(h2md, 'h2')
     out = [head('measure')]
@@ -357,6 +368,13 @@ def paginate(prefix, blocks, measures, start_page):
         bid = f'{prefix}-{j}'
         h = measures[bid]
         if b['t'] == 'band':
+            ey = b.get('eyebrow') or ''
+            flow = ey.startswith('Appendix') or ey == 'Notice'
+            if flow and cur and used + h + 300 <= CONTENT_H:
+                # back-matter bands may share a page with the previous appendix
+                sec_pages[(b.get('num'), b.get('toc') or re.sub(r'<[^>]+>', ' ', b['title']).strip())] = start_page + len(pages)
+                cur.append(bid); used += h + 30
+                continue
             close()
             sec_pages[(b.get('num'), b.get('toc') or re.sub(r'<[^>]+>', ' ', b['title']).strip())] = start_page + len(pages)
             cur.append(bid); used = h
@@ -384,9 +402,13 @@ def render_pages(pages, blocks_by_id, doc, footer_label, start_page):
     for k, page in enumerate(pages):
         pgno = start_page + k
         inner = []
-        for bid in page:
+        for pos, bid in enumerate(page):
             b = blocks_by_id[bid]
-            inner.append(band_html(b) if b['t'] == 'band' else b['html'])
+            if b['t'] == 'band':
+                gap = '<div style="height:30px"></div>' if pos > 0 else ''
+                inner.append(gap + band_html(b))
+            else:
+                inner.append(b['html'])
         out.append(f'''<div class="page" data-canvas-width="794" data-canvas-height="1123">
   {chrome_header(doc)}
   <div class="content">
@@ -401,12 +423,11 @@ def assemble():
     logow = open(os.path.join(R, 'logo-white.png.b64')).read()
 
     # ---------- H2 2026 report ----------
-    h2md = open(os.path.join(R, 'h2-draft.md')).read()
-    h2md = h2md[h2md.index('## Letter'):]
+    h2md = open(os.path.join(R, 'h2-final.md')).read()
     h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of Hedge Fund', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of Hedge Fund')
     h2b = parse_flow(h2md, 'h2')
     h2ids = {f'h2-{j}': b for j, b in enumerate(h2b)}
-    pages, _ = paginate('h2', h2b, measures, 2)
+    pages, _ = paginate('h2', h2b, measures, 3)
     cover = f'''<div class="page cover" data-canvas-width="794" data-canvas-height="1123">
   <img class="logo" src="{logow}" />
   <div class="rule-top"></div>
@@ -414,13 +435,33 @@ def assemble():
   <h1>H2 2026 Report</h1>
   <div class="subtitle">Positioning for a late cycle reflation: equities, fixed income and commodities into December 2026, built from the published research of the fund's investment teams.</div>
   <div class="rule-bottom"></div>
-  <div class="meta"><strong>Hedge Fund Department</strong><br/>Frankfurt School of Finance and Management<br/>July 2026</div>
+  <div class="meta"><strong>Hedge Fund Department</strong><br/>Frankfurt School of Finance and Management<br/>Reporting date: 30 June 2026 · Published: July 2026</div>
 </div>'''
-    doc = head('FS Student Hedge Fund · H2 2026 Report') + cover + '\n'.join(
-        render_pages(pages, h2ids, 'h2', 'FS Student Hedge Fund · H2 2026 Report', 2)) + '\n</body></html>'
+    toc_items = []
+    for k, page in enumerate(pages):
+        for bid in page:
+            b = h2ids[bid]
+            if b['t'] != 'band':
+                continue
+            eyebrow = b.get('eyebrow') or ''
+            label = b.get('toc') or ''
+            num = b.get('num') or ''
+            if eyebrow.startswith('Appendix ') :
+                label = f'{eyebrow}: {label}'
+            toc_items.append(f'<div class="ti"><span class="tn">{num}</span><span class="tt">{label}</span><span class="tp">{3 + k}</span></div>')
+    h2toc = f'''<div class="page" data-canvas-width="794" data-canvas-height="1123">
+  {chrome_header('h2')}
+  <div class="content">
+    <div class="band"><div class="eyebrow">Overview</div><h2>Contents</h2></div>
+    <div class="toc">{''.join(toc_items)}</div>
+  </div>
+  {chrome_footer('FS Student Hedge Fund · H2 2026 Report', 2)}
+</div>'''
+    doc = head('FS Student Hedge Fund · H2 2026 Report') + cover + h2toc + '\n'.join(
+        render_pages(pages, h2ids, 'h2', 'FS Student Hedge Fund · H2 2026 Report', 3)) + '\n</body></html>'
     open(os.path.join(R, 'fshf-h2-2026-report.html'), 'w').write(doc)
-    print(f'H2 report: {1 + len(pages)} pages')
-    pagemap = {'h2': [None] + [list(p) for p in pages]}
+    print(f'H2 report: {2 + len(pages)} pages')
+    pagemap = {'h2': [None, None] + [list(p) for p in pages]}
 
     # ---------- Seagate ----------
     sgb, sgr, cert = seagate_blocks()

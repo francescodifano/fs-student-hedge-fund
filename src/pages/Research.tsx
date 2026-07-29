@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import Button from '../components/Button'
 import { usePageTitle } from '../lib/usePageTitle'
@@ -104,6 +105,17 @@ export default function Research() {
             </a>
           ))}
         </div>
+        <p className="mt-12 max-w-3xl text-sm leading-relaxed text-navy/60">
+          Our research is prepared by students for educational purposes and does not constitute investment
+          advice or a recommendation to buy or sell any financial instrument. Each paper carries a legal notice
+          with the disclosures required under Art. 20 of the EU Market Abuse Regulation and Delegated Regulation
+          (EU) 2016/958. The initiative manages no client assets and operates a simulated paper portfolio only.
+          See the full disclaimer in the{' '}
+          <Link to="/imprint" className="font-bold text-navy underline-offset-2 hover:underline">
+            imprint
+          </Link>
+          .
+        </p>
       </section>
     </>
   )

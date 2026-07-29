@@ -100,7 +100,10 @@
 
 %% ---------- Captions ----------------------------------------------
 \RequirePackage{caption}
-\captionsetup{labelfont={bf,small},textfont={small},labelsep=colon,skip=4pt}
+%% Uniform heading rule (Jakob, Jul 2026): table and figure headings are set
+%% flush left at the text margin, never centred, across all papers.
+\captionsetup{labelfont={bf,small},textfont={small},labelsep=colon,skip=4pt,%
+  justification=raggedright,singlelinecheck=false}
 \captionsetup[table]{position=above,skip=6pt}
 \captionsetup[figure]{position=below}
 %% longtable caption spacing consistent with table captions
@@ -168,6 +171,54 @@
    \begin{list}{}{\setlength{\leftmargin}{1.8em}\setlength{\itemindent}{-1.8em}%
      \setlength{\itemsep}{2pt}\setlength{\parsep}{0pt}}}
   {\end{list}}
+
+%% ---------- Legal notice and disclaimer ----------------------------
+%% \fshfdisclaimer{<completion date, e.g. 25 June 2026>}
+%% Uniform block for every published paper (Art. 20 MAR / DelVO (EU)
+%% 2016/958 disclosure set, per the July 2026 publication round).
+\newcommand{\fshfdisclaimer}[1]{%
+  \clearpage
+  \section*{Legal Notice and Disclaimer}
+  {\footnotesize
+  This paper was produced by the authors named on the title page for the FS
+  Student Hedge Fund, a student initiative at Frankfurt School of Finance and
+  Management, as part of an educational research project. The FS Student Hedge
+  Fund is not a legal entity, is not supervised by BaFin or any other
+  regulator, manages no client assets and operates a simulated paper portfolio
+  only.\par\medskip
+  This document does not constitute investment advice and must not be
+  construed as a recommendation or solicitation to buy or sell any financial
+  instrument. \emph{Dieses Dokument stellt keine Anlageberatung und keine
+  Aufforderung zum Kauf oder Verkauf von Finanzinstrumenten dar.} It takes no
+  account of the individual circumstances, objectives, financial situation or
+  needs of any reader, and no personal recommendation is made or implied. The
+  authors are not licensed investment advisers.\par\medskip
+  To the extent that any content of this document were considered an
+  investment recommendation within the meaning of Art.~3(1)(34) and (35) and
+  Art.~20 of Regulation (EU) No~596/2014 (Market Abuse Regulation) in
+  conjunction with Delegated Regulation (EU) 2016/958, the following
+  disclosures are made. The producers of this document are the authors named
+  on the title page, acting for the FS Student Hedge Fund; the analysis was
+  completed #1. Facts are distinguished from interpretations, estimates and
+  opinions in the text, and material sources are indicated in the references;
+  projections, scenario values and fair-value estimates are labelled as such
+  and rest on the stated assumptions. Indicated weights and allocations
+  describe the construction of the initiative's simulated research portfolio,
+  with the horizon stated in the text, and their meaning is explained where
+  they appear. A list of all research published by the initiative in the
+  preceding twelve months is available on the fund's Research page at
+  fs-student-hedgefund.com/research. Neither the initiative nor the authors
+  hold positions in the financial instruments discussed, have any business
+  relationship with any issuer mentioned, or receive any remuneration in
+  connection with this document; no conflicts of interest exist.\par\medskip
+  Investments in financial instruments involve risks, including the possible
+  loss of the entire amount invested. Past performance and simulated results
+  are not a reliable indicator of future results. All data reflect the state
+  of knowledge at the dates indicated; no warranty is given as to accuracy or
+  completeness. Before making any investment decision, readers should consult
+  the current product documentation of the relevant instruments, including the
+  prospectus and key information document, and seek independent professional
+  advice.\par}}
 
 %% ---------- Hyperref (last) ---------------------------------------
 \RequirePackage[colorlinks=true,linkcolor=fshfaccent,urlcolor=fshfaccent,

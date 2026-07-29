@@ -55,6 +55,15 @@ export default function Imprint() {
                 indicator of future results. Anyone considering an investment should consult a licensed financial
                 advisor.
               </p>
+              <p>
+                To the extent that any published paper were considered an investment recommendation within the
+                meaning of Art. 20 of Regulation (EU) No 596/2014 (Market Abuse Regulation) and Delegated
+                Regulation (EU) 2016/958, each paper carries its own legal notice with the required disclosures.
+                The initiative manages no client assets, operates a simulated paper portfolio only, holds no
+                positions in the instruments discussed, receives no remuneration for its research, and has no
+                conflicts of interest. All research published in the preceding twelve months is available on the
+                Research page.
+              </p>
             </Block>
 
             <Block title="Liability for content">
