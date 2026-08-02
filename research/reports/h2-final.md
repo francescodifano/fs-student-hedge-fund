@@ -10,8 +10,13 @@ One thing has changed since the reporting date and it belongs in the opening par
 
 We thank every analyst who contributed, and we invite the reader to consult the underlying papers on our Research page.
 
-**Francesco di Fano, Julius Jagland and Jakob Hautkappe**
-Heads of Hedge Fund
+One reading convention deserves a sentence before the report begins. This report draws on five research papers, but in places it consolidates where two teams reached different conclusions, fills a gap the papers leave open, or updates a finding that events have overtaken. We wanted that distinction visible rather than blended into a single voice. Passages marked ***Fund view*** are therefore judgements of the Hedge Fund Department. Everything unmarked is traceable to one of the papers listed in Appendix A.
+
+**Francesco di Fano and Julius Jagland**
+Heads of FS Student Hedge Fund Department
+
+**Jakob Hautkappe**
+Senior Associate
 
 ---
 
@@ -21,7 +26,7 @@ Our house view entering the second half of 2026 is a **late-cycle reflation regi
 
 We express this view through three sleeves.
 
-**Equities** (Timur, Anton and Sandro): a value-tilted and defensive-tilted US and European portfolio of UCITS exchange-traded funds, built as a 60% passive core with 40% thematic satellites, roughly 55% US and 45% Europe. The largest active bet is banks plus financials at 12% combined, funded by underweights in technology and real estate held through the core.
+**Equities** (Timur Khairullin, Anton Hilger and Sandro Janashvili): a value-tilted and defensive-tilted US and European portfolio of UCITS exchange-traded funds, built as a 60% passive core with 40% thematic satellites, roughly 55% US and 45% Europe. The largest active bet is banks plus financials at 12% combined, funded by underweights in technology and real estate held through the core.
 
 **Fixed income** (Anastasia Shevchuk, Johannes Volkemer and Raphael Banner): a defensive allocation of 70% EUR and 30% USD, designed as the book's shock absorber. The EUR sleeve runs a mild barbell of 50% short, 15% intermediate and 35% long duration. The USD sleeve runs a bullet-weighted structure of 20%, 50% and 30%, focused on intermediate maturities.
 
@@ -118,7 +123,7 @@ The fund runs three sleeves, each constructed on its own merits by its own team.
 | Fixed income | 52% |
 | Commodities | 11% |
 
-***Fund view: how these weights are set.*** The weight of each sleeve within the total book is a decision of the Hedge Fund Department and is deliberately **not** specified in any of the three papers. Each team was instructed to build its sleeve on its own merits, and the commodities paper states explicitly that the fund-level weight to commodities was set separately by the Head of Fund. That separation is the point. It stops a team from tuning its internal construction to a number it was hoping to be given, and it keeps the sleeve-level analysis independently auditable. The consequence for this report is that Sections 4 to 6 describe three internally complete sleeves, and the blended risk profile of the book follows only once the weights above are entered. They were decided by the Head of Fund and entered at final sign-off. The entered weights are the value weights of the three sleeves in the fund's paper portfolio at its inception on 26 June 2026, with US dollar positions converted at the European Central Bank reference rate of 1.1401 dollars per euro for that date, rounded to the nearest percentage point.
+***Fund view: how these weights are set.*** The weight of each sleeve within the total book is a decision of the Hedge Fund Department and is deliberately **not** specified in any of the three papers. Each team was instructed to build its sleeve on its own merits, and the commodities paper states explicitly that the fund-level weight to commodities was set separately by the Head of the Hedge Fund Department. That separation is the point. It stops a team from tuning its internal construction to a number it was hoping to be given, and it keeps the sleeve-level analysis independently auditable. The consequence for this report is that Sections 4 to 6 describe three internally complete sleeves, and the blended risk profile of the book follows only once the weights above are entered. They were decided by the Head of the Hedge Fund Department and entered at final sign-off. The entered weights are the value weights of the three sleeves in the fund's paper portfolio at its inception on 26 June 2026, with US dollar positions converted at the European Central Bank reference rate of 1.1401 dollars per euro for that date, rounded to the nearest percentage point.
 
 ### 3.2 Where the diversification is real
 
@@ -159,7 +164,7 @@ We are equally explicit about the limit. The equity satellites, the zero-oil-but
 
 ## Section 4: Equities
 
-*From "Equities Portfolio Research" by Timur, Anton and Sandro, 24 June 2026.*
+*From "Equities Portfolio Research" by Timur Khairullin, Anton Hilger and Sandro Janashvili, 24 June 2026.*
 
 ### 4.1 Construction
 
@@ -546,7 +551,7 @@ If a reader takes one page from this report, it should be this one.
 
 All five papers are available on the fund's Research page.
 
-1. **Equities Portfolio Research: United States and Europe.** Timur, Anton and Sandro, 24 June 2026. The late-cycle reflation thesis and the 60/40 core-satellite US and European equity portfolio, from macro regime through sector conviction to a deployable UCITS instrument list.
+1. **Equities Portfolio Research: United States and Europe.** Timur Khairullin, Anton Hilger and Sandro Janashvili, 24 June 2026. The late-cycle reflation thesis and the 60/40 core-satellite US and European equity portfolio, from macro regime through sector conviction to a deployable UCITS instrument list.
 2. **Fixed Income Portfolio: EUR and USD Sovereign, Corporate and Floating Rate.** Anastasia Shevchuk, Johannes Volkemer and Raphael Banner, 2 July 2026, analysis cut-off 26 June 2026. The defensive 70/30 two-currency bond book, a mild EUR barbell against a bullet-weighted USD sleeve, with monitoring and rebalancing triggers.
 3. **Commodities Research Paper.** Jakob Hautkappe and Jonathan Nadar, 25 June 2026. The 50/30/20/0 gold, copper, agriculture and oil sleeve, built on twenty years of daily data, three documented regime breaks, and written falsification rules for every position.
 4. **The Volatility Risk Premium: A Literature Review.** Leon Hendrischk, Friedrich Morris and Linda Zillmer, June 2026. What the academic and practitioner literature agrees and disputes about the premium, and what it implies for a student fund's risk discipline.
@@ -575,7 +580,6 @@ We publish this register rather than keeping it internal, because a reader is en
 - **Commodities analysis:** daily data from 2 January 2005 to June 2026, aligned to a common trading-day calendar. Prices in log returns, rates and yields in first differences, conditioning signals as rolling 252-day z-scores, annualisation on a 252-day basis. Risk-free rate 2.5% per year as a euro-area cash anchor.
 - **Equities:** macro and instrument figures cross-checked against primary or institutional open sources. Valuation and dividend snapshots dated to 11 June 2026 unless stated. Portfolio yield and beta computed 24 July 2026.
 - **Fixed income:** product durations are stated as approximations in the source tables and the sleeve figures are derived from them.
-- **Marker convention:** unmarked text is drawn from one of the fund's five research papers and can be traced back to them. Passages marked *Fund view* are consolidations or judgements of the Hedge Fund Department rather than statements taken one to one from a paper.
 - **Naming convention:** the report is named for the period it positions for. The next edition, positioning for January to June 2027, will be the H1 2027 Report, with a reporting date of 31 December 2026.
 
 ## Appendix D: Short Glossary
@@ -602,7 +606,7 @@ The report draws on the five research papers in Appendix A, which carry their ow
 
 ## Disclaimer
 
-This report was produced as part of an academic project and is intended solely for academic purposes within the context of education and research. All statements, assessments and product selections do not constitute investment advice and must not be construed as a recommendation or solicitation to buy or sell any financial instrument. Dieses Dokument stellt keine Anlageberatung und keine Aufforderung zum Kauf oder Verkauf von Finanzinstrumenten dar. The authors are not licensed investment advisers. The FS Student Hedge Fund is a student initiative at Frankfurt School of Finance and Management. It is not a legal entity, is not supervised by BaFin or any other regulator, manages no client assets and operates a simulated paper portfolio only. This document takes no account of the individual circumstances, objectives, financial situation or needs of any reader, and no personal recommendation is made or implied.
+This report was produced as part of an academic project and is intended solely for academic purposes within the context of education and research. All statements, assessments and product selections do not constitute investment advice and must not be construed as a recommendation or solicitation to buy or sell any financial instrument. The authors are not licensed investment advisers. The FS Student Hedge Fund is a student initiative at Frankfurt School of Finance and Management. It is not a legal entity, is not supervised by BaFin or any other regulator, manages no client assets and operates a simulated paper portfolio only. This document takes no account of the individual circumstances, objectives, financial situation or needs of any reader, and no personal recommendation is made or implied.
 
 To the extent that any content of this report were considered an investment recommendation within the meaning of Art. 3(1)(34) and (35) and Art. 20 of Regulation (EU) No 596/2014 (Market Abuse Regulation) in conjunction with Delegated Regulation (EU) 2016/958, the following disclosures are made. This report was produced by the Hedge Fund Department of the FS Student Hedge Fund and completed in late July 2026. Facts are distinguished from interpretations and opinions throughout, with departmental judgements marked as Fund view. Material sources are indicated in Appendix E and in the underlying research papers listed in Appendix A, which contain the detailed methodologies and assumptions. Sleeve weights and instrument allocations describe the construction of the initiative's simulated research portfolio, with a horizon to the December 2026 evaluation unless stated otherwise, and their meaning is explained where they appear. Scenario values, fair-value estimates and projections are labelled as such and rest on the stated assumptions. A list of all research published by the initiative in the preceding twelve months is available on the fund's Research page. Neither the initiative nor the authors hold positions in the instruments discussed, have any business relationship with any issuer mentioned, or receive any remuneration in connection with this document. No conflicts of interest exist.
 

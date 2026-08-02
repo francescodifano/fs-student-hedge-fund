@@ -314,7 +314,8 @@ def band_html(b):
 def emit_measure():
     sgb, sgr, _cert = seagate_blocks()
     h2md = open(os.path.join(R, 'h2-final.md')).read()
-    h2md = h2md.replace('**Francesco di Fano, Julius Jagland and Jakob Hautkappe**\nHeads of Hedge Fund', '**Francesco di Fano, Julius Jagland and Jakob Hautkappe**@@BR@@Heads of Hedge Fund')
+    h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of FS Student Hedge Fund Department', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of FS Student Hedge Fund Department')
+    h2md = h2md.replace('**Jakob Hautkappe**\nSenior Associate', '**Jakob Hautkappe**@@BR@@Senior Associate')
     h2b = parse_flow(h2md, 'h2')
     out = [head('measure')]
     out.append('<div style="width:666px; margin:0 auto; background:#fff;">')
@@ -381,10 +382,17 @@ def paginate(prefix, blocks, measures, start_page):
             continue
         if bid in FORCED and cur:
             close()
-        # keep-with-next for headings
+        # keep-with-next for headings; a bold label keeps its full follower,
+        # and a heading followed by an indivisible visual block (table or
+        # figure) moves with it rather than sitting orphaned at a page foot
         if b['t'] in ('h3', 'h4', 'h4label'):
+            nj = blocks[j + 1] if j + 1 < len(blocks) else None
             nxt = measures.get(f'{prefix}-{j+1}', 0)
-            if used + h + min(nxt, 120) > CONTENT_H:
+            if b['t'] == 'h4label' or (nj and nj['t'] in ('table', 'tablegroup', 'figure')):
+                reserve = nxt
+            else:
+                reserve = min(nxt, 120)
+            if used + h + reserve > CONTENT_H:
                 close(); cur.append(bid); used = h
                 continue
         if used + h > CONTENT_H and cur:
@@ -395,7 +403,45 @@ def paginate(prefix, blocks, measures, start_page):
         cur.append(bid); used += h
     close()
     rebalance(pages, blocks, measures, prefix)
+    fill_pages(pages, blocks, measures)
     return pages, sec_pages
+
+def fill_pages(pages, blocks, measures):
+    """Pull leading blocks of the next page up while they genuinely fit,
+    so pages do not end in large whitespace. Bands never move (sections
+    keep starting their own page), forced breaks are respected, and a
+    heading only moves if its follower fits with it."""
+    def bof(bid):
+        return blocks[int(bid.split('-')[-1])]
+    def pageh(page):
+        h = sum(measures[b] for b in page)
+        h += 30 * sum(1 for i, b in enumerate(page) if i > 0 and bof(b)['t'] == 'band')
+        return h
+    moved = True
+    while moved:
+        moved = False
+        for k in range(len(pages) - 1):
+            while pages[k + 1]:
+                bid = pages[k + 1][0]
+                b = bof(bid)
+                if b['t'] == 'band' or bid in FORCED:
+                    break
+                # absorbing the whole next page, or a self-contained visual
+                # block (table/figure), may use the hard allowance, mirroring
+                # the tail rule: a small overrun beats a large gap
+                hard_ok = len(pages[k + 1]) == 1 or b['t'] in ('table', 'tablegroup', 'figure')
+                limit = HARD_H if hard_ok else CONTENT_H
+                free = limit - pageh(pages[k])
+                if measures[bid] > free:
+                    break
+                if b['t'] in ('h3', 'h4', 'h4label') and len(pages[k + 1]) > 1:
+                    nxt = measures[pages[k + 1][1]]
+                    reserve = nxt if b['t'] == 'h4label' else min(nxt, 120)
+                    if measures[bid] + reserve > free:
+                        break
+                pages[k].append(pages[k + 1].pop(0))
+                moved = True
+        pages[:] = [p for p in pages if p]
 
 def render_pages(pages, blocks_by_id, doc, footer_label, start_page):
     out = []
@@ -424,7 +470,8 @@ def assemble():
 
     # ---------- H2 2026 report ----------
     h2md = open(os.path.join(R, 'h2-final.md')).read()
-    h2md = h2md.replace('**Francesco di Fano, Julius Jagland and Jakob Hautkappe**\nHeads of Hedge Fund', '**Francesco di Fano, Julius Jagland and Jakob Hautkappe**@@BR@@Heads of Hedge Fund')
+    h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of FS Student Hedge Fund Department', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of FS Student Hedge Fund Department')
+    h2md = h2md.replace('**Jakob Hautkappe**\nSenior Associate', '**Jakob Hautkappe**@@BR@@Senior Associate')
     h2b = parse_flow(h2md, 'h2')
     h2ids = {f'h2-{j}': b for j, b in enumerate(h2b)}
     pages, _ = paginate('h2', h2b, measures, 3)

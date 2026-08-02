@@ -40,12 +40,10 @@ for anchor, marker in inserts:
     assert md.count(anchor) == 1, f'anchor not unique: {anchor[:50]}'
     md = md.replace(anchor, anchor + marker)
 
-# 3. preserve the essential conventions from the dropped section in Appendix C
+# 3. preserve the naming convention from the dropped section in Appendix C
+#    (the Fund view marker is now defined in the Foreword's closing paragraph,
+#    per Jakob's 30 Jul suggestion)
 conv = (
-    '- **Marker convention:** unmarked text is drawn from one of the fund\'s five '
-    'research papers and can be traced back to them. Passages marked *Fund view* are '
-    'consolidations or judgements of the Hedge Fund Department rather than statements '
-    'taken one to one from a paper.\n'
     '- **Naming convention:** the report is named for the period it positions for. '
     'The next edition, positioning for January to June 2027, will be the H1 2027 Report, '
     'with a reporting date of 31 December 2026.\n'

@@ -41,7 +41,7 @@ export const PAPERS: Paper[] = [
   {
     title: 'Equities Portfolio Research',
     tag: 'Equities · 2026',
-    authors: 'Timur, Anton and Sandro',
+    authors: 'Timur Khairullin, Anton Hilger and Sandro Janashvili',
     date: '24 June 2026',
     blurb:
       'A late cycle reflation playbook for a US and European equity sleeve: a 60% passive core with 40% thematic satellites, built on Fed and ECB divergence, the oil shock and the European valuation discount.',
@@ -60,8 +60,12 @@ export const PAPERS: Paper[] = [
     cover: 'research-fixed-income-cover.jpg',
     coverAlt: 'Title page of the Fixed Income Portfolio paper',
   },
+]
+
+// Literature reviews and prior-cycle research, shown under "Additional Research".
+export const ADDITIONAL: Paper[] = [
   {
-    title: 'The Volatility Risk Premium',
+    title: 'The Volatility Risk Premium: A Literature Review',
     tag: 'Literature Review · 2026',
     authors: 'Leon Hendrischk, Friedrich Morris and Linda Zillmer',
     date: 'June 2026',
@@ -72,7 +76,7 @@ export const PAPERS: Paper[] = [
     coverAlt: 'Title page of The Volatility Risk Premium literature review',
   },
   {
-    title: 'Efficient Market Hypothesis',
+    title: 'Efficient Market Hypothesis: A Literature Review',
     tag: 'Literature Review · 2026',
     authors: 'Takudzwa Mutetwa, Sebastian Maurer and Sean Pascal',
     date: 'July 2026',

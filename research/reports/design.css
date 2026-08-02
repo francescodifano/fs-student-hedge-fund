@@ -43,12 +43,12 @@ ul.list li { font-size:14px; line-height:1.58; color:rgba(6,0,51,.84); margin-bo
 .stat { flex:1; background:#060033; color:#fff; padding:20px 18px 16px; }
 .stat .num { font-family:"georgiapro",serif; font-weight:700; font-size:28px; margin-bottom:5px; }
 .stat .lbl { font-size:11.5px; font-weight:700; letter-spacing:.04em; color:rgba(255,255,255,.6); line-height:1.35; }
-table { width:100%; border-collapse:collapse; margin:16px 0 18px; }
-th { background:#060033; color:#fff; font-size:12.5px; font-weight:700; text-align:left; padding:10px 12px; }
-td { font-size:13px; line-height:1.5; color:rgba(6,0,51,.82); padding:9px 12px; border-bottom:1px solid rgba(6,0,51,.12); vertical-align:top; }
+table { width:100%; border-collapse:collapse; margin:12px 0 14px; }
+th { background:#060033; color:#fff; font-size:12.5px; font-weight:700; text-align:left; padding:8px 11px; }
+td { font-size:13px; line-height:1.48; color:rgba(6,0,51,.82); padding:7px 11px; border-bottom:1px solid rgba(6,0,51,.12); vertical-align:top; }
 td strong { color:#060033; }
 p.body.callout { border-left:3px solid #060033; background:rgba(6,0,51,.045); padding:10px 14px 10px 16px; }
-.figure { margin:18px 0 20px; }
+.figure { margin:14px 0 16px; }
 .figure .frame { border:1px solid rgba(6,0,51,.12); padding:14px; background:#fff; }
 .figure img { width:100%; display:block; }
 .figure .cap { margin-top:9px; font-size:12.5px; font-weight:700; color:rgba(6,0,51,.62); }
@@ -83,7 +83,7 @@ p.body.callout { border-left:3px solid #060033; background:rgba(6,0,51,.045); pa
 }
 
 /* ---------- ordered list items (report index) ---------- */
-.oli { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid rgba(6,0,51,.1); }
+.oli { display:flex; gap:12px; padding:8px 0; border-bottom:1px solid rgba(6,0,51,.1); }
 .oli .on { font-family:"georgiapro",serif; font-weight:700; font-size:16px; color:rgba(6,0,51,.45); width:22px; }
 .oli .ot { flex:1; font-size:13.5px; line-height:1.55; color:rgba(6,0,51,.84); }
 
