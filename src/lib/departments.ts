@@ -1,23 +1,13 @@
 // Content for the department pages — sourced verbatim from the live site
 // (fs-student-hedgefund.com/departments/*), which numbers the departments and
 // names them "Trading & Derivatives" / "Quantitative Team".
-// Index Construction has its own richer page (IndexConstruction.tsx).
+// Index Construction and Hedge Fund have their own richer pages
+// (IndexConstruction.tsx, HedgeFund.tsx).
 // `mission` lines are the per-department statements from the Solactive pitch
 // deck's "Struktur" slide (translated); `leads` reference lib/team.ts by name.
 export type Dept = { num: string; name: string; hero: string; body: string[]; mission: string; leads: string[] }
 
 export const DEPARTMENTS_DATA: Record<string, Dept> = {
-  'hedge-fund': {
-    num: '03',
-    name: 'Hedge Fund',
-    hero: 'hedgefund-1.jpg',
-    mission: 'Independent research and institutional-grade financial analysis.',
-    leads: ['Francesco di Fano', 'Julius Jagland'],
-    body: [
-      'The Hedge Fund combines discretionary and systematic approaches across multiple strategies and asset classes. Members develop macro theses, construct diversified portfolios, and implement hedging strategies to generate risk-adjusted returns across varying market environments.',
-      'The department also reviews and publishes the written research of the investment teams: portfolio papers for the commodities, equities and fixed income sleeves, together with literature reviews on the foundations of our strategies. All published papers are available on the Research page.',
-    ],
-  },
   derivatives: {
     num: '02',
     name: 'Trading & Derivatives',

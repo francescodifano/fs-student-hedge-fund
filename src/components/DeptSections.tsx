@@ -7,12 +7,13 @@ import { DEPARTMENTS } from '../lib/nav'
 // Shared sections for every department page: mission band, department leads,
 // cross-navigation to the other departments, and a join CTA.
 
-export function MissionBand({ children }: { children: string }) {
+export function MissionBand({ children, support }: { children: string; support?: string }) {
   return (
     <section className="border-b border-white/10 bg-navy text-white">
       <Container className="py-14 md:py-20">
         <p className="font-sans text-sm font-bold tracking-wide text-white/60">Our mission</p>
         <p className="mt-4 max-w-4xl font-display text-h2 font-bold">{children}</p>
+        {support && <p className="mt-6 max-w-4xl text-lead text-white/85">{support}</p>}
       </Container>
     </section>
   )

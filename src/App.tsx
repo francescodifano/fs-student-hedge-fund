@@ -8,6 +8,7 @@ import Social from './pages/Social'
 import Contact from './pages/Contact'
 import DepartmentPage from './pages/DepartmentPage'
 import IndexConstruction from './pages/IndexConstruction'
+import HedgeFund from './pages/HedgeFund'
 import Imprint from './pages/Imprint'
 import NotFound from './pages/NotFound'
 
@@ -24,7 +25,7 @@ export default function App() {
 
         {/* Departments (shared template) */}
         <Route path="index-construction" element={<IndexConstruction />} />
-        <Route path="hedge-fund" element={<DepartmentPage slug="hedge-fund" />} />
+        <Route path="hedge-fund" element={<HedgeFund />} />
         <Route path="derivatives" element={<DepartmentPage slug="derivatives" />} />
         <Route path="quant" element={<DepartmentPage slug="quant" />} />
 
