@@ -13,8 +13,8 @@ const INTERNAL = [
   { n: '03', title: 'Structuring', desc: 'Formal index construction covering weighting methodology, rebalancing rules, and a full performance backtest.' },
 ]
 const PARTNERS = [
-  { tag: 'Calculation', name: 'Solactive', desc: 'Independent index calculation and administration, ensuring full methodology transparency and regulatory compliance.' },
-  { tag: 'Issuance', name: 'UniCredit', desc: 'Structured product issuance under the onemarkets platform, bringing the index to market as a publicly tradable financial product.' },
+  { tag: 'Calculation', name: 'Partner 1', desc: 'Independent index calculation and administration, ensuring full methodology transparency and regulatory compliance.' },
+  { tag: 'Issuance', name: 'Partner 2', desc: 'Structured product issuance, bringing the index to market as a publicly tradable financial product.' },
 ]
 
 const INDEX_SPECS: [string, string][] = [
@@ -23,8 +23,8 @@ const INDEX_SPECS: [string, string][] = [
   ['Weighting', 'Market Cap'],
   ['Benchmark', 'MSCI World'],
   ['Asset Selection', 'FSHF Internal'],
-  ['Calculation', 'Solactive'],
-  ['Issuance', 'UniCredit'],
+  ['Calculation', 'Partner 1'],
+  ['Issuance', 'Partner 2'],
 ]
 
 // Index Construction — the richest department page: hero, intro, stats,
