@@ -53,7 +53,7 @@ export default function About() {
               operating across three departments: Hedge Fund, Trading &amp; Derivatives, and Index Construction.
               Together, we apply institutional-grade strategies to real markets, from developing macro theses and
               managing derivative portfolios to constructing structured indices in collaboration with industry
-              partners like Solactive and UniCredit.
+              partners.
             </p>
             <p>
               Our members don't just study markets, they research them, model them, and take positions in them. We
