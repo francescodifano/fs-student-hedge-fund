@@ -27,6 +27,15 @@
   --color-chart-teal: #0a9396;
   --color-chart-gold: #e9c46a;
 
+  /* Deliberate, narrowly scoped exception to the navy-only chrome rule above.
+     Green/red for gain and loss is the standard convention for financial
+     performance figures and is judged to outweigh strict palette adherence for
+     this one purpose. Use --color-gain and --color-loss ONLY for the four
+     performance figures in the Performance section. Not for badges, nav states,
+     borders, links, the performance chart, or any other accent anywhere. */
+  --color-gain: #1a7a3c;
+  --color-loss: #b3261e;
+
   --font-display: Georgia, 'Times New Roman', serif;
   --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 

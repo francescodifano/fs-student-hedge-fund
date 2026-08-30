@@ -259,11 +259,11 @@
           "name": "Xtrackers USD Corporate Bond Short Duration SRI PAB UCITS ETF 1D",
           "ticker": "XYLD",
           "isin": "IE00BF8J5974",
-          "listing": "Xetra",
-          "currency": "EUR",
+          "listing": "London Stock Exchange",
+          "currency": "USD",
           "role": "USD credit, second provider",
           "entry_date": "2026-06-26",
-          "entry_price": 16.18,
+          "entry_price": 18.41,
           "weight_sleeve": 5.4,
           "weight_portfolio": 2.7,
           "is_cash": false
@@ -417,13 +417,12 @@
       "id": "commodities",
       "name": "Commodities",
       "portfolio_weight": 15.0,
-      "caption": "Target weights: 50% gold, 30% copper, 20% passive agriculture",
+      "caption": "Fully deployed at target weights",
       "paper_url": "papers/commodities-research-2026.pdf",
       "chart": [
-        { "label": "Gold", "weight": 35 },
-        { "label": "Cash reserve", "weight": 30 },
-        { "label": "Agriculture", "weight": 20 },
-        { "label": "Copper", "weight": 15 }
+        { "label": "Gold", "weight": 50 },
+        { "label": "Copper", "weight": 30 },
+        { "label": "Agriculture", "weight": 20 }
       ],
       "positions": [
         {
@@ -432,7 +431,7 @@
           "isin": "IE00B4ND3602",
           "listing": "London Stock Exchange",
           "currency": "USD",
-          "role": "Core gold, target 50%",
+          "role": "Gold, physical core",
           "entry_date": "2026-06-26",
           "entry_price": 78.2,
           "weight_sleeve": 35.0,
@@ -445,7 +444,7 @@
           "isin": "GB00B15KYH63",
           "listing": "London Stock Exchange",
           "currency": "USD",
-          "role": "Passive layer, target 20%",
+          "role": "Passive layer",
           "entry_date": "2026-06-26",
           "entry_price": 6.11,
           "weight_sleeve": 20.0,
@@ -458,7 +457,7 @@
           "isin": "GB00B15KXQ89",
           "listing": "London Stock Exchange",
           "currency": "USD",
-          "role": "Core copper, target 30%",
+          "role": "Copper, initial slice",
           "entry_date": "2026-06-26",
           "entry_price": 52.21,
           "weight_sleeve": 15.0,
@@ -466,17 +465,32 @@
           "is_cash": false
         },
         {
-          "name": "Cash reserve for tranches 2 and 3",
-          "ticker": "",
-          "isin": "",
-          "listing": "",
+          "name": "WisdomTree Copper",
+          "ticker": "COPA",
+          "isin": "GB00B15KXQ89",
+          "listing": "London Stock Exchange",
           "currency": "USD",
-          "role": "Undeployed, pending tranches",
-          "entry_date": "2026-06-26",
-          "entry_price": null,
-          "weight_sleeve": 30.0,
-          "weight_portfolio": 4.5,
-          "is_cash": true
+          "role": "Copper, staged add",
+          "entry_date": "2026-07-22",
+          "entry_price": 55.91,
+          "weight_sleeve": 15.0,
+          "weight_portfolio": 2.25,
+          "is_cash": false,
+          "subheader": "Staged add, 22 July 2026"
+        },
+        {
+          "name": "iShares Physical Gold ETC",
+          "ticker": "IGLN",
+          "isin": "IE00B4ND3602",
+          "listing": "London Stock Exchange",
+          "currency": "USD",
+          "role": "Gold, staged add",
+          "entry_date": "2026-07-29",
+          "entry_price": 77.81,
+          "weight_sleeve": 15.0,
+          "weight_portfolio": 2.25,
+          "is_cash": false,
+          "subheader": "Staged add, 29 July 2026"
         }
       ]
     }

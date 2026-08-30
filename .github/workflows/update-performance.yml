@@ -1,0 +1,66 @@
+name: Update Portfolio Performance
+
+on:
+  schedule:
+    # 21:00 UTC, Monday to Friday. GitHub cron is UTC only and has no daylight
+    # saving awareness, so a fixed UTC time drifts by an hour across the year.
+    # 21:00 UTC is 23:00 German summer time and 22:00 German winter time, so it
+    # never runs earlier than 22:00 local, and always well after the European
+    # closes (LSE, Xetra, Euronext Amsterdam, Boerse Stuttgart). GitHub also
+    # delays scheduled runs under load, which is a further reason not to
+    # schedule tightly against a boundary.
+    - cron: '0 21 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: portfolio-performance
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch and record today's performance
+        env:
+          GHOSTFOLIO_ACCESS_ID: ${{ vars.GHOSTFOLIO_ACCESS_ID }}
+        run: node scripts/update-ghostfolio-performance.mjs
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/hedge-fund-performance.json
+          if git diff --cached --quiet; then
+            echo "No change, nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore(data): record portfolio performance for $(date -u +%F)"
+            git pull --rebase --autostash origin main
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A push made with the default GITHUB_TOKEN does NOT fire deploy.yml's
+      # push trigger. GitHub suppresses workflow runs from token-authored
+      # events to prevent recursion, and workflow_dispatch is one of the two
+      # documented exceptions. Without this step the data file would update in
+      # the repository and the live site would never change. actions: write
+      # above is what makes the dispatch permitted; without it this returns 403.
+      - name: Trigger the Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
