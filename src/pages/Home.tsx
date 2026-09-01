@@ -127,16 +127,18 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* CTA on white, with the navy "Contact us" box as its own element
-          (original design: 443x91 navy box beside the serif heading) */}
+      {/* CTA on white, with the navy box as its own element (original design:
+          443x91 navy box beside the serif heading). While the Contact page is
+          hibernated for the recruiting window it reads Apply and leads to the
+          Applications page; restore "Contact us" + /contact with the page. */}
       <section className="container-page py-16 md:py-24">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="font-display text-h1 font-bold text-navy">Be Where Talent Starts.</h2>
           <Link
-            to="/contact"
+            to="/applications"
             className="block w-full bg-navy px-10 py-5 text-center font-sans text-xl font-extrabold text-white transition-opacity hover:opacity-90 md:w-auto md:px-16 md:py-6 md:text-2xl"
           >
-            Contact us
+            Apply
           </Link>
         </div>
       </section>

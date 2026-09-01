@@ -23,5 +23,4 @@ export const FOOTER_PAGES: NavItem[] = [
   { label: 'Media & Community', to: '/social' },
   { label: 'Applications', to: '/applications' },
   { label: 'About', to: '/about' },
-  { label: 'Contact Us', to: '/contact' },
 ]

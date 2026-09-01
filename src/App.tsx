@@ -1,11 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
 import Research from './pages/Research'
 import Newsroom from './pages/Newsroom'
 import Social from './pages/Social'
-import Contact from './pages/Contact'
 import DepartmentPage from './pages/DepartmentPage'
 import IndexConstruction from './pages/IndexConstruction'
 import HedgeFund from './pages/HedgeFund'
@@ -30,7 +29,10 @@ export default function App() {
         <Route path="derivatives" element={<DepartmentPage slug="derivatives" />} />
         <Route path="quant" element={<DepartmentPage slug="quant" />} />
 
-        <Route path="contact" element={<Contact />} />
+        {/* Contact page hibernated during the September 2026 recruiting
+            window (team decision pending). Restore by swapping the redirect
+            back to <Contact /> and reinstating the nav/footer links. */}
+        <Route path="contact" element={<Navigate to="/applications" replace />} />
         <Route path="applications" element={<Applications />} />
         <Route path="imprint" element={<Imprint />} />
         <Route path="*" element={<NotFound />} />
