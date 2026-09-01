@@ -80,6 +80,7 @@ export default function SiteHeader() {
               </div>
             )}
           </div>
+          <NavLink to="/applications" className={navCls}>Applications</NavLink>
           <NavLink to="/about" className={navCls}>About</NavLink>
           <NavLink to="/contact" className={navCls}>Contact</NavLink>
         </nav>
@@ -121,6 +122,7 @@ export default function SiteHeader() {
                 ))}
               </div>
             )}
+            <Link to="/applications" className="font-sans text-3xl">Applications</Link>
             <Link to="/about" className="font-sans text-3xl">About</Link>
             <Link to="/contact" className="font-sans text-3xl">Contact</Link>
           </nav>

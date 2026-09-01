@@ -10,6 +10,7 @@ import DepartmentPage from './pages/DepartmentPage'
 import IndexConstruction from './pages/IndexConstruction'
 import HedgeFund from './pages/HedgeFund'
 import Imprint from './pages/Imprint'
+import Applications from './pages/Applications'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="quant" element={<DepartmentPage slug="quant" />} />
 
         <Route path="contact" element={<Contact />} />
+        <Route path="applications" element={<Applications />} />
         <Route path="imprint" element={<Imprint />} />
         <Route path="*" element={<NotFound />} />
       </Route>
