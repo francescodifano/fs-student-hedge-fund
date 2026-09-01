@@ -72,7 +72,7 @@ export function JoinCta({ dept }: { dept: string }) {
           Interested in <span className="whitespace-nowrap">{dept}?</span>
         </h2>
         <Link
-          to="/contact"
+          to="/applications"
           className="block w-full bg-navy px-10 py-5 text-center font-sans text-xl font-extrabold text-white transition-opacity hover:opacity-90 md:w-auto md:px-16 md:py-6 md:text-2xl"
         >
           Apply

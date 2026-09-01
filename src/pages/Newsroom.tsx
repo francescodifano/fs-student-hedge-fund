@@ -75,7 +75,7 @@ export default function Newsroom() {
                   </dl>
 
                   <div className="mt-6">
-                    <Button to="/contact" variant="light" className="w-full sm:w-auto">
+                    <Button to="/applications" variant="light" className="w-full sm:w-auto">
                       Apply
                     </Button>
                   </div>

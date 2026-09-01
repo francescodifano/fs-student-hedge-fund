@@ -22,7 +22,7 @@ export default function About() {
               Frankfurt School's student-run finance initiative, where academic rigor meets real markets.
             </p>
             <div className="mt-8">
-              <Button to="/contact" className="w-full sm:w-auto">Apply</Button>
+              <Button to="/applications" className="w-full sm:w-auto">Apply</Button>
             </div>
           </div>
         </div>
