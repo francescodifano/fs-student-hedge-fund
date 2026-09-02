@@ -66,7 +66,7 @@ export function OtherDepartments({ current }: { current: string }) {
 // box button) — only the wording differs per department.
 export function JoinCta({ dept }: { dept: string }) {
   return (
-    <section className="container-page py-16 md:py-24">
+    <section className="container-page py-16 md:py-24 print:hidden">
       <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <h2 className="font-display text-h1 font-bold text-navy">
           Interested in <span className="whitespace-nowrap">{dept}?</span>

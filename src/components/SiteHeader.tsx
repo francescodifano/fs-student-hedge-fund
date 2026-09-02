@@ -45,7 +45,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur print:hidden">
       {/* On desktop the header mirrors the hero's grid, so the nav spans exactly
           the same column as the hero description text (team feedback) */}
       <div className="container-page flex h-20 items-center justify-between gap-4 md:h-24 lg:grid lg:grid-cols-[1.25fr_1fr] lg:gap-6">

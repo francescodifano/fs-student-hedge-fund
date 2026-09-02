@@ -2,14 +2,13 @@ name: Update Portfolio Performance
 
 on:
   schedule:
-    # 21:00 UTC, Monday to Friday. GitHub cron is UTC only and has no daylight
-    # saving awareness, so a fixed UTC time drifts by an hour across the year.
-    # 21:00 UTC is 23:00 German summer time and 22:00 German winter time, so it
-    # never runs earlier than 22:00 local, and always well after the European
-    # closes (LSE, Xetra, Euronext Amsterdam, Boerse Stuttgart). GitHub also
-    # delays scheduled runs under load, which is a further reason not to
-    # schedule tightly against a boundary.
-    - cron: '0 21 * * 1-5'
+    # 19:00 UTC, Monday to Friday, which is 21:00 German summer time and 20:00
+    # German winter time. Well after every European close in the book, and it
+    # leaves eleven hours of headroom before a delayed run could reach the six
+    # hour attribution offset in the script. GitHub delays scheduled runs under
+    # load, and 21:00 UTC left only three hours, which has already been
+    # exceeded once.
+    - cron: '0 19 * * 1-5'
   workflow_dispatch:
 
 permissions:

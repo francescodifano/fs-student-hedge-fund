@@ -3,7 +3,7 @@
   "inception_date": "2026-06-25",
   "base_currency": "USD",
   "headline": {
-    "day_pct": -0.69,
+    "day_pct": -0.68,
     "week_pct": -1.33,
     "month_pct": 1.32,
     "since_inception_pct": 2.99
@@ -198,8 +198,8 @@
       "since_inception_pct": 3.89
     },
     {
-      "date": "2026-08-30",
-      "since_inception_pct": 3.86
+      "date": "2026-08-31",
+      "since_inception_pct": 3.7
     },
     {
       "date": "2026-09-01",

@@ -109,3 +109,31 @@
     transform: translateY(0);
   }
 }
+
+/* Print: the holdings table's sticky first column and its scroll container do
+   not survive pagination, which detaches every position name from its own
+   row, and the navy/mist bands print blank by default. */
+@media print {
+  .holdings-scroll { overflow: visible !important; }
+  .holdings-table { min-width: 0 !important; }
+  .holdings-table th, .holdings-table td { font-size: 11px; }
+  .holdings-table .sticky { position: static !important; }
+
+  /* The print viewport sits under the md breakpoint, so the mobile-only
+     constraints on the sticky name column would otherwise wrap every name
+     to three or four lines and draw the mobile hairline beside it. */
+  .holdings-table th[scope='row'] { min-width: 0 !important; max-width: none !important; border-right: 0 !important; }
+  .holdings-table .bg-navy th { white-space: nowrap; }
+
+  /* The performance chart is drawn at its on-screen pixel width. Let it scale
+     to the paper width instead (the viewBox keeps text and stroke uniform). */
+  #performance svg { width: 100% !important; height: auto !important; }
+
+  /* Repeat the column headers on every page and keep rows intact. */
+  .holdings-table thead { display: table-header-group; }
+  .holdings-table tr { break-inside: avoid; }
+
+  /* Without this the navy group bands and the mist sub-header bands print
+     blank and the table loses its structure. */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
