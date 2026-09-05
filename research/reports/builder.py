@@ -310,13 +310,16 @@ def band_html(b):
     eyebrow = b.get('eyebrow') or (f'Section {b["num"]}' if b.get('num') else 'Appendix')
     return f'<div class="band"><div class="eyebrow">{eyebrow}</div><h2>{b["title"]}</h2></div>'
 
-# ---------------- measurement emit ----------------
-def emit_measure():
-    sgb, sgr, _cert = seagate_blocks()
+def h2_blocks():
     h2md = open(os.path.join(R, 'h2-final.md')).read()
     h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of FS Student Hedge Fund Department', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of FS Student Hedge Fund Department')
     h2md = h2md.replace('**Jakob Hautkappe**\nSenior Associate', '**Jakob Hautkappe**@@BR@@Senior Associate')
-    h2b = parse_flow(h2md, 'h2')
+    return parse_flow(h2md, 'h2')
+
+# ---------------- measurement emit ----------------
+def emit_measure():
+    sgb, sgr, _cert = seagate_blocks()
+    h2b = h2_blocks()
     out = [head('measure')]
     out.append('<div style="width:666px; margin:0 auto; background:#fff;">')
     store = {}
@@ -443,18 +446,255 @@ def fill_pages(pages, blocks, measures):
                 moved = True
         pages[:] = [p for p in pages if p]
 
-def render_pages(pages, blocks_by_id, doc, footer_label, start_page):
+# ---------------- pagination v2 (fragment-aware; used for the H2 report) ----------------
+# Blocks that are internally divisible (tables by row, lists by item, body
+# paragraphs by line) may be split across a page boundary so that pages fill
+# to the bottom instead of ending early. Headings always keep their follower
+# (or its first fragment) on the same page. Sections still start their own
+# page, forced breaks are respected, and the Seagate document keeps the
+# legacy paginator so its published layout is untouched.
+PARTS = json.load(open(os.path.join(R, 'parts.json'))) if os.path.exists(os.path.join(R, 'parts.json')) else {}
+MEASURES_ALL = json.load(open(os.path.join(R, 'measures.json'))) if os.path.exists(os.path.join(R, 'measures.json')) else {}
+SPLIT_PARAS = os.environ.get('SPLIT_PARAS', '1') == '1'
+MIN_LINES, MIN_ROWS, MIN_ITEMS = 2, 2, 2   # smallest fragment on either side of a break
+HEAD_LINES = 3                             # a heading keeps at least this many lines of a following paragraph
+# bottom margins (design.css) that need no room when the block ends a page
+TRAIL = {'p': 12, 'callout': 12, 'h4label': 12, 'table': 14, 'tablegroup': 12, 'ul': 14, 'figure': 16, 'h3': 10, 'h4': 8, 'oli': 0, 'band': 0}
+TALL_UNIT = 70                             # a single list item or table row at least this tall (about three lines) may stand alone as a fragment
+
+class Splitter:
+    def __init__(self, bid, b, parts):
+        self.kind = None
+        info = parts.get(bid)
+        if not info:
+            return
+        t = b['t']
+        if t in ('table', 'tablegroup') and 'table' in info:
+            rows = info['table']['rows']
+            self.hdr_h = sum(r['h'] for r in rows if r['hdr'])
+            self.units = [r['h'] for r in rows if not r['hdr']]
+            self.mt, self.mb = info['table']['mt'], info['table']['mb']
+            self.cols = info['table'].get('cols', [])
+            ch = info.get('children', [])
+            ti = next(i for i, c in enumerate(ch) if c['tag'] == 'table')
+            self.note_h = sum(c['h'] + c['mt'] + c['mb'] for c in ch[ti + 1:])
+            core = self.mt + self.hdr_h + sum(self.units) + self.mb
+            self.cap_h = max(0.0, MEASURES_ALL.get(bid, core + self.note_h) - core - self.note_h)
+            self.kind, self.min = 'table', MIN_ROWS
+        elif t == 'ul' and 'ul' in info:
+            items = info['ul']['items']
+            self.units = [it['h'] for it in items]
+            self.gap = items[0]['mb'] if items else 0
+            self.mt, self.mb = info['ul']['mt'], info['ul']['mb']
+            self.kind, self.min = 'ul', MIN_ITEMS
+        elif t == 'p' and SPLIT_PARAS and 'p' in info and '&nbsp;' not in b['html'] and '<br' not in b['html']:
+            p = info['p']
+            wl = p['wordLines']
+            n = max(p['nlines'], int(round(p['h'] / p['lh']))) if p['lh'] else 0
+            if n >= 2 * MIN_LINES and wl and wl[-1] + 1 == n and tok_words(b['html']) == len(wl):
+                self.lh, self.mb = p['lh'], p['mb']
+                self.units = [self.lh] * n
+                self.starts = [i for i, l in enumerate(wl) if i == 0 or wl[i - 1] != l]
+                # a word that wraps mid-word (hyphen break) is never a safe cut point
+                self.nocut = {li for li, w in enumerate(self.starts) if w in set(p.get('broken', []))}
+                self.kind, self.min = 'p', MIN_LINES
+        if self.kind and not self.cuts(0):
+            self.kind = None
+
+    @property
+    def n(self):
+        return len(self.units)
+
+    def ok(self, a, e):
+        """A fragment [a, e) is acceptable when it holds at least `min` units,
+        or a single list item tall enough to read as a paragraph of its own."""
+        if e - a >= self.min:
+            return True
+        return self.kind in ('ul', 'table') and e - a == 1 and self.units[a] >= TALL_UNIT
+
+    def cuts(self, a):
+        """Candidate end indices for a fragment starting at a, largest first."""
+        nocut = getattr(self, 'nocut', ())
+        return [c for c in range(self.n - 1, a, -1) if c not in nocut and self.ok(a, c) and self.ok(c, self.n)]
+
+    def frag_h(self, a, e):
+        s = sum(self.units[a:e])
+        if self.kind == 'table':
+            return self.mt + self.hdr_h + s + self.mb + (self.cap_h if a == 0 else 0) + (self.note_h if e == self.n else 0)
+        if self.kind == 'ul':
+            return self.mt + s + self.gap * (e - a - 1) + self.mb
+        return s + self.mb
+
+TOK = re.compile(r'(<[^>]+>)|([^\s<]+)|(\s+)')
+
+def tok_words(ph):
+    """Word count of a paragraph's inner HTML under TOK; must equal the
+    browser's count (measure2.cjs: /\\S+/ per text node) for a split to be safe."""
+    m = re.match(r'^(<p[^>]*>)(.*)(</p>)$', ph, re.S)
+    return sum(1 for t in TOK.finditer(m.group(2)) if t.group(2)) if m else -1
+
+def slice_p_html(ph, w0, w1):
+    """Return the paragraph restricted to words [w0, w1), re-closing and
+    re-opening any inline tags that straddle the cut."""
+    m = re.match(r'^(<p[^>]*>)(.*)(</p>)$', ph, re.S)
+    op, inner, cl = m.groups()
+    out, stack, w, inside = [], [], 0, False
+    for tm in TOK.finditer(inner):
+        tag, word, ws = tm.groups()
+        if tag:
+            name = re.match(r'</?\s*(\w+)', tag).group(1)
+            if tag.startswith('</'):
+                if stack and stack[-1][0] == name:
+                    stack.pop()
+                if inside:
+                    out.append(tag)
+            elif tag.endswith('/>'):
+                if inside:
+                    out.append(tag)
+            else:
+                stack.append((name, tag))
+                if inside:
+                    out.append(tag)
+        elif word:
+            if w == w0:
+                inside = True
+                out.extend(t for _, t in stack)
+            if w1 is not None and w == w1:
+                inside = False
+                out.extend(f'</{name}>' for name, _ in reversed(stack))
+                break
+            if inside:
+                out.append(word)
+            w += 1
+        else:
+            if inside:
+                out.append(ws)
+    if inside:
+        out.extend(f'</{name}>' for name, _ in reversed(stack))
+    s = ''.join(out).strip()
+    while True:
+        s2 = re.sub(r'<(\w+)>\s*</\1>', '', s)
+        if s2 == s:
+            break
+        s = s2
+    return op + s + cl
+
+def frag_html(b, s, a, e):
+    if a is None:
+        return b['html']
+    if s.kind == 'table':
+        m = re.match(r'^(.*?)(<table[^>]*>)(.*)(</table>)(.*)$', b['html'], re.S)
+        pre, topen, inner, tclose, post = m.groups()
+        rows = re.findall(r'<tr>.*?</tr>', inner, re.S)
+        hdr = [r for r in rows if '<th' in r]
+        body = [r for r in rows if '<th' not in r]
+        # fragments are separate tables: pin the column widths measured on the
+        # whole table so rows wrap exactly as measured and both parts line up
+        colgroup = '<colgroup>' + ''.join(f'<col style="width:{w:.1f}px">' for w in s.cols) + '</colgroup>' if s.cols else ''
+        topen = f'<table class="split{"" if a == 0 else " cont"}" style="table-layout:fixed">{colgroup}'
+        return (pre if a == 0 else '') + topen + ''.join(hdr) + ''.join(body[a:e]) + tclose + (post if e == s.n else '')
+    if s.kind == 'ul':
+        m = re.match(r'^(<ul[^>]*>)(.*)(</ul>)$', b['html'], re.S)
+        items = re.findall(r'<li>.*?</li>', m.group(2), re.S)
+        return m.group(1) + ''.join(items[a:e]) + m.group(3)
+    w0 = s.starts[a]
+    w1 = s.starts[e] if e < s.n else None
+    return slice_p_html(b['html'], w0, w1)
+
+def paginate_v2(prefix, blocks, measures, start_page):
+    sp = {f'{prefix}-{j}': Splitter(f'{prefix}-{j}', b, PARTS) for j, b in enumerate(blocks)}
+    pages, cur, used = [], [], 0
+    def close():
+        nonlocal cur, used
+        if cur:
+            pages.append(cur); cur = []; used = 0
+    def reserve_after(j):
+        if j + 1 >= len(blocks):
+            return 0
+        nb = f'{prefix}-{j+1}'
+        s = sp[nb]
+        if blocks[j + 1]['t'] in ('h3', 'h4', 'h4label'):
+            return measures[nb] + reserve_after(j + 1)
+        if s.kind == 'p':
+            return s.frag_h(0, HEAD_LINES) - TRAIL['p'] if HEAD_LINES in s.cuts(0) else measures[nb] - TRAIL['p']
+        if s.kind:
+            return s.frag_h(0, min(s.cuts(0))) - TRAIL[blocks[j + 1]['t']]
+        return measures[nb] - TRAIL.get(blocks[j + 1]['t'], 0)
+    for j, b in enumerate(blocks):
+        bid = f'{prefix}-{j}'
+        h = measures[bid]
+        if b['t'] == 'band':
+            ey = b.get('eyebrow') or ''
+            flow = ey.startswith('Appendix') or ey == 'Notice'
+            if flow and cur and used + h + 300 <= CONTENT_H:
+                cur.append({'bid': bid, 'a': None, 'e': None}); used += h + 30
+                continue
+            close()
+            cur.append({'bid': bid, 'a': None, 'e': None}); used = h
+            continue
+        heading = ('h3', 'h4', 'h4label')
+        if bid in FORCED and cur and not all(blocks[int(it['bid'].split('-')[-1])]['t'] in heading for it in cur):
+            close()
+        if b['t'] in heading:
+            nb = f'{prefix}-{j+1}'
+            if cur and (nb in FORCED or used + h + reserve_after(j) > CONTENT_H):
+                close()   # the heading would be stranded: start the page with it
+            cur.append({'bid': bid, 'a': None, 'e': None}); used += h
+            continue
+        s = sp[bid]
+        nxt = blocks[j + 1] if j + 1 < len(blocks) else None
+        tail = nxt is None or nxt['t'] == 'band'
+        visual = b['t'] in ('table', 'tablegroup', 'figure')
+        a = 0
+        def place(a_, e_, hh):
+            nonlocal used
+            whole = not s.kind or (a_ == 0 and e_ == s.n)
+            cur.append({'bid': bid, 'a': None if whole else a_, 'e': None if whole else e_})
+            used += hh
+        tr = TRAIL.get(b['t'], 0)
+        while True:
+            rem = s.frag_h(a, s.n) if s.kind else h
+            free = CONTENT_H - used
+            if rem - tr <= free:
+                place(a, s.n if s.kind else None, rem); break
+            # a small overrun beats a large gap: a self-contained visual block, or
+            # the last block before a section break, may use the hard allowance
+            if cur and (tail or visual) and used + rem - tr <= HARD_H:
+                place(a, s.n if s.kind else None, rem); break
+            if s.kind:
+                cuts = s.cuts(a)
+                e = next((c for c in cuts if s.frag_h(a, c) - tr <= free), None)
+                if e is not None and s.kind in ('table', 'ul') and free - (s.frag_h(a, e) - tr) > 100:
+                    # a table or list cut that would still leave a large gap may
+                    # take one more unit under the hard allowance, like a whole
+                    # visual block: a small overrun beats a large gap
+                    e2 = next((c for c in cuts if c > e and used + s.frag_h(a, c) - tr <= HARD_H), None)
+                    if e2 is not None:
+                        e = e2
+                if e is not None:
+                    place(a, e, s.frag_h(a, e)); close(); a = e
+                    continue
+            if cur:
+                close(); continue
+            place(a, s.n if s.kind else None, rem); break   # taller than a page on its own
+    close()
+    return pages, sp
+
+def render_pages(pages, blocks_by_id, doc, footer_label, start_page, splitters=None):
     out = []
     for k, page in enumerate(pages):
         pgno = start_page + k
         inner = []
-        for pos, bid in enumerate(page):
+        for pos, it in enumerate(page):
+            bid = it if isinstance(it, str) else it['bid']
             b = blocks_by_id[bid]
             if b['t'] == 'band':
                 gap = '<div style="height:30px"></div>' if pos > 0 else ''
                 inner.append(gap + band_html(b))
-            else:
+            elif isinstance(it, str) or it['a'] is None:
                 inner.append(b['html'])
+            else:
+                inner.append(frag_html(b, splitters[bid], it['a'], it['e']))
         out.append(f'''<div class="page" data-canvas-width="794" data-canvas-height="1123">
   {chrome_header(doc)}
   <div class="content">
@@ -469,12 +709,9 @@ def assemble():
     logow = open(os.path.join(R, 'logo-white.png.b64')).read()
 
     # ---------- H2 2026 report ----------
-    h2md = open(os.path.join(R, 'h2-final.md')).read()
-    h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of FS Student Hedge Fund Department', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of FS Student Hedge Fund Department')
-    h2md = h2md.replace('**Jakob Hautkappe**\nSenior Associate', '**Jakob Hautkappe**@@BR@@Senior Associate')
-    h2b = parse_flow(h2md, 'h2')
+    h2b = h2_blocks()
     h2ids = {f'h2-{j}': b for j, b in enumerate(h2b)}
-    pages, _ = paginate('h2', h2b, measures, 3)
+    pages, h2sp = paginate_v2('h2', h2b, measures, 3)
     cover = f'''<div class="page cover" data-canvas-width="794" data-canvas-height="1123">
   <img class="logo" src="{logow}" />
   <div class="rule-top"></div>
@@ -486,7 +723,8 @@ def assemble():
 </div>'''
     toc_items = []
     for k, page in enumerate(pages):
-        for bid in page:
+        for it in page:
+            bid = it['bid']
             b = h2ids[bid]
             if b['t'] != 'band':
                 continue
@@ -505,10 +743,10 @@ def assemble():
   {chrome_footer('FS Student Hedge Fund · H2 2026 Report', 2)}
 </div>'''
     doc = head('FS Student Hedge Fund · H2 2026 Report') + cover + h2toc + '\n'.join(
-        render_pages(pages, h2ids, 'h2', 'FS Student Hedge Fund · H2 2026 Report', 3)) + '\n</body></html>'
+        render_pages(pages, h2ids, 'h2', 'FS Student Hedge Fund · H2 2026 Report', 3, h2sp)) + '\n</body></html>'
     open(os.path.join(R, 'fshf-h2-2026-report.html'), 'w').write(doc)
     print(f'H2 report: {2 + len(pages)} pages')
-    pagemap = {'h2': [None, None] + [list(p) for p in pages]}
+    pagemap = {'h2': [None, None] + [[it['bid'] + ('' if it['a'] is None else f"#{it['a']}:{it['e']}") for it in p] for p in pages]}
 
     # ---------- Seagate ----------
     sgb, sgr, cert = seagate_blocks()

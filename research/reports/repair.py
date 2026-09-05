@@ -19,7 +19,7 @@ for it in range(8):
     for doc, i, over, bids in bad:
         print(f'iteration {it}: {doc} page {i+1} overflows {over}px')
         if bids and len(bids) > 1:
-            forced.add(bids[-1]); changed = True
+            forced.add(bids[-1].split('#')[0]); changed = True   # fragment ids look like h2-16#0:1
         elif bids:
             print(f'  single-block page cannot be split: {bids}')
     if not changed:
