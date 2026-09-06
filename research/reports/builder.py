@@ -289,7 +289,7 @@ def chrome_footer(label, pgno):
 
 CSS = open(os.path.join(R, 'design.css')).read() if os.path.exists(os.path.join(R, 'design.css')) else ''
 
-def head(title):
+def head(title, extra_css=''):
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,7 +300,7 @@ def head(title):
 <meta name="hz:canvas-height" content="1123" />
 <link rel="stylesheet" href="https://use.typekit.net/cmo4ffz.css">
 <style>
-{CSS}
+{CSS + chr(10) + extra_css if extra_css else CSS}
 </style>
 </head>
 <body>
@@ -310,17 +310,27 @@ def band_html(b):
     eyebrow = b.get('eyebrow') or (f'Section {b["num"]}' if b.get('num') else 'Appendix')
     return f'<div class="band"><div class="eyebrow">{eyebrow}</div><h2>{b["title"]}</h2></div>'
 
+H2_CSS = 'p.body.after-list { margin-top:14px; }'
+
 def h2_blocks():
     h2md = open(os.path.join(R, 'h2-final.md')).read()
     h2md = h2md.replace('**Francesco di Fano and Julius Jagland**\nHeads of FS Student Hedge Fund Department', '**Francesco di Fano and Julius Jagland**@@BR@@Heads of FS Student Hedge Fund Department')
     h2md = h2md.replace('**Jakob Hautkappe**\nSenior Associate', '**Jakob Hautkappe**@@BR@@Senior Associate')
-    return parse_flow(h2md, 'h2')
+    # closing signature of the disclaimer: two lines, like the foreword signature
+    h2md = h2md.replace('**FS Student Hedge Fund, Student Initiative of Frankfurt School**\nHedge Fund Department', '**FS Student Hedge Fund, Student Initiative of Frankfurt School**@@BR@@Hedge Fund Department')
+    blocks = parse_flow(h2md, 'h2')
+    # a paragraph that directly follows a numbered list sits on the list's
+    # closing rule; give it the same 14px gap a table or bullet list leaves
+    for prev, b in zip(blocks, blocks[1:]):
+        if prev['t'] == 'oli' and b['t'] in ('p', 'callout', 'h4label'):
+            b['html'] = b['html'].replace('<p class="body', '<p class="body after-list', 1)
+    return blocks
 
 # ---------------- measurement emit ----------------
 def emit_measure():
     sgb, sgr, _cert = seagate_blocks()
     h2b = h2_blocks()
-    out = [head('measure')]
+    out = [head('measure', H2_CSS)]
     out.append('<div style="width:666px; margin:0 auto; background:#fff;">')
     store = {}
     for prefix, blks in (('sg', sgb + sgr), ('h2', h2b)):
@@ -742,7 +752,7 @@ def assemble():
   </div>
   {chrome_footer('FS Student Hedge Fund · H2 2026 Report', 2)}
 </div>'''
-    doc = head('FS Student Hedge Fund · H2 2026 Report') + cover + h2toc + '\n'.join(
+    doc = head('FS Student Hedge Fund · H2 2026 Report', H2_CSS) + cover + h2toc + '\n'.join(
         render_pages(pages, h2ids, 'h2', 'FS Student Hedge Fund · H2 2026 Report', 3, h2sp)) + '\n</body></html>'
     open(os.path.join(R, 'fshf-h2-2026-report.html'), 'w').write(doc)
     print(f'H2 report: {2 + len(pages)} pages')

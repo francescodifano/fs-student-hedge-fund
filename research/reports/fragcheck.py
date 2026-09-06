@@ -13,7 +13,7 @@ TOL = 1.5
 measures = json.load(open(os.path.join(R, 'measures.json')))
 blocks = B.h2_blocks()
 pages, sp = B.paginate_v2('h2', blocks, measures, 3)
-out = [B.head('frags'), '<div style="width:666px; margin:0 auto; background:#fff;">']
+out = [B.head('frags', B.H2_CSS), '<div style="width:666px; margin:0 auto; background:#fff;">']
 expect = {}
 for page in pages:
     for it in page:
