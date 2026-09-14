@@ -1,6 +1,6 @@
 import Container from '../components/Container'
 import { usePageTitle } from '../lib/usePageTitle'
-import { CONTACT_EMAIL, CONTACT_MAILTO } from '../lib/contact'
+import { CONTACT_MAILTO, CONTACT_EMAIL_LOCAL, CONTACT_EMAIL_DOMAIN } from '../lib/contact'
 
 // Legal page requested by the team (meeting of 25 Jul 2026): an imprint plus
 // disclaimers, modeled on FS Entrepreneurship's imprint. The research
@@ -29,7 +29,9 @@ export default function Imprint() {
               <p className="mt-4">
                 Email:{' '}
                 <a href={CONTACT_MAILTO} className="font-semibold text-navy underline decoration-navy/30 underline-offset-2 hover:decoration-navy">
-                  {CONTACT_EMAIL}
+                  <span className="whitespace-nowrap">{CONTACT_EMAIL_LOCAL}@</span>
+                  <wbr />
+                  <span className="whitespace-nowrap">{CONTACT_EMAIL_DOMAIN}</span>
                 </a>
               </p>
               <p className="mt-4">
