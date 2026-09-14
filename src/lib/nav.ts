@@ -21,6 +21,5 @@ export const FOOTER_PAGES: NavItem[] = [
   { label: 'Hedge Fund', to: '/hedge-fund' },
   { label: 'Quantitative Team', to: '/quant' },
   { label: 'Media & Community', to: '/social' },
-  { label: 'Applications', to: '/applications' },
   { label: 'About', to: '/about' },
 ]

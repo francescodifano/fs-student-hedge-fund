@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import { FOOTER_PAGES } from '../lib/nav'
 import Button from './Button'
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '../lib/contact'
 
 // Only platforms with a verified URL are listed (dead links don't ship).
 // The Instagram handle uses a dot, not an underscore — fs.studenthedgefund.
@@ -133,8 +134,8 @@ export default function SiteFooter() {
               </li>
               <li className="flex gap-3">
                 <MailIcon />
-                <a href="mailto:info@fs-student-hedgefund.com" className="text-[15px] break-words transition-opacity hover:opacity-70">
-                  info@fs-student-hedgefund.com
+                <a href={CONTACT_MAILTO} className="text-[15px] break-words transition-opacity hover:opacity-70">
+                  {CONTACT_EMAIL}
                 </a>
               </li>
             </ul>

@@ -4,12 +4,13 @@ import Button from '../components/Button'
 import TeamCard from '../components/TeamCard'
 import { TEAM } from '../lib/team'
 import { usePageTitle } from '../lib/usePageTitle'
+import { CONTACT_MAILTO } from '../lib/contact'
 
 export default function About() {
   usePageTitle('About')
   return (
     <>
-      {/* Hero, mirroring the homepage: serif heading left, solid-navy lead + Apply right */}
+      {/* Hero, mirroring the homepage: serif heading left, solid-navy lead + Contact right */}
       <section className="container-page pt-12 md:pt-16">
         <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end">
           <h1 className="font-display text-display text-navy">
@@ -22,7 +23,7 @@ export default function About() {
               Frankfurt School's student-run finance initiative, where academic rigor meets real markets.
             </p>
             <div className="mt-8">
-              <Button to="/applications" className="w-full sm:w-auto">Apply</Button>
+              <Button href={CONTACT_MAILTO} className="w-full sm:w-auto">Contact</Button>
             </div>
           </div>
         </div>

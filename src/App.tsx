@@ -9,7 +9,6 @@ import DepartmentPage from './pages/DepartmentPage'
 import IndexConstruction from './pages/IndexConstruction'
 import HedgeFund from './pages/HedgeFund'
 import Imprint from './pages/Imprint'
-import Applications from './pages/Applications'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -29,11 +28,13 @@ export default function App() {
         <Route path="derivatives" element={<DepartmentPage slug="derivatives" />} />
         <Route path="quant" element={<DepartmentPage slug="quant" />} />
 
-        {/* Contact page hibernated during the September 2026 recruiting
-            window (team decision pending). Restore by swapping the redirect
-            back to <Contact /> and reinstating the nav/footer links. */}
-        <Route path="contact" element={<Navigate to="/applications" replace />} />
-        <Route path="applications" element={<Applications />} />
+        {/* Applications closed 13 Sep 2026 and the page is off the site; the
+            component stays in pages/Applications.tsx for the next round (restore:
+            import it, route it, relink it in SiteHeader and nav.ts). Both old
+            paths go to the homepage so printed QR codes and shared links still
+            land somewhere. The Contact page itself remains hibernated. */}
+        <Route path="contact" element={<Navigate to="/" replace />} />
+        <Route path="applications" element={<Navigate to="/" replace />} />
         <Route path="imprint" element={<Imprint />} />
         <Route path="*" element={<NotFound />} />
       </Route>

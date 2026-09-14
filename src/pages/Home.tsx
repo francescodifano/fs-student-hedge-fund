@@ -3,6 +3,7 @@ import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
 import StatBlock from '../components/StatBlock'
 import { usePageTitle } from '../lib/usePageTitle'
+import { CONTACT_MAILTO } from '../lib/contact'
 
 // Order and naming follow the live site (Departments 01-04) + Media & Community.
 const DEPT_CARDS = [
@@ -128,18 +129,17 @@ export default function Home() {
       </section>
 
       {/* CTA on white, with the navy box as its own element (original design:
-          443x91 navy box beside the serif heading). While the Contact page is
-          hibernated for the recruiting window it reads Apply and leads to the
-          Applications page; restore "Contact us" + /contact with the page. */}
+          443x91 navy box beside the serif heading). Applications closed on
+          13 Sep 2026, so the box reads Contact and opens the fund's mailbox. */}
       <section className="container-page py-16 md:py-24">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="font-display text-h1 font-bold text-navy">Be Where Talent Starts.</h2>
-          <Link
-            to="/applications"
+          <a
+            href={CONTACT_MAILTO}
             className="block w-full bg-navy px-10 py-5 text-center font-sans text-xl font-extrabold text-white transition-opacity hover:opacity-90 md:w-auto md:px-16 md:py-6 md:text-2xl"
           >
-            Apply
-          </Link>
+            Contact
+          </a>
         </div>
       </section>
     </>

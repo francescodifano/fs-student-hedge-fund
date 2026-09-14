@@ -3,9 +3,9 @@ import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
 import Button from '../components/Button'
 import { usePageTitle } from '../lib/usePageTitle'
+import { CONTACT_EMAIL } from '../lib/contact'
 
 const field = 'w-full border-0 border-b-2 border-navy/40 bg-transparent px-0 py-2 font-sans text-navy outline-none transition-colors focus:border-navy'
-const CONTACT_EMAIL = 'info@fs-student-hedgefund.com'
 
 // Contact: the form composes an email in the visitor's mail client (no backend
 // needed), so the page is genuinely usable at launch.

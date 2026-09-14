@@ -2,6 +2,7 @@ import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
 import Button from '../components/Button'
 import { usePageTitle } from '../lib/usePageTitle'
+import { CONTACT_MAILTO } from '../lib/contact'
 
 // Events render as compact cards in a grid so several fit side by side.
 // The visual is the organiser's logo on white (team feedback), not a photo.
@@ -75,8 +76,8 @@ export default function Newsroom() {
                   </dl>
 
                   <div className="mt-6">
-                    <Button to="/applications" variant="light" className="w-full sm:w-auto">
-                      Apply
+                    <Button href={CONTACT_MAILTO} variant="light" className="w-full sm:w-auto">
+                      Contact
                     </Button>
                   </div>
                 </div>

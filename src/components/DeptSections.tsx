@@ -3,6 +3,7 @@ import Container from './Container'
 import TeamCard from './TeamCard'
 import { byName } from '../lib/team'
 import { DEPARTMENTS } from '../lib/nav'
+import { CONTACT_MAILTO } from '../lib/contact'
 
 // Shared sections for every department page: mission band, department leads,
 // cross-navigation to the other departments, and a join CTA.
@@ -71,12 +72,12 @@ export function JoinCta({ dept }: { dept: string }) {
         <h2 className="font-display text-h1 font-bold text-navy">
           Interested in <span className="whitespace-nowrap">{dept}?</span>
         </h2>
-        <Link
-          to="/applications"
+        <a
+          href={CONTACT_MAILTO}
           className="block w-full bg-navy px-10 py-5 text-center font-sans text-xl font-extrabold text-white transition-opacity hover:opacity-90 md:w-auto md:px-16 md:py-6 md:text-2xl"
         >
-          Apply
-        </Link>
+          Contact
+        </a>
       </div>
     </section>
   )
