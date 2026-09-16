@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-09-15T21:57:08.685Z",
+  "updated_at": "2026-09-16T21:57:03.397Z",
   "inception_date": "2026-06-25",
   "base_currency": "USD",
   "headline": {
-    "day_pct": -0.32,
-    "week_pct": -1.79,
-    "month_pct": -2.23,
-    "since_inception_pct": 1.37
+    "day_pct": -0.01,
+    "week_pct": -1.89,
+    "month_pct": -1.72,
+    "since_inception_pct": 1.36
   },
   "series": [
     {
@@ -244,6 +244,10 @@
     {
       "date": "2026-09-15",
       "since_inception_pct": 1.37
+    },
+    {
+      "date": "2026-09-16",
+      "since_inception_pct": 1.36
     }
   ]
 }
