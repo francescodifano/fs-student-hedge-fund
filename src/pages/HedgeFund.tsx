@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import { usePageTitle } from '../lib/usePageTitle'
 import { MissionBand, DeptLeads, OtherDepartments, JoinCta } from '../components/DeptSections'
+import DeptChart from '../components/DeptChart'
 import portfolio from '../data/hedge-fund-portfolio.json'
 import performance from '../data/hedge-fund-performance.json'
 
@@ -618,7 +619,8 @@ export default function HedgeFund() {
         </div>
       </section>
 
-      <DeptLeads names={['Francesco di Fano', 'Julius Jagland']} />
+      <DeptChart />
+      <DeptLeads names={['Francesco di Fano', 'Julius Jagland', 'Jakob Hautkappe']} />
       <OtherDepartments current="/hedge-fund" />
       <JoinCta dept="Hedge Fund" />
     </article>
