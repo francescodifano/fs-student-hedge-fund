@@ -14,19 +14,23 @@ function Star({ className = '' }: { className?: string }) {
   )
 }
 
-// Round portrait cut from the 3:4 team photo, zoomed on the face.
+// Round portrait cut from the 3:4 team photo, zoomed on the face. Drawn as a
+// CSS background: a lazily loaded <img> that is absolutely positioned and has
+// no height before it loads never loaded in Safari, which left the circle empty.
 const ZOOM = 2.7
 function Portrait({ img, face = [0.5, 0.45] }: { img: string; face?: [number, number] }) {
+  // The photo is ZOOM times the circle's width and 4/3 as tall as it is wide.
+  // A background position of p% lines up the p% point of the image with the
+  // p% point of the box, so solve for the p that puts the face in the centre.
+  const zh = ZOOM * (4 / 3)
+  const x = ((0.5 - face[0] * ZOOM) / (1 - ZOOM)) * 100
+  const y = ((0.5 - face[1] * zh) / (1 - zh)) * 100
   return (
-    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/10">
-      <img
-        src={A(img)}
-        alt=""
-        className="absolute max-w-none"
-        style={{ width: `${ZOOM * 100}%`, left: `${50 - face[0] * ZOOM * 100}%`, top: `${50 - face[1] * ZOOM * (400 / 3)}%` }}
-        loading="lazy"
-      />
-    </div>
+    <div
+      aria-hidden
+      className="h-14 w-14 shrink-0 rounded-full bg-navy/20 bg-no-repeat"
+      style={{ backgroundImage: `url(${A(img)})`, backgroundSize: `${ZOOM * 100}% auto`, backgroundPosition: `${x}% ${y}%` }}
+    />
   )
 }
 
