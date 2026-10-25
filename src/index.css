@@ -22,7 +22,10 @@
   --color-navy: #060033;
   --color-mist: #e5e5e5;
 
-  /* Chart-only reserve (deck's "Additional"/"Extra" swatches) — never UI chrome */
+  /* Chart-only reserve (deck's "Additional"/"Extra" swatches) — never UI chrome.
+     In use: --color-chart-teal draws the EUR line of the two-currency
+     performance chart and the matching key strokes next to the EUR figures
+     (navy draws the USD line). Chart keys only, nowhere else. */
   --color-chart-coral: #e76f51;
   --color-chart-teal: #0a9396;
   --color-chart-gold: #e9c46a;
@@ -30,9 +33,10 @@
   /* Deliberate, narrowly scoped exception to the navy-only chrome rule above.
      Green/red for gain and loss is the standard convention for financial
      performance figures and is judged to outweigh strict palette adherence for
-     this one purpose. Use --color-gain and --color-loss ONLY for the four
-     performance figures in the Performance section. Not for badges, nav states,
-     borders, links, the performance chart, or any other accent anywhere. */
+     this one purpose. Use --color-gain and --color-loss ONLY for the
+     performance figures in the Performance section (four periods, each in EUR
+     and in USD). Not for badges, nav states, borders, links, the performance
+     chart, or any other accent anywhere. */
   --color-gain: #1a7a3c;
   --color-loss: #b3261e;
 

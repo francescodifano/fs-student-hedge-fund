@@ -10,6 +10,13 @@ on:
     # exceeded once.
     - cron: '0 19 * * 1-5'
   workflow_dispatch:
+    inputs:
+      force:
+        # Only for a genuine market move of more than three percentage points
+        # in one day, which the script otherwise refuses to publish.
+        description: 'Record the reading even if it moved more than 3 percentage points since the previous trading day'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -31,13 +38,19 @@ jobs:
         with:
           node-version: 20
 
+      # Reads both tracker accounts, EUR and USD. Writes both or neither.
       - name: Fetch and record today's performance
+        id: record
         env:
           GHOSTFOLIO_ACCESS_ID: ${{ vars.GHOSTFOLIO_ACCESS_ID }}
+          GHOSTFOLIO_ACCESS_ID_EUR: ${{ vars.GHOSTFOLIO_ACCESS_ID_EUR }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
         run: node scripts/update-ghostfolio-performance.mjs
 
       - name: Commit and push if changed
         id: commit
+        env:
+          MARKET_DATE: ${{ steps.record.outputs.market_date }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -46,7 +59,7 @@ jobs:
             echo "No change, nothing to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "chore(data): record portfolio performance for $(date -u +%F)"
+            git commit -m "chore(data): record portfolio performance for ${MARKET_DATE:-$(date -u +%F)}"
             git pull --rebase --autostash origin main
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"

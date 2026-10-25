@@ -8,13 +8,13 @@ import portfolio from '../data/hedge-fund-portfolio.json'
 import performance from '../data/hedge-fund-performance.json'
 
 // The Hedge Fund department page, per the department's August and September
-// 2026 specs: hero → What we do → mission → Performance (headline figures +
-// since-inception chart) → Positioning (four donut charts) → Portfolio
-// holdings (full table) → the shared department sections. Charts and table
-// render from src/data/hedge-fund-portfolio.json, the Performance section
-// from src/data/hedge-fund-performance.json, which only the scheduled
-// update-performance workflow writes. The page is fully static: no
-// market-data source is contacted at build or run time.
+// 2026 specs: hero → What we do → mission → Performance (headline figures and
+// since-inception chart, each in EUR and USD) → Positioning (four donut
+// charts) → Portfolio holdings (full table) → the shared department sections.
+// Charts and table render from src/data/hedge-fund-portfolio.json, the
+// Performance section from src/data/hedge-fund-performance.json, which only
+// the scheduled update-performance workflow writes. The page is fully static:
+// no market-data source is contacted at build or run time.
 
 type Position = {
   name: string
@@ -50,22 +50,40 @@ type Portfolio = {
   prices_as_of?: string
   sleeves: Sleeve[]
 }
-type PerfPoint = { date: string; since_inception_pct: number }
+// The portfolio is tracked in two accounts with identical holdings that differ
+// only in base currency. Neither is presented as the base: both are shown side
+// by side, in alphabetical order.
+const CURRENCIES = ['EUR', 'USD'] as const
+type Currency = (typeof CURRENCIES)[number]
+type PerfPoint = { date: string } & Record<Currency, number>
+type Headline = {
+  day_pct: number | null
+  week_pct: number | null
+  month_pct: number | null
+  since_inception_pct: number | null
+}
 type Performance = {
   updated_at: string | null
   inception_date: string
-  base_currency: string
-  headline: {
-    day_pct: number | null
-    week_pct: number | null
-    month_pct: number | null
-    since_inception_pct: number | null
-  }
+  headline: Record<Currency, Headline>
   series: PerfPoint[]
 }
 
 const DATA: Portfolio = portfolio
 const PERF: Performance = performance
+
+// Line and key colours of the two series. USD keeps the navy its line has
+// carried since launch. EUR takes the teal the design system reserves for
+// multi-series charts (--color-chart-teal in index.css, 3.7:1 against white).
+// Hex values rather than CSS variables, like every other colour in this file's
+// inline SVG.
+const SERIES_COLOR: Record<Currency, string> = { EUR: '#0a9396', USD: '#060033' }
+
+// A short horizontal stroke in a series colour, the key that ties a figure
+// row to its line in the chart.
+const SeriesKey = ({ currency }: { currency: Currency }) => (
+  <span aria-hidden="true" className="inline-block h-[3px] w-5 shrink-0 rounded-full" style={{ backgroundColor: SERIES_COLOR[currency] }} />
+)
 
 // A missing or empty field renders as an em dash — never a substituted value.
 const EM_DASH = '—'
@@ -93,8 +111,8 @@ const signedPct = (v: number | null) => {
   return `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(2)}%`
 }
 // Gain/loss colouring is the page's one deliberate exception to the
-// navy-only chrome rule: scoped to the four performance figures per
-// the token comment in index.css.
+// navy-only chrome rule: scoped to the performance figures (four periods, in
+// EUR and in USD) per the token comment in index.css.
 const signedColor = (v: number | null) => (v == null || v === 0 ? 'text-navy/60' : v > 0 ? 'text-gain' : 'text-loss')
 
 // "1 Sep 2026, 22:57 UTC" — longDate's form with the time appended.
@@ -212,24 +230,23 @@ function useMeasuredWidth<T extends HTMLElement>() {
 }
 
 // The since-inception line chart: hand-written inline SVG in the same manner
-// as the donuts, navy line, muted zero baseline, sparse axes. Month labels
-// rather than exact dates, a handful of round percentage ticks, and no
-// interactivity. It is drawn at the measured width of its container, never
-// scaled, so text and stroke keep their pixel size at every viewport, with a
-// shorter chart and fewer labels on a phone.
-function PerformanceChart({ series }: { series: PerfPoint[] }) {
-  const [ref, W] = useMeasuredWidth<HTMLDivElement>()
-  if (series.length < 2) return null
-
+// as the donuts, one line per currency on a shared scale, muted zero baseline,
+// sparse axes. Month labels rather than exact dates, a handful of round
+// percentage ticks, and no interactivity. It is drawn at the measured width of
+// its container, never scaled, so text and stroke keep their pixel size at
+// every viewport, with a shorter chart and fewer labels on a phone.
+function PerformanceChart({ series, width: W }: { series: PerfPoint[]; width: number }) {
   const narrow = W > 0 && W < 640
   const H = narrow ? 220 : 300
-  if (W === 0) return <div ref={ref} className="mt-10 w-full" style={{ height: H }} aria-hidden="true" />
+  if (W === 0) return <div style={{ height: H }} aria-hidden="true" />
 
   const PAD = { top: 14, right: 14, bottom: 30, left: narrow ? 40 : 46 }
   const innerW = W - PAD.left - PAD.right
   const innerH = H - PAD.top - PAD.bottom
 
-  const values = series.map((p) => p.since_inception_pct)
+  // One scale for both lines: the range spans the lowest and highest value
+  // across EUR and USD together, and always includes zero.
+  const values = series.flatMap((p) => CURRENCIES.map((c) => p[c]))
   const lo = Math.min(0, ...values)
   const hi = Math.max(0, ...values)
   // Round tick step: the smallest of 0.5 / 1 / 2 / 5 / 10 that keeps the
@@ -242,7 +259,7 @@ function PerformanceChart({ series }: { series: PerfPoint[] }) {
 
   const x = (i: number) => PAD.left + (i / (series.length - 1)) * innerW
   const y = (v: number) => PAD.top + ((yMax - v) / (yMax - yMin)) * innerH
-  const path = series.map((p, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(2)} ${y(p.since_inception_pct).toFixed(2)}`).join(' ')
+  const pathOf = (c: Currency) => series.map((p, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(2)} ${y(p[c]).toFixed(2)}`).join(' ')
 
   // A label at each month change. The series start itself is unlabelled, so
   // the 25 June baseline point draws no attention to itself. Narrow charts
@@ -256,28 +273,132 @@ function PerformanceChart({ series }: { series: PerfPoint[] }) {
 
   const first = series[0]
   const last = series[series.length - 1]
-  const title = 'Portfolio performance since inception'
-  const desc = `Cumulative return of the simulated portfolio since inception, from its ${longDate(first.date)} baseline to ${longDate(last.date)}, ranging between ${signedPct(Math.min(...values))} and ${signedPct(Math.max(...values))}, latest ${signedPct(last.since_inception_pct)}.`
+  const title = 'Portfolio performance since inception, in EUR and USD'
+  const rangeOf = (c: Currency) => {
+    const v = series.map((p) => p[c])
+    return `${c} between ${signedPct(Math.min(...v))} and ${signedPct(Math.max(...v))}, latest ${signedPct(last[c])}`
+  }
+  const desc = `Cumulative return of the simulated portfolio since inception, from its ${longDate(first.date)} baseline to ${longDate(last.date)}, as two lines on one scale: ${CURRENCIES.map(rangeOf).join('; ')}.`
 
   return (
-    <div ref={ref} className="mt-10 w-full">
-      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block" role="img" aria-labelledby="perf-chart-title" aria-describedby="perf-chart-desc">
-        <title id="perf-chart-title">{title}</title>
-        <desc id="perf-chart-desc">{desc}</desc>
-        {ticks.map((v) => (
-          <text key={v} x={PAD.left - 8} y={y(v) + 3.5} textAnchor="end" fontSize="11" fill="#060033" opacity="0.55">
-            {`${v}%`}
-          </text>
+    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block" role="img" aria-labelledby="perf-chart-title" aria-describedby="perf-chart-desc">
+      <title id="perf-chart-title">{title}</title>
+      <desc id="perf-chart-desc">{desc}</desc>
+      {ticks.map((v) => (
+        <text key={v} x={PAD.left - 8} y={y(v) + 3.5} textAnchor="end" fontSize="11" fill="#060033" opacity="0.55">
+          {`${v}%`}
+        </text>
+      ))}
+      {monthLabels.map((m) => (
+        <text key={m.key} x={m.x} y={H - 8} textAnchor="middle" fontSize="11" fill="#060033" opacity="0.55">
+          {m.label}
+        </text>
+      ))}
+      {/* Zero baseline in the neutral grey, since the series crosses zero */}
+      <line x1={PAD.left} x2={W - PAD.right} y1={y(0)} y2={y(0)} stroke="#999999" strokeWidth="1" />
+      {/* EUR first, so the navy USD line sits on top where the two overlap */}
+      {CURRENCIES.map((c) => (
+        <path key={c} d={pathOf(c)} fill="none" stroke={SERIES_COLOR[c]} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+      ))}
+    </svg>
+  )
+}
+
+const PERIODS: [string, keyof Headline][] = [
+  ['1D', 'day_pct'],
+  ['1W', 'week_pct'],
+  ['1M', 'month_pct'],
+  ['Since inception', 'since_inception_pct'],
+]
+
+// The headline figures, one row per currency, each row led by the same key as
+// its line in the chart. From md up a table, so the periods align in columns
+// across both rows. Below md, where four large figures do not fit side by
+// side, each currency gets its own two-by-two block. Only one of the two is
+// ever displayed, so assistive technology reads the figures once.
+function PerformanceFigures({ headline }: { headline: Record<Currency, Headline> }) {
+  return (
+    <>
+      <table className="mt-10 hidden border-collapse text-left md:table">
+        <caption className="sr-only">Return of the simulated portfolio by period, in EUR and in USD</caption>
+        <thead>
+          <tr>
+            <td />
+            {PERIODS.map(([label]) => (
+              <th key={label} scope="col" className="pr-8 pb-1 align-bottom font-sans text-sm font-bold text-navy/60 last:pr-0 lg:pr-14">
+                {label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {CURRENCIES.map((c, row) => (
+            <tr key={c}>
+              <th scope="row" className={`pr-8 align-middle lg:pr-12 ${row > 0 ? 'pt-3' : ''}`}>
+                <span className="flex items-center gap-2.5 font-sans text-sm font-bold text-navy">
+                  <SeriesKey currency={c} />
+                  {c}
+                </span>
+              </th>
+              {PERIODS.map(([label, key]) => {
+                const v = headline[c][key]
+                return (
+                  <td
+                    key={label}
+                    className={`pr-8 font-sans text-3xl font-extrabold tabular-nums last:pr-0 lg:pr-14 ${row > 0 ? 'pt-3' : ''} ${signedColor(v)}`}
+                  >
+                    {signedPct(v)}
+                  </td>
+                )
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="mt-10 space-y-10 md:hidden">
+        {CURRENCIES.map((c) => (
+          <div key={c}>
+            <div className="flex items-center gap-2.5 font-sans text-sm font-bold text-navy">
+              <SeriesKey currency={c} />
+              {c}
+            </div>
+            <dl className="mt-4 grid grid-cols-2 gap-x-8 gap-y-6">
+              {PERIODS.map(([label, key]) => {
+                const v = headline[c][key]
+                return (
+                  <div key={label}>
+                    <dt className="font-sans text-sm font-bold text-navy/60">{label}</dt>
+                    <dd className={`mt-1 font-sans text-3xl font-extrabold tabular-nums ${signedColor(v)}`}>{signedPct(v)}</dd>
+                  </div>
+                )
+              })}
+            </dl>
+          </div>
         ))}
-        {monthLabels.map((m) => (
-          <text key={m.key} x={m.x} y={H - 8} textAnchor="middle" fontSize="11" fill="#060033" opacity="0.55">
-            {m.label}
-          </text>
+      </div>
+    </>
+  )
+}
+
+// The chart with its key above it. The key sits outside the measured box, so
+// the box the chart is drawn into is the same before and after measuring.
+function PerformanceChartWithKey({ series }: { series: PerfPoint[] }) {
+  const [ref, W] = useMeasuredWidth<HTMLDivElement>()
+  if (series.length < 2) return null
+  return (
+    <div className="mt-10 w-full">
+      <ul className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm font-bold text-navy/70" aria-label="Chart key">
+        {CURRENCIES.map((c) => (
+          <li key={c} className="flex items-center gap-2">
+            <SeriesKey currency={c} />
+            {c}
+          </li>
         ))}
-        {/* Zero baseline in the neutral grey, since the series crosses zero */}
-        <line x1={PAD.left} x2={W - PAD.right} y1={y(0)} y2={y(0)} stroke="#999999" strokeWidth="1" />
-        <path d={path} fill="none" stroke="#060033" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-      </svg>
+      </ul>
+      <div ref={ref} className="mt-4 w-full">
+        <PerformanceChart series={series} width={W} />
+      </div>
     </div>
   )
 }
@@ -500,30 +621,16 @@ export default function HedgeFund() {
         <div className="mt-5 h-px w-full bg-navy/15" />
         <p className="mt-8 text-lead text-navy/85">
           Read from the department's portfolio record after each trading day's close and published here automatically, measured since the
-          portfolio was established on 26 June 2026. Figures are in USD and include the effect of currency movements on positions held in other
-          currencies.
+          portfolio was established on 26 June 2026. Figures are shown in both EUR and USD, each including the effect of currency movements on
+          positions held in other currencies.
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-x-14 gap-y-8">
-          {(
-            [
-              ['1D', PERF.headline.day_pct],
-              ['1W', PERF.headline.week_pct],
-              ['1M', PERF.headline.month_pct],
-              ['Since inception', PERF.headline.since_inception_pct],
-            ] as [string, number | null][]
-          ).map(([label, v]) => (
-            <div key={label}>
-              <div className="font-sans text-sm font-bold text-navy/60">{label}</div>
-              <div className={`mt-1 font-sans text-3xl font-extrabold tabular-nums ${signedColor(v)}`}>{signedPct(v)}</div>
-            </div>
-          ))}
-        </div>
+        <PerformanceFigures headline={PERF.headline} />
         {PERF.updated_at && updatedAtLabel(PERF.updated_at) && (
           <p className="mt-5 text-sm text-navy/60">Last updated {updatedAtLabel(PERF.updated_at)}.</p>
         )}
 
-        <PerformanceChart series={PERF.series} />
+        <PerformanceChartWithKey series={PERF.series} />
 
         <p className="mt-8 max-w-4xl text-sm text-navy/60">
           These figures describe a simulated portfolio. No client capital is managed and no order is placed in the market. Returns are measured
