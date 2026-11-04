@@ -5,7 +5,7 @@ export type ChartPerson = { name: string; abroad?: boolean; former?: boolean }
 export type ChartGroup = { label?: string; people: ChartPerson[] }
 export type ChartTeam = { name: string; groups: ChartGroup[] }
 
-export const CHART_AS_OF = 'October 2026'
+export const CHART_AS_OF = 'November 2026'
 
 export const CHART_LEADS = {
   heads: ['Francesco di Fano', 'Julius Jagland'],
@@ -21,7 +21,6 @@ export const CHART_TEAMS: ChartTeam[] = [
         people: [
           { name: 'Johannes Volkemer' },
           { name: 'Raphael Banner' },
-          { name: 'Jasper Claßen' },
           { name: 'Tristan Lützenkirchen' },
           { name: 'Atharva Johri' },
           { name: 'Leonard Heß' },
