@@ -2,6 +2,7 @@ import { asset as A } from '../lib/asset'
 import { DEPARTMENTS_DATA } from '../lib/departments'
 import { usePageTitle } from '../lib/usePageTitle'
 import { MissionBand, DeptLeads, OtherDepartments, JoinCta } from '../components/DeptSections'
+import DerivativesExtras from '../components/DerivativesExtras'
 
 // Shared, responsive template for the department pages: image hero with a navy
 // name band → About → mission statement → department leads → cross-nav → CTA.
@@ -37,6 +38,9 @@ export default function DepartmentPage({ slug }: { slug: string }) {
           ))}
         </div>
       </section>
+
+      {/* Trading & Derivatives only: flip cards, next-event pointer, workshop gallery (brief of 12 Nov 2026) */}
+      {slug === 'derivatives' && <DerivativesExtras />}
 
       <MissionBand>{d.mission}</MissionBand>
       <DeptLeads names={d.leads} />

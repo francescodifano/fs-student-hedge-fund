@@ -65,12 +65,15 @@ export function OtherDepartments({ current }: { current: string }) {
 
 // Same design as the homepage's closing CTA (white, serif navy heading, navy
 // box button) — only the wording differs per department.
+// The department name only stays on one line from lg up: below that a long name
+// ("Trading & Derivatives?") made the page scroll sideways (409 px wide at 360,
+// 824 px at 768; fixed 12 Nov 2026).
 export function JoinCta({ dept }: { dept: string }) {
   return (
     <section className="container-page py-16 md:py-24 print:hidden">
       <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <h2 className="font-display text-h1 font-bold text-navy">
-          Interested in <span className="whitespace-nowrap">{dept}?</span>
+          Interested in <span className="lg:whitespace-nowrap">{dept}?</span>
         </h2>
         <a
           href={CONTACT_MAILTO}
