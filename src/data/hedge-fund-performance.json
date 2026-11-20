@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-19T00:59:56.447Z",
+  "updated_at": "2026-11-20T01:04:42.926Z",
   "inception_date": "2026-06-25",
   "headline": {
     "EUR": {
-      "day_pct": -0.59,
-      "week_pct": -0.33,
-      "month_pct": -0.34,
-      "since_inception_pct": 0.62
+      "day_pct": -0.82,
+      "week_pct": -1.88,
+      "month_pct": -1.32,
+      "since_inception_pct": -0.21
     },
     "USD": {
-      "day_pct": -0.7,
-      "week_pct": -2.02,
-      "month_pct": -2.45,
-      "since_inception_pct": -2.88
+      "day_pct": -0.88,
+      "week_pct": -2.94,
+      "month_pct": -3.46,
+      "since_inception_pct": -3.73
     }
   },
   "series": [
@@ -540,6 +540,11 @@
       "date": "2026-11-18",
       "EUR": 0.62,
       "USD": -2.88
+    },
+    {
+      "date": "2026-11-19",
+      "EUR": -0.21,
+      "USD": -3.73
     }
   ]
 }
