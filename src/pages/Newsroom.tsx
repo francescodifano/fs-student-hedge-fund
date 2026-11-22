@@ -15,9 +15,10 @@ import { NEXT_EVENT_UNTIL, isUpcoming } from '../lib/nextEvent'
 // file). Names stay out of the title and text at the department's request; the
 // infographic carries them. Members only, so no Contact button (`contact: false`).
 // `until`: the card leaves the page from that moment on.
-// 22 Nov 2026: the Aalto University visit (14 to 18 Apr 2027) is FS Economy & Politics' trip, which the
-// FS Student Hedge Fund joins. Open to every member of the initiative (Francesco, 22 Nov), so the card
-// never says it is for one department. `link` adds a button to an external page (here the sign-up form).
+// 22 Nov 2026: the Aalto University visit (14 to 18 Apr 2027) is organised by FS Economy & Politics and the
+// FS Student Hedge Fund and open to every member of the initiative (Francesco, 22 Nov), so the card never
+// says it is for one department, and it carries no travel details (his call). Poster made in the house
+// style (record: atlas/reference/fshf-aalto-trip-2026-11/poster). `link` adds a button to an external page.
 type NewsEvent = {
   title: string
   logo?: string
@@ -49,13 +50,14 @@ const EVENTS: NewsEvent[] = [
   },
   {
     title: 'Visit to Aalto University',
+    poster: 'aalto-visit.jpg',
+    posterAlt: 'Poster for the visit to Aalto University, Finland, 14 to 18 April 2027',
     date: { month: 'Apr', day: '14' },
     details: [
       ['When', '14 to 18 April 2027'],
       ['Where', 'Aalto University, Finland'],
-      ['Organised by', 'FS Economy & Politics, with the FS Student Hedge Fund joining'],
+      ['Organised by', 'FS Economy & Politics and FS Student Hedge Fund'],
       ['Who can apply', 'All FS Student Hedge Fund members. Places are limited, so participants will be selected'],
-      ['Travel', 'Participants book their own flights, and the form lists the estimated travel costs. Whether accommodation is provided is still being confirmed'],
       ['How to apply', 'Fill in the sign-up form, which asks for a Microsoft login'],
     ],
     until: '2027-04-19T00:00:00+02:00',
