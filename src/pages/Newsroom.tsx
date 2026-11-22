@@ -15,6 +15,9 @@ import { NEXT_EVENT_UNTIL, isUpcoming } from '../lib/nextEvent'
 // file). Names stay out of the title and text at the department's request; the
 // infographic carries them. Members only, so no Contact button (`contact: false`).
 // `until`: the card leaves the page from that moment on.
+// 22 Nov 2026: the Aalto University visit (14 to 18 Apr 2027) is FS Economy & Politics' trip, which the
+// FS Student Hedge Fund joins. Open to every member of the initiative (Francesco, 22 Nov), so the card
+// never says it is for one department. `link` adds a button to an external page (here the sign-up form).
 type NewsEvent = {
   title: string
   logo?: string
@@ -24,6 +27,7 @@ type NewsEvent = {
   details: [string, string][]
   until?: string
   contact?: boolean
+  link?: { href: string; label: string }
 }
 
 const EVENTS: NewsEvent[] = [
@@ -43,6 +47,21 @@ const EVENTS: NewsEvent[] = [
     until: NEXT_EVENT_UNTIL,
     contact: false,
   },
+  {
+    title: 'Visit to Aalto University',
+    date: { month: 'Apr', day: '14' },
+    details: [
+      ['When', '14 to 18 April 2027'],
+      ['Where', 'Aalto University, Finland'],
+      ['Organised by', 'FS Economy & Politics, with the FS Student Hedge Fund joining'],
+      ['Who can apply', 'All FS Student Hedge Fund members. Places are limited'],
+      ['Travel', 'Participants book their own flights, and the form lists the estimated travel costs. Whether accommodation is provided is still being confirmed'],
+      ['How to apply', 'Fill in the sign-up form. It needs a Microsoft login, so use your FS account'],
+    ],
+    until: '2027-04-19T00:00:00+02:00',
+    contact: false,
+    link: { href: 'https://forms.cloud.microsoft/e/d2FezpKEmj', label: 'Sign up' },
+  },
 ]
 
 export default function Newsroom() {
@@ -54,14 +73,14 @@ export default function Newsroom() {
       <section className="container-page pt-12 pb-14 md:pt-16 md:pb-20">
         <h1 className="font-display text-display font-bold text-navy">Newsroom</h1>
         <p className="mt-6 max-w-2xl text-lead text-navy/80">
-          Talks, firm visits, and everything else happening this semester at FS Student Hedge Fund.
+          Talks, firm visits, trips and everything else coming up at FS Student Hedge Fund.
         </p>
       </section>
 
       {/* Events grid */}
       <section className="bg-mist py-16 md:py-24">
         <Container>
-          <h2 className="font-display text-h1 font-bold text-navy">This Semester</h2>
+          <h2 className="font-display text-h1 font-bold text-navy">Upcoming</h2>
           <div className="mt-5 h-px w-full bg-navy/15" />
 
           {events.length === 0 && (
@@ -124,6 +143,14 @@ export default function Newsroom() {
                       </div>
                     ))}
                   </dl>
+
+                  {e.link && (
+                    <div className="mt-6">
+                      <Button href={e.link.href} variant="light" className="w-full sm:w-auto">
+                        {e.link.label}
+                      </Button>
+                    </div>
+                  )}
 
                   {e.contact !== false && (
                     <div className="mt-6">
