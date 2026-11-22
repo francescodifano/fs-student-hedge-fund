@@ -70,7 +70,8 @@ export default function Home() {
 
       {/* One team, one mission + stats + team photo.
           Figures (22 Nov 2026, Vincent's request in the heads chat): applications and the five departments from the
-          initiative's Internal Kick-Off of 23 Sep 2026 (332 applications); members from Berke, "around 220" (17:14).
+          initiative's Internal Kick-Off of 23 Sep 2026; members from Berke, "around 220" (17:14). Applications are a running
+          total: 200+ up to June 2026 (Solactive pitch deck, slide 6) plus 332 in the September round (kickoff, slide 3).
           Wide grid: text hugs the left, the bigger photo sits right and
           stretches to the height of the whole text block (team feedback). */}
       <section className="container-wide pt-24 pb-16 md:pt-32 md:pb-24">
@@ -93,7 +94,7 @@ export default function Home() {
               <StatBlock value="200+" label="Members" />
               <StatBlock value="10+" label="Nationalities" />
               <StatBlock value="5" label="Departments" />
-              <StatBlock value="330+" label="Applications" />
+              <StatBlock value="530+" label="Applications" />
             </div>
           </div>
           <img
