@@ -50,11 +50,12 @@ export default function About() {
           <h2 className="font-display text-h1 font-bold text-navy">Developing Capital Markets Expertise</h2>
           <div className="mt-8 max-w-4xl space-y-5 text-lead text-navy/85">
             <p>
-              FS Student Hedge Fund is Frankfurt School's student-managed investment initiative; a selective team
-              operating across three departments: Hedge Fund, Trading &amp; Derivatives, and Index Construction.
-              Together, we apply institutional-grade strategies to real markets, from developing macro theses and
-              managing derivative portfolios to constructing structured indices in collaboration with industry
-              partners.
+              FS Student Hedge Fund is Frankfurt School's student-managed investment initiative, a selective team
+              operating across five departments: Hedge Fund, Trading &amp; Derivatives, Index Construction, Quantitative
+              Team, and Media &amp; Community. Together, we apply institutional-grade strategies to real markets, from
+              developing macro theses, managing derivative portfolios and building quantitative models to constructing
+              structured indices in collaboration with industry partners, and we share our work through content on
+              research, market updates and member life.
             </p>
             <p>
               Our members don't just study markets, they research them, model them, and take positions in them. We

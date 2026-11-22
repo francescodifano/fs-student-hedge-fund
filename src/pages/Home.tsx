@@ -69,6 +69,8 @@ export default function Home() {
       </div>
 
       {/* One team, one mission + stats + team photo.
+          Figures (22 Nov 2026, Vincent's request in the heads chat): applications and the five departments from the
+          initiative's Internal Kick-Off of 23 Sep 2026 (332 applications); members from Berke, "around 220" (17:14).
           Wide grid: text hugs the left, the bigger photo sits right and
           stretches to the height of the whole text block (team feedback). */}
       <section className="container-wide pt-24 pb-16 md:pt-32 md:pb-24">
@@ -81,16 +83,17 @@ export default function Home() {
             </h2>
             <p className="mt-6 text-lead text-navy/80">
               FS Student Hedge Fund is Frankfurt School's student-managed investment initiative, a selective team
-              operating across three departments, Hedge Fund, Trading &amp; Derivatives, and Index Construction.
-              Together, we apply institutional-grade strategies to real markets, from developing macro theses and
-              managing derivative portfolios to constructing structured indices in collaboration with our industry
-              partners.
+              operating across five departments: Hedge Fund, Trading &amp; Derivatives, Index Construction, Quantitative
+              Team, and Media &amp; Community. Together, we apply institutional-grade strategies to real markets, from
+              developing macro theses, managing derivative portfolios and building quantitative models to constructing
+              structured indices in collaboration with our industry partners, and we share our work through content on
+              research, market updates and member life.
             </p>
-            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              <StatBlock value="95+" label="Members" />
+            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-[repeat(4,auto)] sm:justify-between">
+              <StatBlock value="200+" label="Members" />
               <StatBlock value="10+" label="Nationalities" />
               <StatBlock value="5" label="Departments" />
-              <StatBlock value="200+" label="Applications" />
+              <StatBlock value="330+" label="Applications" />
             </div>
           </div>
           <img
